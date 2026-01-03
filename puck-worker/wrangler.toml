@@ -11,11 +11,11 @@ compatibility_date = "2024-01-01"
 [vars]
 # Allowed origins for CORS (comma-separated)
 # Update this with your actual domain(s)
-ALLOWED_ORIGINS = "https://thomascostello.com,https://www.thomascostello.com,http://localhost:3000,http://127.0.0.1:5500"
+ALLOWED_ORIGINS = "https://thomascostello.com,https://www.thomascostello.com,https://thcostello.com,https://www.thcostello.com,https://tomstello.github.io,http://localhost:3000,http://127.0.0.1:5500,http://localhost:8080"
 
 # Environment-specific settings
 [env.production]
-vars = { ALLOWED_ORIGINS = "https://thomascostello.com,https://www.thomascostello.com" }
+vars = { ALLOWED_ORIGINS = "https://thomascostello.com,https://www.thomascostello.com,https://thcostello.com,https://www.thcostello.com,https://tomstello.github.io" }
 
 [env.development]
 vars = { ALLOWED_ORIGINS = "http://localhost:3000,http://127.0.0.1:5500,http://localhost:8080" }

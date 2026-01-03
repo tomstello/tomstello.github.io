@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 0 48 52" width="64" height="64">
   <!-- Puck - Pixel Art Jester/Imp Sprite -->
-  <!-- Background (transparent) -->
+  <!-- Centered viewBox to fit character tightly -->
 
   <!-- Jester hat - left bell -->
   <rect x="8" y="4" width="4" height="4" fill="#6B21A8"/>
