@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Things I like - books, poems, stories, essays, and ideas collected by Thomas H. Costello.">
+
+  <title>Likes | Thomas H. Costello</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9672;</text></svg>">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/puck.css">
+  <style>
+    .likes-section {
+      margin-bottom: var(--space-12);
+    }
+
+    .likes-section__title {
+      font-family: var(--font-serif);
+      font-size: var(--text-xs);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-widest);
+      color: var(--color-muted);
+      margin-bottom: var(--space-6);
+    }
+
+    .likes-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .likes-list li {
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .likes-list li:last-child {
+      border-bottom: none;
+    }
+
+    .likes-list a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: color var(--transition-fast);
+    }
+
+    .likes-list a:hover {
+      color: var(--color-accent);
+    }
+
+    .like-title {
+      font-family: var(--font-serif);
+      font-weight: 500;
+    }
+
+    .like-author {
+      color: var(--color-muted);
+      font-size: var(--text-sm);
+    }
+
+    .like-quote {
+      font-size: var(--text-sm);
+      color: var(--color-text-light);
+      margin-top: var(--space-1);
+      line-height: var(--leading-relaxed);
+      font-style: italic;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+    }
+
+    @media (max-width: 768px) {
+      .two-column {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">T. H. Costello</a>
+
+        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav__links" id="nav-links">
+          <li><a href="about.html" class="nav__link">about</a></li>
+          <li><a href="research.html" class="nav__link">research</a></li>
+          <li><a href="lab.html" class="nav__link">viewpoints lab</a></li>
+          <li><a href="media.html" class="nav__link">media</a></li>
+          <li><a href="likes.html" class="nav__link nav__link--active">likes</a></li>
+          <li><a href="future.html" class="nav__link">future</a></li>
+          <li><a href="contact.html" class="nav__link">contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="container">
+      <h1 class="page-header__title" data-animate="fade-up">Likes</h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+
+        <div class="two-column">
+          <!-- Left Column -->
+          <div>
+            <!-- Poems -->
+            <div class="likes-section" data-animate="fade-up">
+              <h2 class="likes-section__title">Poems</h2>
+              <ul class="likes-list">
+                <li>
+                  <a href="https://onbeing.org/poetry/neanderthal-dig/" target="_blank">
+                    <span class="like-title">Neanderthal Dig</span> <span class="like-author">Don McKay</span>
+                  </a>
+                  <p class="like-quote">"What manner of wreath / might honour this death? / Some wing of language / entering earth?"</p>
+                </li>
+                <li>
+                  <a href="https://www.poetryfoundation.org/poems/53003/a-pity-we-were-such-a-good-invention" target="_blank">
+                    <span class="like-title">A Pity, We Were Such a Good Invention</span> <span class="like-author">Yehuda Amichai</span>
+                  </a>
+                  <p class="like-quote">"We hovered a little above the earth. / We even flew a little."</p>
+                </li>
+                <li>
+                  <a href="https://poets.org/poem/self-portrait-28" target="_blank">
+                    <span class="like-title">Self-Portrait at 28</span> <span class="like-author">David Berman</span>
+                  </a>
+                  <p class="like-quote">"so that waking up / becomes a historical reenactment"</p>
+                </li>
+                <li>
+                  <a href="https://www.poetryfoundation.org/poems/57712/it-is-later-than-you-think" target="_blank">
+                    <span class="like-title">It Is Later Than You Think</span> <span class="like-author">Robert W. Service</span>
+                  </a>
+                  <p class="like-quote">"Think of all you planned to do ... / Have you done the best you can?"</p>
+                </li>
+                <li>
+                  <a href="https://www.poetryfoundation.org/poems/51605/separation" target="_blank">
+                    <span class="like-title">Separation</span> <span class="like-author">W. S. Merwin</span>
+                  </a>
+                  <p class="like-quote">"Like thread through a needle. / Everything I do is stitched with its color."</p>
+                </li>
+                <li>
+                  <a href="https://www.kiplingsociety.co.uk/poem/poems_neolithic.htm" target="_blank">
+                    <span class="like-title">In the Neolithic Age</span> <span class="like-author">Rudyard Kipling</span>
+                  </a>
+                  <p class="like-quote">"the wildest dreams of Kew are the facts of Khatmandhu"</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Short Stories -->
+            <div class="likes-section" data-animate="fade-up">
+              <h2 class="likes-section__title">Short Stories</h2>
+              <ul class="likes-list">
+                <li>
+                  <a href="https://sdavidmiller.com/octo/files/no_google2/GoodOldNeon.pdf" target="_blank">
+                    <span class="like-title">Good Old Neon</span> <span class="like-author">David Foster Wallace</span>
+                  </a>
+                  <p class="like-quote">"As if we are all trying to see each other through these tiny keyholes."</p>
+                </li>
+                <li>
+                  <a href="https://en.wikiquote.org/wiki/Larry_Niven" target="_blank">
+                    <span class="like-title">Inconstant Moon</span> <span class="like-author">Larry Niven</span>
+                  </a>
+                  <p class="like-quote">"You don't stop planning just because there's no hope."</p>
+                </li>
+                <li>
+                  <a href="https://www.lightspeedmagazine.com/fiction/face-value/" target="_blank">
+                    <span class="like-title">Face Value</span> <span class="like-author">Karen Joy Fowler</span>
+                  </a>
+                  <p class="like-quote">"And what do you imagine you are studying?"</p>
+                </li>
+                <li>
+                  <a href="https://www.lightspeedmagazine.com/fiction/snow-2/" target="_blank">
+                    <span class="like-title">Snow</span> <span class="like-author">John Crowley</span>
+                  </a>
+                  <p class="like-quote">"One of those bits of accidental poetry the world generates without thinking."</p>
+                </li>
+                <li>
+                  <a href="https://gwern.net/fiction/clippy" target="_blank">
+                    <span class="like-title">It Looks Like You're Trying To Take Over The World</span> <span class="like-author">Gwern</span>
+                  </a>
+                  <p class="like-quote">"Evolutionary search is about as stupid as an optimization process can be and still work."</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Essays -->
+            <div class="likes-section" data-animate="fade-up">
+              <h2 class="likes-section__title">Essays</h2>
+              <ul class="likes-list">
+                <li>
+                  <a href="https://fs.blog/david-foster-wallace-this-is-water/" target="_blank">
+                    <span class="like-title">This Is Water</span> <span class="like-author">David Foster Wallace</span>
+                  </a>
+                  <p class="like-quote">"Think of the old cliché about 'the mind being an excellent servant but a terrible master.'"</p>
+                </li>
+                <li>
+                  <a href="https://slatestarcodexabridged.com/meditations-on-moloch/" target="_blank">
+                    <span class="like-title">Meditations On Moloch</span> <span class="like-author">Scott Alexander</span>
+                  </a>
+                  <p class="like-quote">"each step of the Poor Coordination Polka makes your life worse."</p>
+                </li>
+                <li>
+                  <a href="https://meehl.umn.edu/sites/meehl.umn.edu/files/files/099caseconferences.pdf" target="_blank">
+                    <span class="like-title">Why I Do Not Attend Case Conferences</span> <span class="like-author">Paul Meehl</span>
+                  </a>
+                  <p class="like-quote">"Training in clear thinking should begin early."</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Papers -->
+            <div class="likes-section" data-animate="fade-up">
+              <h2 class="likes-section__title">Papers & Ideas</h2>
+              <ul class="likes-list">
+                <li>
+                  <a href="https://www.sciencedirect.com/science/article/pii/S0191886914005190" target="_blank">
+                    <span class="like-title">Cybernetic Big Five Theory</span> <span class="like-author">Colin DeYoung</span>
+                  </a>
+                  <p class="like-quote">"Cybernetics, the study of goal-directed, adaptive systems, is the best framework"</p>
+                </li>
+                <li>
+                  <a href="https://pubmed.ncbi.nlm.nih.gov/32915010/" target="_blank">
+                    <span class="like-title">On the Psychology of Extremism</span> <span class="like-author">Kruglanski et al.</span>
+                  </a>
+                  <p class="like-quote">"a given need gains dominance and overrides other basic concerns."</p>
+                </li>
+                <li>
+                  <a href="https://www.cognitionandculture.net/wp-content/uploads/GroupsInMind2010.pdf" target="_blank">
+                    <span class="like-title">Groups in Mind</span> <span class="like-author">Tooby & Cosmides</span>
+                  </a>
+                  <p class="like-quote">"War is older than the human species."</p>
+                </li>
+                <li>
+                  <a href="https://www.researchgate.net/publication/360304763_Artificially_Intelligent_Regulation" target="_blank">
+                    <span class="like-title">AI as Governance</span> <span class="like-author">Henry Farrell</span>
+                  </a>
+                  <p class="like-quote">"They ought to consider AI in terms of its relationship with governance."</p>
+                </li>
+                <li>
+                  <a href="https://www.science.org/doi/10.1126/science.177.4047.393" target="_blank">
+                    <span class="like-title">More Is Different</span> <span class="like-author">P. W. Anderson</span>
+                  </a>
+                  <p class="like-quote">"this shift from quantitative to qualitative differentiation takes place."</p>
+                </li>
+                <li>
+                  <a href="https://www.nature.com/articles/ncomms15361" target="_blank">
+                    <span class="like-title">Behavioural Individuality in Clonal Fish</span> <span class="like-author">Bierbach et al.</span>
+                  </a>
+                  <p class="like-quote">"sources of variation are removed, individuals are predicted to develop similar phenotypes"</p>
+                </li>
+                <li>
+                  <a href="https://www.sapa-project.org/research/SPI/" target="_blank">
+                    <span class="like-title">The SAPA Personality Inventory</span> <span class="like-author">David Condon</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://cocosci.princeton.edu/papers/almaatouq2022questions.pdf" target="_blank">
+                    <span class="like-title">Beyond Playing 20 Questions with Nature</span> <span class="like-author">Almaatouq et al.</span>
+                  </a>
+                  <p class="like-quote">"the knowledge they generate cannot be easily integrated across experiments."</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div>
+            <!-- Fiction -->
+            <div class="likes-section" data-animate="fade-up">
+              <h2 class="likes-section__title">Fiction</h2>
+              <ul class="likes-list">
+                <li>
+                  <a href="https://www.penguinrandomhouse.com/books/302447/the-brothers-karamazov-by-fyodor-dostoyevsky-translated-with-an-introduction-by-david-mcduff/" target="_blank">
+                    <span class="like-title">The Brothers Karamazov</span> <span class="like-author">Dostoevsky</span>
+                  </a>
+                  <p class="like-quote">"Above all, don't lie to yourself."</p>
+                </li>
+                <li>
+                  <a href="https://www.hachettebookgroup.com/titles/david-foster-wallace/infinite-jest/9780316920049/" target="_blank">
+                    <span class="like-title">Infinite Jest</span> <span class="like-author">David Foster Wallace</span>
+                  </a>
+                  <p class="like-quote">"secret unspoken belief that they are different from everyone else."</p>
+                </li>
+                <li>
+                  <a href="https://www.penguinrandomhouse.com/books/12334/blood-meridian-by-cormac-mccarthy/" target="_blank">
+                    <span class="like-title">Blood Meridian</span> <span class="like-author">Cormac McCarthy</span>
+                  </a>
+                  <p class="like-quote">"Whatever in creation exists without my knowledge exists without my consent."</p>
+                </li>
+                <li>
+                  <a href="https://www.hmhbooks.com/shop/books/Invisible-Cities/9780156453806" target="_blank">
+                    <span class="like-title">Invisible Cities</span> <span class="like-author">Italo Calvino</span>
+                  </a>
+                  <p class="like-quote">"Cities, like dreams, are made of desires and fears."</p>
+                </li>
+                <li>
+                  <a href="https://www.penguinrandomhouse.com/books/331716/ficciones-by-jorge-luis-borges/" target="_blank">
+                    <span class="like-title">Ficciones</span> <span class="like-author">Jorge Luis Borges</span>
+                  </a>
+                  <p class="like-quote">"I do not know which of us has written this page."</p>
+                </li>
+                <li>
+                  <a href="https://us.macmillan.com/books/9780374210573/yournamehere" target="_blank">
+                    <span class="like-title">Your Name Here</span> <span class="like-author">Helen DeWitt & Ilya Gridneff</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.penguinrandomhouse.com/books/299396/destination-void-by-frank-herbert/" target="_blank">
+                    <span class="like-title">Destination: Void</span> <span class="like-author">Frank Herbert</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.penguinrandomhouse.com/books/294104/neuromancer-by-william-gibson/" target="_blank">
+                    <span class="like-title">Neuromancer</span> <span class="like-author">William Gibson</span>
+                  </a>
+                  <p class="like-quote">"The body was meat."</p>
+                </li>
+                <li>
+                  <a href="https://www.harpercollins.com/products/the-dispossessed-ursula-k-le-guin" target="_blank">
+                    <span class="like-title">The Dispossessed</span> <span class="like-author">Ursula K. Le Guin</span>
+                  </a>
+                  <p class="like-quote">"True voyage is return."</p>
+                </li>
+                <li>
+                  <a href="https://www.harpercollins.com/products/the-word-for-world-is-forest-ursula-k-le-guin" target="_blank">
+                    <span class="like-title">The Word for World Is Forest</span> <span class="like-author">Ursula K. Le Guin</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://groveatlantic.com/book/a-confederacy-of-dunces/" target="_blank">
+                    <span class="like-title">A Confederacy of Dunces</span> <span class="like-author">John Kennedy Toole</span>
+                  </a>
+                  <p class="like-quote">"I am at the moment writing a lengthy indictment against our century."</p>
+                </li>
+                <li>
+                  <a href="https://www.simonandschuster.com/books/The-Sun-Also-Rises/Ernest-Hemingway/9780743297332" target="_blank">
+                    <span class="like-title">The Sun Also Rises</span> <span class="like-author">Ernest Hemingway</span>
+                  </a>
+                  <p class="like-quote">"Isn't it pretty to think so?"</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Nonfiction -->
+            <div class="likes-section" data-animate="fade-up">
+              <h2 class="likes-section__title">Nonfiction</h2>
+              <ul class="likes-list">
+                <li>
+                  <a href="https://www.penguinrandomhouse.com/books/608474/god-human-animal-machine-by-meghan-ogieblyn/" target="_blank">
+                    <span class="like-title">God, Human, Animal, Machine</span> <span class="like-author">Meghan O'Gieblyn</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://global.oup.com/academic/product/bad-beliefs-9780197604176" target="_blank">
+                    <span class="like-title">Bad Beliefs</span> <span class="like-author">Neil Levy</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://us.macmillan.com/books/9780374227762/metazoa" target="_blank">
+                    <span class="like-title">Metazoa</span> <span class="like-author">Peter Godfrey-Smith</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.penguinrandomhouse.com/books/602893/living-with-the-gods-by-neil-macgregor/" target="_blank">
+                    <span class="like-title">Living with the Gods</span> <span class="like-author">Neil MacGregor</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://wwnorton.com/books/Letters-to-a-Young-Scientist/" target="_blank">
+                    <span class="like-title">Letters to a Young Scientist</span> <span class="like-author">E.O. Wilson</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://mitpress.mit.edu/9781907222434/high-weirdness/" target="_blank">
+                    <span class="like-title">High Weirdness</span> <span class="like-author">Erik Davis</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.penguinrandomhouse.com/books/124165/psycho-cybernetics-by-maxwell-maltz-md/" target="_blank">
+                    <span class="like-title">Psycho-Cybernetics</span> <span class="like-author">Maxwell Maltz</span>
+                  </a>
+                  <p class="like-quote">"The self-image is the key to human personality and human behavior."</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Ephemera -->
+            <div class="likes-section" data-animate="fade-up">
+              <h2 class="likes-section__title">Ephemera</h2>
+              <ul class="likes-list">
+                <li>
+                  <a href="https://slimemoldtimemold.com/tag/the-mind-in-the-wheel/" target="_blank">
+                    <span class="like-title">The Mind in the Wheel</span> <span class="like-author">Slime Mold Time Mold</span>
+                  </a>
+                  <p class="like-quote">"It was precise enough to be wrong, rather than vague to the point of being unassailable."</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="footer__logo">Thomas H. Costello</p>
+          <p class="footer__tagline">
+            Psychologist and computational social scientist studying belief,
+            persuasion, and the promise of AI for healthier discourse.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Navigate</h4>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="lab.html">Viewpoints Lab</a></li>
+            <li><a href="media.html">Media</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Research</h4>
+          <ul class="footer__links">
+            <li><a href="research.html#publications">Publications</a></li>
+            <li><a href="Thomas Costello CV Oct 25 (1).pdf" target="_blank">CV (PDF)</a></li>
+            <li><a href="https://scholar.google.com/citations?user=2oxoi9oAAAAJ&hl=en" target="_blank">Google Scholar</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Connect</h4>
+          <ul class="footer__links">
+            <li><a href="mailto:thcostello1@gmail.com">Email</a></li>
+            <li><a href="https://twitter.com/tomstello_" target="_blank">Twitter/X</a></li>
+            <li><a href="https://bsky.app/profile/tomcostello.bsky.social" target="_blank">Bluesky</a></li>
+            <li><a href="https://www.linkedin.com/in/tom-costello-ba41b6105/" target="_blank">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 Thomas H. Costello. All rights reserved.</p>
+        <p>Carnegie Mellon University - Pittsburgh, PA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/puck.js"></script>
+</body>
+</html>

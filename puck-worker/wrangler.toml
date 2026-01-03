@@ -1,0 +1,36 @@
+# Puck AI Assistant - Cloudflare Worker Configuration
+# https://developers.cloudflare.com/workers/wrangler/configuration/
+
+name = "puck-api"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# Uncomment and set your account_id after creating a Cloudflare account
+# account_id = "your-account-id-here"
+
+[vars]
+# Allowed origins for CORS (comma-separated)
+# Update this with your actual domain(s)
+ALLOWED_ORIGINS = "https://thomascostello.com,https://www.thomascostello.com,http://localhost:3000,http://127.0.0.1:5500"
+
+# Environment-specific settings
+[env.production]
+vars = { ALLOWED_ORIGINS = "https://thomascostello.com,https://www.thomascostello.com" }
+
+[env.development]
+vars = { ALLOWED_ORIGINS = "http://localhost:3000,http://127.0.0.1:5500,http://localhost:8080" }
+
+# Secrets (set via: wrangler secret put OPENROUTER_API_KEY)
+# - OPENROUTER_API_KEY: Your OpenRouter API key
+
+# KV Namespace for rate limiting
+# Create with: wrangler kv namespace create PUCK_KV
+# Then update the id below with the returned namespace ID
+[[kv_namespaces]]
+binding = "PUCK_KV"
+id = "65169d975b8e45a9b62c4ecc7939a6e0"
+
+# Routes (uncomment and configure if using a custom domain)
+# [[routes]]
+# pattern = "api.thomascostello.com/puck/*"
+# zone_name = "thomascostello.com"

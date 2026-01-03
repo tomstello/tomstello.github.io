@@ -1,0 +1,973 @@
+/* ==========================================================================
+   Puck - Mischievous AI Assistant
+   Windows 95/98 Retro Aesthetic
+   ========================================================================== */
+
+/* CSS Variables for Puck theming */
+:root {
+  --puck-window-bg: #c0c0c0;
+  --puck-window-border-light: #ffffff;
+  --puck-window-border-mid: #dfdfdf;
+  --puck-window-border-dark: #808080;
+  --puck-window-border-darker: #404040;
+  --puck-titlebar-active: linear-gradient(90deg, #000080, #1084d0);
+  --puck-titlebar-inactive: linear-gradient(90deg, #808080, #a0a0a0);
+  --puck-text: #000000;
+  --puck-button-face: #c0c0c0;
+  --puck-chat-bg: #ffffff;
+  --puck-user-msg: #dcf8c6;
+  --puck-assistant-msg: #f0f0f0;
+  --puck-z-index: 9999;
+  --puck-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ==========================================================================
+   Container - Fixed position, bottom right
+   ========================================================================== */
+
+.puck-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: var(--puck-z-index);
+  font-family: var(--puck-font);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   Sprite - The clickable character icon
+   ========================================================================== */
+
+.puck-sprite {
+  width: 72px;
+  height: 72px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+  animation: puck-bob 3s ease-in-out infinite;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.25));
+}
+
+.puck-sprite:hover {
+  transform: scale(1.08);
+}
+
+.puck-sprite:active {
+  transform: scale(0.95);
+}
+
+.puck-sprite img {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* ==========================================================================
+   Speech Bubble - For unbidden quips
+   ========================================================================== */
+
+.puck-bubble {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  background: var(--puck-window-bg);
+  padding: 12px 32px 12px 14px;
+  max-width: 300px;
+  min-width: 180px;
+  /* Win95 outset border */
+  border: 2px solid;
+  border-color: var(--puck-window-border-light) var(--puck-window-border-darker)
+                var(--puck-window-border-darker) var(--puck-window-border-light);
+  box-shadow:
+    inset 1px 1px 0 var(--puck-window-border-mid),
+    inset -1px -1px 0 var(--puck-window-border-dark),
+    3px 3px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.puck-bubble--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Bubble tail/pointer */
+.puck-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: 24px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--puck-window-bg);
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.15));
+}
+
+.puck-bubble__text {
+  color: var(--puck-text);
+  margin: 0;
+  font-size: 12px;
+}
+
+.puck-bubble__dismiss {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 18px;
+  height: 16px;
+  background: var(--puck-button-face);
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: bold;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  /* Win95 button styling */
+  border: 2px solid;
+  border-color: var(--puck-window-border-light) var(--puck-window-border-darker)
+                var(--puck-window-border-darker) var(--puck-window-border-light);
+}
+
+.puck-bubble__dismiss:hover {
+  background: #d4d4d4;
+}
+
+.puck-bubble__dismiss:active {
+  border-color: var(--puck-window-border-darker) var(--puck-window-border-light)
+                var(--puck-window-border-light) var(--puck-window-border-darker);
+}
+
+/* ==========================================================================
+   Chat Window - Windows 95 style dialog
+   ========================================================================== */
+
+.puck-window {
+  position: absolute;
+  bottom: 84px;
+  right: 0;
+  width: 360px;
+  background: var(--puck-window-bg);
+  /* Win95 window border */
+  border: 2px solid;
+  border-color: var(--puck-window-border-light) var(--puck-window-border-darker)
+                var(--puck-window-border-darker) var(--puck-window-border-light);
+  box-shadow:
+    inset 1px 1px 0 var(--puck-window-border-mid),
+    inset -1px -1px 0 var(--puck-window-border-dark),
+    4px 4px 12px rgba(0, 0, 0, 0.35);
+  display: none;
+}
+
+.puck-window--open {
+  display: block;
+  animation: puck-window-open 0.2s ease-out;
+}
+
+/* ==========================================================================
+   Titlebar
+   ========================================================================== */
+
+.puck-titlebar {
+  background: var(--puck-titlebar-active);
+  padding: 3px 3px 3px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.puck-titlebar--dragging {
+  cursor: grabbing;
+}
+
+.puck-titlebar__title {
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.puck-titlebar__icon {
+  width: 16px;
+  height: 16px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.puck-titlebar__buttons {
+  display: flex;
+  gap: 2px;
+}
+
+.puck-titlebar__btn {
+  width: 18px;
+  height: 16px;
+  background: var(--puck-button-face);
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  padding-bottom: 2px;
+  /* Win95 button */
+  border: 2px solid;
+  border-color: var(--puck-window-border-light) var(--puck-window-border-darker)
+                var(--puck-window-border-darker) var(--puck-window-border-light);
+}
+
+.puck-titlebar__btn:hover {
+  background: #d4d4d4;
+}
+
+.puck-titlebar__btn:active {
+  border-color: var(--puck-window-border-darker) var(--puck-window-border-light)
+                var(--puck-window-border-light) var(--puck-window-border-darker);
+  padding-top: 2px;
+  padding-bottom: 0;
+}
+
+.puck-titlebar__btn--clear {
+  font-size: 12px;
+  padding-bottom: 1px;
+}
+
+/* ==========================================================================
+   Chat Area
+   ========================================================================== */
+
+.puck-chat {
+  height: 320px;
+  overflow-y: auto;
+  background: var(--puck-chat-bg);
+  /* Win95 inset field */
+  border: 2px solid;
+  border-color: var(--puck-window-border-dark) var(--puck-window-border-light)
+                var(--puck-window-border-light) var(--puck-window-border-dark);
+  margin: 6px;
+  padding: 10px;
+}
+
+/* Custom scrollbar for chat */
+.puck-chat::-webkit-scrollbar {
+  width: 16px;
+}
+
+.puck-chat::-webkit-scrollbar-track {
+  background: var(--puck-window-bg);
+  border: 1px solid var(--puck-window-border-dark);
+}
+
+.puck-chat::-webkit-scrollbar-thumb {
+  background: var(--puck-button-face);
+  border: 2px solid;
+  border-color: var(--puck-window-border-light) var(--puck-window-border-darker)
+                var(--puck-window-border-darker) var(--puck-window-border-light);
+}
+
+.puck-chat::-webkit-scrollbar-thumb:hover {
+  background: #d0d0d0;
+}
+
+/* ==========================================================================
+   Messages
+   ========================================================================== */
+
+.puck-message {
+  margin-bottom: 12px;
+  max-width: 88%;
+  display: flex;
+  flex-direction: column;
+}
+
+.puck-message:last-child {
+  margin-bottom: 0;
+}
+
+.puck-message--user {
+  margin-left: auto;
+  align-items: flex-end;
+}
+
+.puck-message--assistant {
+  margin-right: auto;
+  align-items: flex-start;
+}
+
+.puck-message__sender {
+  font-size: 10px;
+  color: #666;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.puck-message__content {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 4px;
+  line-height: 1.45;
+  font-size: 13px;
+  word-wrap: break-word;
+}
+
+.puck-message--user .puck-message__content {
+  background: var(--puck-user-msg);
+  border: 1px solid #b8e6a1;
+}
+
+.puck-message--assistant .puck-message__content {
+  background: var(--puck-assistant-msg);
+  border: 1px solid #d0d0d0;
+}
+
+/* ==========================================================================
+   Input Area
+   ========================================================================== */
+
+.puck-input-area {
+  padding: 4px 6px 6px 6px;
+  display: flex;
+  gap: 6px;
+}
+
+.puck-input {
+  flex: 1;
+  padding: 6px 8px;
+  font-family: inherit;
+  font-size: 13px;
+  /* Win95 inset field */
+  border: 2px solid;
+  border-color: var(--puck-window-border-dark) var(--puck-window-border-light)
+                var(--puck-window-border-light) var(--puck-window-border-dark);
+  background: white;
+  outline: none;
+}
+
+.puck-input:focus {
+  background: #fffff8;
+}
+
+.puck-input::placeholder {
+  color: #888;
+}
+
+.puck-send {
+  padding: 6px 16px;
+  background: var(--puck-button-face);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  /* Win95 button */
+  border: 2px solid;
+  border-color: var(--puck-window-border-light) var(--puck-window-border-darker)
+                var(--puck-window-border-darker) var(--puck-window-border-light);
+}
+
+.puck-send:hover {
+  background: #d4d4d4;
+}
+
+.puck-send:active {
+  border-color: var(--puck-window-border-darker) var(--puck-window-border-light)
+                var(--puck-window-border-light) var(--puck-window-border-darker);
+}
+
+.puck-send:disabled {
+  color: var(--puck-window-border-dark);
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Typing Indicator
+   ========================================================================== */
+
+.puck-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  background: var(--puck-assistant-msg);
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.puck-typing__dot {
+  width: 7px;
+  height: 7px;
+  background: #888;
+  border-radius: 50%;
+  animation: puck-typing-bounce 1.4s ease-in-out infinite;
+}
+
+.puck-typing__dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.puck-typing__dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* ==========================================================================
+   Status Bar (optional, Win95 style)
+   ========================================================================== */
+
+.puck-statusbar {
+  background: var(--puck-window-bg);
+  padding: 2px 4px;
+  font-size: 11px;
+  color: #444;
+  border-top: 1px solid var(--puck-window-border-light);
+  /* Win95 inset panel */
+  border: 2px solid;
+  border-color: var(--puck-window-border-dark) var(--puck-window-border-light)
+                var(--puck-window-border-light) var(--puck-window-border-dark);
+  margin: 0 6px 6px 6px;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+@keyframes puck-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes puck-window-open {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes puck-typing-bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes puck-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+/* Mischievous shake for close button that "doesn't work" */
+.puck-titlebar__btn--mischief {
+  animation: puck-shake 0.3s ease-in-out;
+}
+
+/* ==========================================================================
+   Sprite Animations
+   ========================================================================== */
+
+/* Excited bounce */
+@keyframes puck-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  25% { transform: translateY(-12px) scale(1.05); }
+  50% { transform: translateY(-6px) scale(1); }
+  75% { transform: translateY(-10px) scale(1.02); }
+}
+
+.puck-sprite--bounce {
+  animation: puck-bounce 0.6s ease-in-out;
+}
+
+/* Spin */
+@keyframes puck-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.puck-sprite--spin {
+  animation: puck-spin 0.5s ease-in-out;
+}
+
+/* Wiggle */
+@keyframes puck-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+.puck-sprite--wiggle {
+  animation: puck-wiggle 0.3s ease-in-out 3;
+}
+
+/* Glitch effect on sprite */
+@keyframes puck-sprite-glitch {
+  0%, 100% { transform: translate(0); filter: none; }
+  20% { transform: translate(-2px, 1px); filter: hue-rotate(90deg); }
+  40% { transform: translate(2px, -1px); filter: hue-rotate(180deg); }
+  60% { transform: translate(-1px, 2px); filter: hue-rotate(270deg); }
+  80% { transform: translate(1px, -2px); filter: hue-rotate(45deg); }
+}
+
+.puck-sprite--glitch {
+  animation: puck-sprite-glitch 0.3s ease-in-out 2;
+}
+
+/* Phase/ghost effect */
+@keyframes puck-phase {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.puck-sprite--phase {
+  animation: puck-phase 0.8s ease-in-out;
+}
+
+/* ==========================================================================
+   Sprite Movement Animations - Puck wanders and fidgets
+   ========================================================================== */
+
+/* Idle fidget - subtle looking around */
+@keyframes puck-fidget {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  15% { transform: translateY(-2px) rotate(-3deg); }
+  30% { transform: translateY(0) rotate(0deg); }
+  45% { transform: translateY(-1px) rotate(2deg); }
+  60% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(-3px) rotate(-1deg); }
+  90% { transform: translateY(-1px) rotate(1deg); }
+}
+
+.puck-sprite--fidget {
+  animation: puck-fidget 2s ease-in-out !important;
+}
+
+/* Hop - energetic little jump */
+@keyframes puck-hop {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(8px, -18px) rotate(8deg); }
+  40% { transform: translate(16px, 0) rotate(-3deg); }
+  60% { transform: translate(24px, -12px) rotate(5deg); }
+  80% { transform: translate(32px, 0) rotate(-2deg); }
+}
+
+.puck-sprite--hop {
+  animation: puck-hop 0.8s ease-in-out forwards !important;
+}
+
+/* Peek from edge - slides in mischievously */
+@keyframes puck-peek {
+  0% { transform: translateX(60px) rotate(15deg); opacity: 0.7; }
+  30% { transform: translateX(20px) rotate(-5deg); opacity: 1; }
+  50% { transform: translateX(25px) rotate(3deg); }
+  70% { transform: translateX(15px) rotate(-2deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+
+.puck-sprite--peek {
+  animation: puck-peek 1s ease-out !important;
+}
+
+/* Curious lean - tilts as if peering at something */
+@keyframes puck-lean {
+  0%, 100% { transform: rotate(0deg) translateX(0); }
+  50% { transform: rotate(-12deg) translateX(-5px); }
+}
+
+.puck-sprite--lean {
+  animation: puck-lean 1.5s ease-in-out !important;
+}
+
+/* Scheming - rubbing hands together vibe */
+@keyframes puck-scheme {
+  0%, 100% { transform: scale(1) translateY(0); }
+  25% { transform: scale(1.03) translateY(-2px); }
+  50% { transform: scale(0.98) translateY(1px); }
+  75% { transform: scale(1.02) translateY(-1px); }
+}
+
+.puck-sprite--scheme {
+  animation: puck-scheme 1.2s ease-in-out !important;
+}
+
+/* Dramatic gasp/recoil */
+@keyframes puck-gasp {
+  0% { transform: scale(1) translateY(0); }
+  20% { transform: scale(1.15) translateY(-8px); }
+  40% { transform: scale(1.1) translateY(-5px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+.puck-sprite--gasp {
+  animation: puck-gasp 0.6s ease-out !important;
+}
+
+/* Sway side to side - bored/thinking */
+@keyframes puck-sway {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(-8px) rotate(-4deg); }
+  75% { transform: translateX(8px) rotate(4deg); }
+}
+
+.puck-sprite--sway {
+  animation: puck-sway 2.5s ease-in-out infinite !important;
+}
+
+/* Wander - actual position change (used with JS) */
+@keyframes puck-wander-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-40px); }
+}
+
+@keyframes puck-wander-right {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(40px); }
+}
+
+@keyframes puck-wander-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50px); }
+}
+
+.puck-sprite--wander-left {
+  animation: puck-wander-left 1.5s ease-in-out forwards !important;
+}
+
+.puck-sprite--wander-right {
+  animation: puck-wander-right 1.5s ease-in-out forwards !important;
+}
+
+.puck-sprite--wander-up {
+  animation: puck-wander-up 1.5s ease-in-out forwards !important;
+}
+
+/* Float around dreamily */
+@keyframes puck-float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(5px, -10px) rotate(3deg); }
+  50% { transform: translate(-3px, -15px) rotate(-2deg); }
+  75% { transform: translate(-8px, -8px) rotate(2deg); }
+}
+
+.puck-sprite--float {
+  animation: puck-float 4s ease-in-out infinite !important;
+}
+
+/* Mischief mode - jittery excitement */
+@keyframes puck-mischief {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-2px, -3px) rotate(-3deg); }
+  20% { transform: translate(3px, -1px) rotate(2deg); }
+  30% { transform: translate(-1px, -4px) rotate(-2deg); }
+  40% { transform: translate(2px, -2px) rotate(3deg); }
+  50% { transform: translate(-3px, -3px) rotate(-1deg); }
+  60% { transform: translate(1px, -1px) rotate(2deg); }
+  70% { transform: translate(-2px, -4px) rotate(-3deg); }
+  80% { transform: translate(3px, -2px) rotate(1deg); }
+  90% { transform: translate(-1px, -3px) rotate(-2deg); }
+}
+
+.puck-sprite--mischief {
+  animation: puck-mischief 1s ease-in-out !important;
+}
+
+/* Hide - shrinks down as if hiding */
+@keyframes puck-hide {
+  0% { transform: scale(1) translateY(0); opacity: 1; }
+  100% { transform: scale(0.6) translateY(20px); opacity: 0.5; }
+}
+
+@keyframes puck-unhide {
+  0% { transform: scale(0.6) translateY(20px); opacity: 0.5; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.puck-sprite--hide {
+  animation: puck-hide 0.5s ease-in forwards !important;
+}
+
+.puck-sprite--unhide {
+  animation: puck-unhide 0.5s ease-out forwards !important;
+}
+
+/* ==========================================================================
+   Mouse Following - Puck looks toward cursor
+   ========================================================================== */
+
+.puck-sprite--watching {
+  /* Disable bobbing when actively watching */
+  animation: none;
+}
+
+/* Looking in different directions - applied via JS transform */
+.puck-sprite--look {
+  transition: transform 0.15s ease-out;
+}
+
+/* Shy away when hovered directly */
+@keyframes puck-shy {
+  0% { transform: rotate(0deg) translateX(0); }
+  30% { transform: rotate(8deg) translateX(8px); }
+  100% { transform: rotate(5deg) translateX(5px); }
+}
+
+.puck-sprite--shy {
+  animation: puck-shy 0.3s ease-out forwards;
+}
+
+/* Peek back after being shy */
+@keyframes puck-peek-back {
+  0% { transform: rotate(5deg) translateX(5px); }
+  50% { transform: rotate(-3deg) translateX(-2px); }
+  100% { transform: rotate(0deg) translateX(0); }
+}
+
+.puck-sprite--peek-back {
+  animation: puck-peek-back 0.5s ease-out forwards;
+}
+
+/* ==========================================================================
+   CHAOS EFFECTS - Applied to the whole page
+   ========================================================================== */
+
+/* Flip the world */
+.puck-chaos-flip {
+  animation: chaos-flip 2s ease-in-out forwards;
+}
+
+@keyframes chaos-flip {
+  0% { transform: perspective(1000px) rotateX(0deg); }
+  50% { transform: perspective(1000px) rotateX(180deg); }
+  100% { transform: perspective(1000px) rotateX(0deg); }
+}
+
+/* Screen shake */
+.puck-chaos-shake {
+  animation: chaos-shake 0.5s ease-in-out;
+}
+
+@keyframes chaos-shake {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-10px) rotate(-1deg); }
+  20% { transform: translateX(10px) rotate(1deg); }
+  30% { transform: translateX(-10px) rotate(-1deg); }
+  40% { transform: translateX(10px) rotate(1deg); }
+  50% { transform: translateX(-8px) rotate(-0.5deg); }
+  60% { transform: translateX(8px) rotate(0.5deg); }
+  70% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+  90% { transform: translateX(-2px); }
+}
+
+/* Glitch effect */
+.puck-chaos-glitch {
+  animation: chaos-glitch 0.4s ease-in-out 3;
+}
+
+@keyframes chaos-glitch {
+  0%, 100% {
+    transform: translate(0);
+    filter: none;
+  }
+  20% {
+    transform: translate(-3px, 2px);
+    filter: hue-rotate(90deg) saturate(2);
+  }
+  40% {
+    transform: translate(3px, -2px);
+    filter: hue-rotate(180deg);
+  }
+  60% {
+    transform: translate(-2px, -2px);
+    filter: hue-rotate(270deg) brightness(1.2);
+  }
+  80% {
+    transform: translate(2px, 2px);
+    filter: hue-rotate(45deg);
+  }
+}
+
+/* Color invert */
+.puck-chaos-invert {
+  animation: chaos-invert 1.5s ease-in-out;
+}
+
+@keyframes chaos-invert {
+  0%, 100% { filter: invert(0); }
+  50% { filter: invert(1); }
+}
+
+/* Spin element */
+.puck-chaos-spin {
+  animation: chaos-spin 1s ease-in-out;
+}
+
+@keyframes chaos-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Rainbow wave */
+.puck-chaos-rainbow {
+  animation: chaos-rainbow 2s ease-in-out;
+}
+
+@keyframes chaos-rainbow {
+  0%, 100% { filter: hue-rotate(0deg); }
+  25% { filter: hue-rotate(90deg); }
+  50% { filter: hue-rotate(180deg); }
+  75% { filter: hue-rotate(270deg); }
+}
+
+/* Drift effect */
+.puck-chaos-drift {
+  animation: chaos-drift 3s ease-in-out;
+}
+
+@keyframes chaos-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(10px, -5px) rotate(1deg); }
+  50% { transform: translate(-5px, 10px) rotate(-1deg); }
+  75% { transform: translate(-10px, -10px) rotate(0.5deg); }
+}
+
+/* Matrix rain container */
+.puck-matrix-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  overflow: hidden;
+  opacity: 0;
+  animation: matrix-fade 3s ease-in-out;
+}
+
+@keyframes matrix-fade {
+  0%, 100% { opacity: 0; }
+  10%, 90% { opacity: 0.7; }
+}
+
+.puck-matrix-column {
+  position: absolute;
+  top: -100%;
+  font-family: monospace;
+  font-size: 14px;
+  color: #0f0;
+  text-shadow: 0 0 5px #0f0;
+  animation: matrix-fall 2s linear forwards;
+  white-space: nowrap;
+}
+
+@keyframes matrix-fall {
+  to { top: 100%; }
+}
+
+/* ==========================================================================
+   Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .puck-sprite {
+    animation: none;
+  }
+
+  .puck-bubble,
+  .puck-window--open {
+    animation: none;
+    transition: opacity 0.1s ease;
+  }
+
+  .puck-typing__dot {
+    animation: none;
+  }
+
+  .puck-sprite:hover {
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   Mobile Adjustments
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  .puck-container {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .puck-sprite {
+    width: 60px;
+    height: 60px;
+  }
+
+  .puck-window {
+    width: calc(100vw - 24px);
+    right: 0;
+    bottom: 72px;
+    max-width: 360px;
+  }
+
+  .puck-bubble {
+    max-width: calc(100vw - 100px);
+    right: 0;
+  }
+
+  .puck-chat {
+    height: 280px;
+  }
+}
+
+@media (max-width: 360px) {
+  .puck-chat {
+    height: 240px;
+  }
+
+  .puck-message__content {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+/* ==========================================================================
+   Dark mode support (optional - for future)
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  /* Keep Win95 aesthetic even in dark mode - it's intentionally "retro" */
+}
+
+/* ==========================================================================
+   Print - Hide Puck
+   ========================================================================== */
+
+@media print {
+  .puck-container {
+    display: none !important;
+  }
+}

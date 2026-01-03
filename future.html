@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A space for reflection - What do you want to be true?">
+  <title>Future | Thomas H. Costello</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9672;</text></svg>">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/puck.css">
+  <style>
+    .future-container {
+      min-height: calc(100vh - 200px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-8);
+      text-align: center;
+    }
+
+    .future-question {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      color: var(--color-text);
+      max-width: 600px;
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-12);
+      font-weight: 400;
+    }
+
+    .future-input-wrapper {
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: var(--space-8);
+    }
+
+    .future-input {
+      width: 100%;
+      padding: var(--space-4) 0;
+      font-family: var(--font-serif);
+      font-size: var(--text-lg);
+      color: var(--color-text);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid var(--color-border-light);
+      outline: none;
+      transition: border-color var(--transition-normal);
+      text-align: center;
+    }
+
+    .future-input:focus {
+      border-bottom-color: var(--color-accent);
+    }
+
+    .future-input::placeholder {
+      color: var(--color-muted);
+      font-style: italic;
+    }
+
+    .future-hint {
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+      letter-spacing: var(--tracking-wider);
+      margin-bottom: var(--space-12);
+    }
+
+    .future-entries {
+      width: 100%;
+      max-width: 500px;
+      margin-top: var(--space-8);
+    }
+
+    .future-entries__title {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-widest);
+      color: var(--color-muted);
+      margin-bottom: var(--space-4);
+    }
+
+    .future-entry {
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--color-border-light);
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--space-4);
+    }
+
+    .future-entry:last-child {
+      border-bottom: none;
+    }
+
+    .future-entry__text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--color-text-light);
+    }
+
+    .future-entry__date {
+      font-size: var(--text-xs);
+      color: var(--color-muted);
+      white-space: nowrap;
+    }
+
+    .future-clear {
+      margin-top: var(--space-4);
+      font-size: var(--text-xs);
+      color: var(--color-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      opacity: 0.6;
+      transition: opacity var(--transition-fast);
+    }
+
+    .future-clear:hover {
+      opacity: 1;
+    }
+
+    .future-note {
+      margin-top: var(--space-16);
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+      max-width: 400px;
+      line-height: var(--leading-relaxed);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">T. H. Costello</a>
+
+        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav__links" id="nav-links">
+          <li><a href="about.html" class="nav__link">about</a></li>
+          <li><a href="research.html" class="nav__link">research</a></li>
+          <li><a href="lab.html" class="nav__link">viewpoints lab</a></li>
+          <li><a href="media.html" class="nav__link">media</a></li>
+          <li><a href="likes.html" class="nav__link">likes</a></li>
+          <li><a href="future.html" class="nav__link nav__link--active">future</a></li>
+          <li><a href="contact.html" class="nav__link">contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="future-container">
+      <p class="future-question">What do you want to be true in five years?</p>
+
+      <div class="future-input-wrapper">
+        <input
+          type="text"
+          class="future-input"
+          id="answer"
+          placeholder="..."
+          autocomplete="off"
+          autofocus
+        >
+      </div>
+
+      <div class="future-entries" id="entries-container" style="display: none;">
+        <p class="future-entries__title">Your reflections</p>
+        <div id="entries-list"></div>
+        <button class="future-clear" id="clear-btn">clear all</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <p class="footer__logo">Thomas H. Costello</p>
+          <p class="footer__tagline">
+            Psychologist and computational social scientist studying belief,
+            persuasion, and the promise of AI for healthier discourse.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Navigate</h4>
+          <ul class="footer__links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="lab.html">Viewpoints Lab</a></li>
+            <li><a href="media.html">Media</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Research</h4>
+          <ul class="footer__links">
+            <li><a href="research.html#publications">Publications</a></li>
+            <li><a href="Thomas Costello CV Oct 25 (1).pdf" target="_blank">CV (PDF)</a></li>
+            <li><a href="https://scholar.google.com/citations?user=2oxoi9oAAAAJ&hl=en" target="_blank">Google Scholar</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer__heading">Connect</h4>
+          <ul class="footer__links">
+            <li><a href="mailto:thcostello1@gmail.com">Email</a></li>
+            <li><a href="https://twitter.com/tomstello_" target="_blank">Twitter/X</a></li>
+            <li><a href="https://bsky.app/profile/tomcostello.bsky.social" target="_blank">Bluesky</a></li>
+            <li><a href="https://www.linkedin.com/in/tom-costello-ba41b6105/" target="_blank">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>&copy; 2026 Thomas H. Costello. All rights reserved.</p>
+        <p>Carnegie Mellon University - Pittsburgh, PA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/puck.js"></script>
+  <script>
+    const input = document.getElementById('answer');
+    const entriesContainer = document.getElementById('entries-container');
+    const entriesList = document.getElementById('entries-list');
+    const clearBtn = document.getElementById('clear-btn');
+
+    function renderEntries() {
+      const entries = JSON.parse(localStorage.getItem('future_entries') || '[]');
+
+      if (entries.length > 0) {
+        entriesContainer.style.display = 'block';
+        entriesList.innerHTML = entries.map(entry => {
+          const date = new Date(entry.date);
+          const formatted = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          return `<div class="future-entry">
+            <span class="future-entry__text">"${entry.text}"</span>
+            <span class="future-entry__date">${formatted}</span>
+          </div>`;
+        }).reverse().join('');
+      } else {
+        entriesContainer.style.display = 'none';
+      }
+    }
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && this.value.trim()) {
+        const text = this.value.trim();
+        const timestamp = new Date().toISOString();
+
+        // Save locally
+        const entries = JSON.parse(localStorage.getItem('future_entries') || '[]');
+        entries.push({ text, date: timestamp });
+        localStorage.setItem('future_entries', JSON.stringify(entries));
+
+        // Send to Formspree
+        fetch('https://formspree.io/f/mnjngpve', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ reflection: text, timestamp })
+        }).catch(() => {});
+
+        this.value = '';
+        this.placeholder = 'noted.';
+        setTimeout(() => {
+          this.placeholder = '...';
+        }, 2000);
+
+        renderEntries();
+      }
+    });
+
+    clearBtn.addEventListener('click', function() {
+      if (confirm('Clear all your reflections?')) {
+        localStorage.removeItem('future_entries');
+        renderEntries();
+      }
+    });
+
+    renderEntries();
+  </script>
+</body>
+</html>

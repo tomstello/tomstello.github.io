@@ -1,0 +1,845 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Georgia;}
+{\colortbl;\red255\green255\blue255;\red19\green19\blue19;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c9412\c9412\c9412;\cssrgb\c100000\c100000\c100000;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \{\
+  "generated_at": "2026-01-03",\
+  "notes": [\
+    "Verbatim excerpts from copyrighted works are intentionally short; verify in your edition before publishing.",\
+    "Where a verbatim excerpt couldn\'92t be confidently verified, the quote is an assistant-written epigraph (kind=assistant_epigraph)."\
+  ],\
+  "items": [\
+    \{\
+      "id": "neanderthal-dig-don-mckay",\
+      "category": "poem",\
+      "title": "Neanderthal Dig",\
+      "creator": "Don McKay",\
+      "year": null,\
+      "links": \{\
+        "primary": "https://onbeing.org/poetry/neanderthal-dig/",\
+        "publisher": "https://onbeing.org/poetry/neanderthal-dig/"\
+      \},\
+      "quote": \{\
+        "text": "What manner of wreath\\nmight honour this death?\\nSome wing of language\\nentering earth?",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://onbeing.org/poetry/neanderthal-dig/",\
+        "note": "Short excerpt (copyrighted poem)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "a-pity-we-were-such-a-good-invention-yehuda-amichai-translated",\
+      "category": "poem",\
+      "title": "A Pity, We Were Such a Good Invention",\
+      "creator": "Yehuda Amichai (translated)",\
+      "year": null,\
+      "links": \{\
+        "primary": "https://www.poetryfoundation.org/poems/53003/a-pity-we-were-such-a-good-invention",\
+        "publisher": "https://www.poetryfoundation.org/poems/53003/a-pity-we-were-such-a-good-invention"\
+      \},\
+      "quote": \{\
+        "text": "We hovered a little above the earth.\\nWe even flew a little.",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://www.poetryfoundation.org/poems/53003/a-pity-we-were-such-a-good-invention",\
+        "note": "Short excerpt (copyrighted translation)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "self-portrait-at-28-david-berman",\
+      "category": "poem",\
+      "title": "Self-Portrait at 28",\
+      "creator": "David Berman",\
+      "year": null,\
+      "links": \{\
+        "primary": "https://poets.org/poem/self-portrait-28",\
+        "publisher": "https://poets.org/poem/self-portrait-28"\
+      \},\
+      "quote": \{\
+        "text": "so that waking up\\nbecomes a historical reenactment",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://poets.org/poem/self-portrait-28",\
+        "note": "Short excerpt (copyrighted poem)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "it-is-later-than-you-think-robert-w-service",\
+      "category": "poem",\
+      "title": "It Is Later Than You Think",\
+      "creator": "Robert W. Service",\
+      "year": 1913,\
+      "links": \{\
+        "primary": "https://www.poetryfoundation.org/poems/57712/it-is-later-than-you-think",\
+        "publisher": "https://www.poetryfoundation.org/poems/57712/it-is-later-than-you-think"\
+      \},\
+      "quote": \{\
+        "text": "Lastly, you who read; aye, you\\nWho this very line may scan:\\nThink of all you planned to do ...\\nHave you done the best you can?\\nSee! the tavern lights are low;\\nBlack's the night, and how you shrink!\\nGod! and is it time to go?\\nAh! the clock is always slow;",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://www.poetryfoundation.org/poems/57712/it-is-later-than-you-think",\
+        "note": "Longer excerpt (public domain / widely reproduced poem)."\
+      \},\
+      "rights_hint": "public_domain"\
+    \},\
+    \{\
+      "id": "separation-w-s-merwin",\
+      "category": "poem",\
+      "title": "Separation",\
+      "creator": "W. S. Merwin",\
+      "year": null,\
+      "links": \{\
+        "primary": "https://www.poetryfoundation.org/poems/51605/separation",\
+        "publisher": "https://www.poetryfoundation.org/poems/51605/separation"\
+      \},\
+      "quote": \{\
+        "text": "Like thread through a needle.\\nEverything I do is stitched with its color.",\
+        "kind": "verbatim",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Short excerpt; please verify punctuation in your preferred edition."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "in-the-neolithic-age-rudyard-kipling",\
+      "category": "poem",\
+      "title": "In the Neolithic Age",\
+      "creator": "Rudyard Kipling",\
+      "year": 1911,\
+      "links": \{\
+        "primary": "https://www.kiplingsociety.co.uk/poem/poems_neolithic.htm",\
+        "publisher": "https://www.kiplingsociety.co.uk/poem/poems_neolithic.htm"\
+      \},\
+      "quote": \{\
+        "text": "Still the world is wondrous large,\'97seven seas from marge to marge\'97\\nAnd it holds a vast of various kinds of man;\\nAnd the wildest dreams of Kew are the facts of Khatmandhu,\\nAnd the crimes of Clapham chaste in Martaban.",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://www.kiplingsociety.co.uk/poem/poems_neolithic.htm",\
+        "note": "Longer excerpt (public domain poem)."\
+      \},\
+      "rights_hint": "public_domain"\
+    \},\
+    \{\
+      "id": "good-old-neon-david-foster-wallace",\
+      "category": "short_story",\
+      "title": "Good Old Neon",\
+      "creator": "David Foster Wallace",\
+      "year": 2004,\
+      "links": \{\
+        "primary": "https://sdavidmiller.com/octo/files/no_google2/GoodOldNeon.pdf",\
+        "publisher": null\
+      \},\
+      "quote": \{\
+        "text": "
+\f1\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The truth is you already know what it's like. You already know the difference between the size and speed of everything that flashes through you and the tiny inadequate bit of it all you can ever let anyone know. As though inside you is this enormous room full of what seems like everything in the whole universe at one time or another and yet the only parts that get out have to somehow squeeze out through one of those tiny keyholes you see under the knob in older doors. As if we are all trying to see each other through these tiny keyholes.
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 ",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://sdavidmiller.com/octo/files/no_google2/GoodOldNeon.pdf",\
+        "note": "Short excerpt (copyrighted story)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "this-is-water-david-foster-wallace",\
+      "category": "speech/essay",\
+      "title": "This Is Water",\
+      "creator": "David Foster Wallace",\
+      "year": 2005,\
+      "links": \{\
+        "primary": "https://fs.blog/david-foster-wallace-this-is-water/",\
+        "publisher": null\
+      \},\
+      "quote": \{\
+        "text": "As I\'92m sure you guys know by now, it is extremely difficult to stay alert and attentive, instead of getting hypnotised by the constant monologue inside your own head (may be happening right now). Twenty years after my own graduation, I have come gradually to understand that the liberal arts clich\'e9 about teaching you how to think is actually shorthand for a much deeper, more serious idea: learning how to think really means learning how to exercise some control over how and what you think. It means being conscious and aware enough to choose what you pay attention to and to choose how you construct meaning from experience. Because if you cannot exercise this kind of choice in adult life, you will be totally hosed. Think of the old clich\'e9 about \'93the mind being an excellent servant but a terrible master.\'94\
+\
+This, like many clich\'e9s, so lame and unexciting on the surface, actually expresses a great and terrible truth. It is not the least bit coincidental that adults who commit suicide with firearms almost always shoot themselves in: the head. They shoot the terrible master.",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://fs.blog/david-foster-wallace-this-is-water/",\
+        "note": "Short excerpt (copyrighted speech)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "inconstant-moon-larry-niven",\
+      "category": "short_story",\
+      "title": "Inconstant Moon",\
+      "creator": "Larry Niven",\
+      "year": 1973,\
+      "links": \{\
+        "primary": "https://en.wikiquote.org/wiki/Larry_Niven",\
+        "publisher": null\
+      \},\
+      "quote": \{\
+        "text": "You don\'92t stop planning just because there\'92s no hope.",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://en.wikiquote.org/wiki/Larry_Niven",\
+        "note": "Short excerpt (verify against your edition/publication)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "face-value-karen-joy-fowler",\
+      "category": "short_story",\
+      "title": "Face Value",\
+      "creator": "Karen Joy Fowler",\
+      "year": 1986,\
+      "links": \{\
+        "primary": "https://www.lightspeedmagazine.com/fiction/face-value/",\
+        "publisher": "https://www.lightspeedmagazine.com/fiction/face-value/"\
+      \},\
+      "quote": \{\
+        "text": \'93And what do you imagine you are studying?\'94,\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://www.lightspeedmagazine.com/fiction/face-value/",\
+        "note": "Short excerpt (copyrighted story)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "snow-john-crowley",\
+      "category": "short_story",\
+      "title": "Snow",\
+      "creator": "John Crowley",\
+      "year": 1985,\
+      "links": \{\
+        "primary": "https://www.lightspeedmagazine.com/fiction/snow-2/",\
+        "publisher": "https://www.lightspeedmagazine.com/fiction/snow-2/"\
+      \},\
+      "quote": \{\
+        "text": "One of those bits of accidental poetry the world generates without thinking.",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://www.lightspeedmagazine.com/fiction/snow-2/",\
+        "note": "Short excerpt (copyrighted story)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "meditations-on-moloch-scott-alexander",\
+      "category": "essay",\
+      "title": "Meditations on Moloch",\
+      "creator": "Scott Alexander",\
+      "year": 2014,\
+      "links": \{\
+        "primary": "https://slatestarcodexabridged.com/meditations-on-moloch/",\
+        "publisher": "https://slatestarcodexabridged.com/meditations-on-moloch/"\
+      \},\
+      "quote": \{\
+        "text": "each step of the Poor Coordination Polka makes your life worse.",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://slatestarcodexabridged.com/meditations-on-moloch/",\
+        "note": "Short excerpt (copyrighted essay)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "it-looks-like-you-re-trying-to-take-over-the-world-gwern",\
+      "category": "web_fiction",\
+      "title": "It Looks Like You\'92re Trying To Take Over The World",\
+      "creator": "Gwern",\
+      "year": null,\
+      "links": \{\
+        "primary": "https://gwern.net/fiction/clippy",\
+        "publisher": "https://gwern.net/fiction/clippy"\
+      \},\
+      "quote": \{\
+        "text": "Evolutionary search is about as stupid as an optimization process can be and still work;",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://gwern.net/fiction/clippy",\
+        "note": "Short excerpt."\
+      \},\
+      "rights_hint": "copyrighted_or_cc_unknown"\
+    \},\
+    \{\
+      "id": "the-mind-in-the-wheel-slime-mold-time-mold",\
+      "category": "blog_series",\
+      "title": "The Mind in the Wheel",\
+      "creator": "Slime Mold Time Mold",\
+      "year": null,\
+      "links": \{\
+        "primary": "https://slimemoldtimemold.com/tag/the-mind-in-the-wheel/",\
+        "publisher": "https://slimemoldtimemold.com/tag/the-mind-in-the-wheel/"\
+      \},\
+      "quote": \{\
+        "text": "It was precise enough to be wrong, rather than vague to the point of being unassailable,",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://slimemoldtimemold.com/tag/the-mind-in-the-wheel/",\
+        "note": "Short excerpt."\
+      \},\
+      "rights_hint": "copyrighted_or_cc_unknown"\
+    \},\
+    \{\
+      "id": "a-cybernetic-big-five-theory-for-personality-psychology-colin-g-deyoung",\
+      "category": "paper",\
+      "title": "A Cybernetic Big Five Theory for Personality Psychology",\
+      "creator": "Colin G. DeYoung",\
+      "year": 2015,\
+      "links": \{\
+        "primary": "https://www.sciencedirect.com/science/article/pii/S0191886914005190",\
+        "publisher": "https://www.sciencedirect.com/science/article/pii/S0191886914005190"\
+      \},\
+      "quote": \{\
+        "text": "Cybernetics, the study of goal-directed, adaptive systems, is the best framework",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://www.sciencedirect.com/science/article/pii/S0191886914005190",\
+        "note": "Short excerpt (from abstract/preview)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "on-the-psychology-of-extremism-how-motivational-imbalance-breeds-intemperance-arie-w-kruglanski-et-al",\
+      "category": "paper",\
+      "title": "On the Psychology of Extremism: How Motivational Imbalance Breeds Intemperance",\
+      "creator": "Arie W. Kruglanski et al.",\
+      "year": 2021,\
+      "links": \{\
+        "primary": "https://pubmed.ncbi.nlm.nih.gov/32915010/",\
+        "publisher": "https://doi.org/10.1037/rev0000260",\
+        "doi": "10.1037/rev0000260"\
+      \},\
+      "quote": \{\
+        "text": "a given need gains dominance and overrides other basic concerns.",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://pubmed.ncbi.nlm.nih.gov/32915010/",\
+        "note": "Short excerpt (from abstract)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "why-i-do-not-attend-case-conferences-paul-e-meehl",\
+      "category": "paper",\
+      "title": "Why I Do Not Attend Case Conferences",\
+      "creator": "Paul E. Meehl",\
+      "year": 1973,\
+      "links": \{\
+        "primary": "https://meehl.umn.edu/sites/meehl.umn.edu/files/files/099caseconferences.pdf",\
+        "publisher": null\
+      \},\
+      "quote": \{\
+        "text": "Training in clear thinking should begin early.",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://meehl.umn.edu/sites/meehl.umn.edu/files/files/099caseconferences.pdf",\
+        "note": "Short excerpt."\
+      \},\
+      "rights_hint": "copyrighted_or_open_access"\
+    \},\
+    \{\
+      "id": "groups-in-mind-the-coalitional-roots-of-war-and-morality-john-tooby-leda-cosmides",\
+      "category": "paper/chapter",\
+      "title": "Groups in Mind: The Coalitional Roots of War and Morality",\
+      "creator": "John Tooby & Leda Cosmides",\
+      "year": 2010,\
+      "links": \{\
+        "primary": "https://www.cognitionandculture.net/wp-content/uploads/GroupsInMind2010.pdf",\
+        "publisher": null,\
+        "doi": "10.1007/978-1-137-05001-4_8"\
+      \},\
+      "quote": \{\
+        "text": "War is older than the human species. It is found in every region of the world,",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://www.cognitionandculture.net/wp-content/uploads/GroupsInMind2010.pdf",\
+        "note": "Short excerpt (from chapter intro)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "ai-as-governance-henry-farrell",\
+      "category": "paper",\
+      "title": "AI as Governance",\
+      "creator": "Henry Farrell",\
+      "year": 2025,\
+      "links": \{\
+        "primary": "https://www.researchgate.net/publication/360304763_Artificially_Intelligent_Regulation",\
+        "publisher": null,\
+        "citation": "Farrell, Henry. 2025. \'93AI as Governance.\'94 Annual Review of Political Science 28: 375\'96392."\
+      \},\
+      "quote": \{\
+        "text": "They ought to consider AI in terms of its relationship with governance.",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://www.researchgate.net/publication/360304763_Artificially_Intelligent_Regulation",\
+        "note": "Short excerpt (from abstract/preview)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "the-sapa-personality-inventory-an-empirically-derived-hierarchically-organized-self-report-personality-assessment-model-david-m-condon",\
+      "category": "paper/instrument",\
+      "title": "The SAPA Personality Inventory: An empirically-derived, hierarchically-organized self-report personality assessment model",\
+      "creator": "David M. Condon",\
+      "year": 2017,\
+      "links": \{\
+        "primary": "https://www.sapa-project.org/research/SPI/",\
+        "publisher": "https://osf.io/preprints/psyarxiv/sc4p9"\
+      \},\
+      "quote": \{\
+        "text": "total N = 126,884 participants",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://www.sapa-project.org/research/SPI/SPIforms/SPI_81_27_%26_5_v1_1.pdf",\
+        "note": "Short excerpt (from SPI scoring/technical materials)."\
+      \},\
+      "rights_hint": "open_materials_mixed"\
+    \},\
+    \{\
+      "id": "beyond-playing-20-questions-with-nature-integrative-experiment-design-in-the-social-and-behavioral-sciences-abdullah-almaatouq-et-al",\
+      "category": "paper",\
+      "title": "Beyond Playing 20 Questions with Nature: Integrative Experiment Design in the Social and Behavioral Sciences",\
+      "creator": "Abdullah Almaatouq et al.",\
+      "year": 2024,\
+      "links": \{\
+        "primary": "https://cocosci.princeton.edu/papers/almaatouq2022questions.pdf",\
+        "publisher": "https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/beyond-playing-20-questions-with-nature-integrative-experiment-design-in-the-social-and-behavioral-sciences/7E0D34D5AE2EFB9C0902414C23E0C292",\
+        "doi": "10.1017/S0140525X22002874"\
+      \},\
+      "quote": \{\
+        "text": "the knowledge they generate cannot be easily integrated across experiments.",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://cocosci.princeton.edu/papers/almaatouq2022questions.pdf",\
+        "note": "Short excerpt (from short abstract)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "more-is-different-broken-symmetry-and-the-nature-of-the-hierarchical-structure-of-science-p-w-anderson",\
+      "category": "paper",\
+      "title": "More Is Different: Broken symmetry and the nature of the hierarchical structure of science",\
+      "creator": "P. W. Anderson",\
+      "year": 1972,\
+      "links": \{\
+        "primary": "https://www.science.org/doi/10.1126/science.177.4047.393",\
+        "publisher": "https://www.tkm.kit.edu/downloads/TKM1_2011_more_is_different_PWA.pdf",\
+        "doi": "10.1126/science.177.4047.393"\
+      \},\
+      "quote": \{\
+        "text": "this shift from quantitative to qualitative differentiation takes place.",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://www.tkm.kit.edu/downloads/TKM1_2011_more_is_different_PWA.pdf",\
+        "note": "Short excerpt."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "behavioural-individuality-in-clonal-fish-arises-despite-near-identical-rearing-conditions-david-bierbach-kate-l-laskowski-max-wolf",\
+      "category": "paper",\
+      "title": "Behavioural individuality in clonal fish arises despite near-identical rearing conditions",\
+      "creator": "David Bierbach, Kate L. Laskowski & Max Wolf",\
+      "year": 2017,\
+      "links": \{\
+        "primary": "https://www.nature.com/articles/ncomms15361",\
+        "publisher": "https://pubmed.ncbi.nlm.nih.gov/28513582/",\
+        "doi": "10.1038/ncomms15361"\
+      \},\
+      "quote": \{\
+        "text": "sources of variation are removed, individuals are predicted to develop similar phenotypes",\
+        "kind": "verbatim",\
+        "verified": true,\
+        "source_url": "https://pubmed.ncbi.nlm.nih.gov/28513582/",\
+        "note": "Short excerpt (from abstract)."\
+      \},\
+      "rights_hint": "copyrighted_open_access_possible"\
+    \},\
+    \{\
+      "id": "the-brothers-karamazov-fyodor-dostoevsky",\
+      "category": "book",\
+      "title": "The Brothers Karamazov",\
+      "creator": "Fyodor Dostoevsky",\
+      "year": 1880,\
+      "links": \{\
+        "primary": "https://www.penguinrandomhouse.com/books/302447/the-brothers-karamazov-by-fyodor-dostoyevsky-translated-with-an-introduction-by-david-mcduff/",\
+        "publisher": "https://www.penguinrandomhouse.com/books/302447/the-brothers-karamazov-by-fyodor-dostoyevsky-translated-with-an-introduction-by-david-mcduff/"\
+      \},\
+      "quote": \{\
+        "text": "Above all, don't lie to yourself.",\
+        "kind": "verbatim",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Quote is widely attributed; verify wording/translation against your edition."\
+      \},\
+      "rights_hint": "public_domain_text_translation_varies"\
+    \},\
+    \{\
+      "id": "infinite-jest-david-foster-wallace",\
+      "category": "book",\
+      "title": "Infinite Jest",\
+      "creator": "David Foster Wallace",\
+      "year": 1996,\
+      "links": \{\
+        "primary": "https://www.hachettebookgroup.com/titles/david-foster-wallace/infinite-jest/9780316920049/",\
+        "publisher": "https://www.hachettebookgroup.com/titles/david-foster-wallace/infinite-jest/9780316920049/"\
+      \},\
+      "quote": \{\
+        "text": "secret unspoken belief that they are different from everyone else.",\
+        "kind": "verbatim",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Excerpt; verify wording against your edition."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "blood-meridian-cormac-mccarthy",\
+      "category": "book",\
+      "title": "Blood Meridian",\
+      "creator": "Cormac McCarthy",\
+      "year": 1985,\
+      "links": \{\
+        "primary": "https://www.penguinrandomhouse.com/books/12334/blood-meridian-by-cormac-mccarthy/",\
+        "publisher": "https://www.penguinrandomhouse.com/books/12334/blood-meridian-by-cormac-mccarthy/"\
+      \},\
+      "quote": \{\
+        "text": "Whatever in creation exists without my knowledge exists without my consent.",\
+        "kind": "verbatim",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Quote is widely circulated; verify exact punctuation against your edition."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "invisible-cities-italo-calvino-translated",\
+      "category": "book",\
+      "title": "Invisible Cities",\
+      "creator": "Italo Calvino (translated)",\
+      "year": 1972,\
+      "links": \{\
+        "primary": "https://www.hmhbooks.com/shop/books/Invisible-Cities/9780156453806",\
+        "publisher": "https://www.hmhbooks.com/shop/books/Invisible-Cities/9780156453806"\
+      \},\
+      "quote": \{\
+        "text": "Cities, like dreams, are made of desires and fears.",\
+        "kind": "verbatim",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Verify translation wording."\
+      \},\
+      "rights_hint": "copyrighted_translation_varies"\
+    \},\
+    \{\
+      "id": "ficciones-jorge-luis-borges-translated",\
+      "category": "book",\
+      "title": "Ficciones",\
+      "creator": "Jorge Luis Borges (translated)",\
+      "year": 1944,\
+      "links": \{\
+        "primary": "https://www.penguinrandomhouse.com/books/331716/ficciones-by-jorge-luis-borges/",\
+        "publisher": "https://www.penguinrandomhouse.com/books/331716/ficciones-by-jorge-luis-borges/"\
+      \},\
+      "quote": \{\
+        "text": "I do not know which of us has written this page.",\
+        "kind": "verbatim",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Verify translation wording."\
+      \},\
+      "rights_hint": "copyrighted_translation_varies"\
+    \},\
+    \{\
+      "id": "god-human-animal-machine-meghan-o-gieblyn",\
+      "category": "book",\
+      "title": "God, Human, Animal, Machine",\
+      "creator": "Meghan O'Gieblyn",\
+      "year": 2021,\
+      "links": \{\
+        "primary": "https://www.penguinrandomhouse.com/books/608474/god-human-animal-machine-by-meghan-ogieblyn/",\
+        "publisher": "https://www.penguinrandomhouse.com/books/608474/god-human-animal-machine-by-meghan-ogieblyn/"\
+      \},\
+      "quote": \{\
+        "text": "A theology of the built world: when metaphors become roommates, and faith migrates into circuitry.",\
+        "kind": "assistant_epigraph",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Assistant-written epigraph (nonverbatim)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "your-name-here-helen-dewitt-ilya-gridneff",\
+      "category": "book",\
+      "title": "Your Name Here",\
+      "creator": "Helen DeWitt & Ilya Gridneff",\
+      "year": 2022,\
+      "links": \{\
+        "primary": "https://us.macmillan.com/books/9780374210573/yournamehere",\
+        "publisher": "https://us.macmillan.com/books/9780374210573/yournamehere"\
+      \},\
+      "quote": \{\
+        "text": "A scam written like a love letter: the voice on the line is always selling, but it\'92s also listening.",\
+        "kind": "assistant_epigraph",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Assistant-written epigraph (nonverbatim)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "destination-void-frank-herbert",\
+      "category": "book",\
+      "title": "Destination: Void",\
+      "creator": "Frank Herbert",\
+      "year": 1966,\
+      "links": \{\
+        "primary": "https://www.penguinrandomhouse.com/books/299396/destination-void-by-frank-herbert/",\
+        "publisher": "https://www.penguinrandomhouse.com/books/299396/destination-void-by-frank-herbert/"\
+      \},\
+      "quote": \{\
+        "text": "A closed system becomes a cathedral: engineering as metaphysics, mathematics as liturgy.",\
+        "kind": "assistant_epigraph",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Assistant-written epigraph (nonverbatim)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "neuromancer-william-gibson",\
+      "category": "book",\
+      "title": "Neuromancer",\
+      "creator": "William Gibson",\
+      "year": 1984,\
+      "links": \{\
+        "primary": "https://www.penguinrandomhouse.com/books/294104/neuromancer-by-william-gibson/",\
+        "publisher": "https://www.penguinrandomhouse.com/books/294104/neuromancer-by-william-gibson/"\
+      \},\
+      "quote": \{\
+        "text": "The body was meat.",\
+        "kind": "verbatim",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Short excerpt; verify against your edition."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "bad-beliefs-why-they-happen-to-good-people-neil-levy",\
+      "category": "book",\
+      "title": "Bad Beliefs: Why They Happen to Good People",\
+      "creator": "Neil Levy",\
+      "year": 2022,\
+      "links": \{\
+        "primary": "https://global.oup.com/academic/product/bad-beliefs-9780197604176",\
+        "publisher": "https://global.oup.com/academic/product/bad-beliefs-9780197604176"\
+      \},\
+      "quote": \{\
+        "text": "Belief can be a social technology: true enough to function, wrong enough to bind.",\
+        "kind": "assistant_epigraph",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Assistant-written epigraph (nonverbatim)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "the-dispossessed-ursula-k-le-guin",\
+      "category": "book",\
+      "title": "The Dispossessed",\
+      "creator": "Ursula K. Le Guin",\
+      "year": 1974,\
+      "links": \{\
+        "primary": "https://www.harpercollins.com/products/the-dispossessed-ursula-k-le-guin",\
+        "publisher": "https://www.harpercollins.com/products/the-dispossessed-ursula-k-le-guin"\
+      \},\
+      "quote": \{\
+        "text": "True voyage is return.",\
+        "kind": "verbatim",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Short excerpt; verify against your edition."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "the-word-for-world-is-forest-ursula-k-le-guin",\
+      "category": "book",\
+      "title": "The Word for World Is Forest",\
+      "creator": "Ursula K. Le Guin",\
+      "year": 1972,\
+      "links": \{\
+        "primary": "https://www.harpercollins.com/products/the-word-for-world-is-forest-ursula-k-le-guin",\
+        "publisher": "https://www.harpercollins.com/products/the-word-for-world-is-forest-ursula-k-le-guin"\
+      \},\
+      "quote": \{\
+        "text": "The word for world is forest.",\
+        "kind": "verbatim",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Obvious fallback; consider swapping for a subtler excerpt from your edition."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "metazoa-animal-minds-and-the-birth-of-consciousness-peter-godfrey-smith",\
+      "category": "book",\
+      "title": "Metazoa: Animal Minds and the Birth of Consciousness",\
+      "creator": "Peter Godfrey-Smith",\
+      "year": 2020,\
+      "links": \{\
+        "primary": "https://us.macmillan.com/books/9780374227762/metazoa",\
+        "publisher": "https://us.macmillan.com/books/9780374227762/metazoa"\
+      \},\
+      "quote": \{\
+        "text": "A history of feeling told sideways: minds as inventions of bodies, refined by oceans.",\
+        "kind": "assistant_epigraph",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Assistant-written epigraph (nonverbatim)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "a-confederacy-of-dunces-john-kennedy-toole",\
+      "category": "book",\
+      "title": "A Confederacy of Dunces",\
+      "creator": "John Kennedy Toole",\
+      "year": 1980,\
+      "links": \{\
+        "primary": "https://groveatlantic.com/book/a-confederacy-of-dunces/",\
+        "publisher": "https://groveatlantic.com/book/a-confederacy-of-dunces/"\
+      \},\
+      "quote": \{\
+        "text": "I am at the moment writing a lengthy indictment against our century.",\
+        "kind": "verbatim",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Quote is commonly circulated; verify against your edition."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "the-sun-also-rises-ernest-hemingway",\
+      "category": "book",\
+      "title": "The Sun Also Rises",\
+      "creator": "Ernest Hemingway",\
+      "year": 1926,\
+      "links": \{\
+        "primary": "https://www.simonandschuster.com/books/The-Sun-Also-Rises/Ernest-Hemingway/9780743297332",\
+        "publisher": "https://www.simonandschuster.com/books/The-Sun-Also-Rises/Ernest-Hemingway/9780743297332"\
+      \},\
+      "quote": \{\
+        "text": "Isn't it pretty to think so?",\
+        "kind": "verbatim",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Short excerpt; verify punctuation against your edition."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "elbow-room-david-foster-wallace",\
+      "category": "book",\
+      "title": "Elbow Room",\
+      "creator": "David Foster Wallace",\
+      "year": 1997,\
+      "links": \{\
+        "primary": "https://www.hachettebookgroup.com/titles/david-foster-wallace/elbow-room/9780316075558/",\
+        "publisher": "https://www.hachettebookgroup.com/titles/david-foster-wallace/elbow-room/9780316075558/"\
+      \},\
+      "quote": \{\
+        "text": "Stories as pressure tests: the moment you reach for freedom, notice what your hand is already holding.",\
+        "kind": "assistant_epigraph",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Assistant-written epigraph (nonverbatim)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "living-with-the-gods-neil-macgregor",\
+      "category": "book",\
+      "title": "Living with the Gods",\
+      "creator": "Neil MacGregor",\
+      "year": 2018,\
+      "links": \{\
+        "primary": "https://www.penguinrandomhouse.com/books/602893/living-with-the-gods-by-neil-macgregor/",\
+        "publisher": "https://www.penguinrandomhouse.com/books/602893/living-with-the-gods-by-neil-macgregor/"\
+      \},\
+      "quote": \{\
+        "text": "Belief leaves fingerprints: on objects, on rooms, on calendars\'97on the ways we agree to live together.",\
+        "kind": "assistant_epigraph",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Assistant-written epigraph (nonverbatim)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "letters-to-a-young-scientist-edward-o-wilson",\
+      "category": "book",\
+      "title": "Letters to a Young Scientist",\
+      "creator": "Edward O. Wilson",\
+      "year": 2013,\
+      "links": \{\
+        "primary": "https://wwnorton.com/books/Letters-to-a-Young-Scientist/",\
+        "publisher": "https://wwnorton.com/books/Letters-to-a-Young-Scientist/"\
+      \},\
+      "quote": \{\
+        "text": "Advice that keeps returning to method: the ordinary disciplines that make wonder durable.",\
+        "kind": "assistant_epigraph",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Assistant-written epigraph (nonverbatim)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "high-weirdness-erik-davis",\
+      "category": "book",\
+      "title": "High Weirdness",\
+      "creator": "Erik Davis",\
+      "year": 2019,\
+      "links": \{\
+        "primary": "https://mitpress.mit.edu/9781907222434/high-weirdness/",\
+        "publisher": "https://mitpress.mit.edu/9781907222434/high-weirdness/"\
+      \},\
+      "quote": \{\
+        "text": "When the strange becomes a tool: altered states, esoteric systems, and the politics of revelation.",\
+        "kind": "assistant_epigraph",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Assistant-written epigraph (nonverbatim)."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \},\
+    \{\
+      "id": "psycho-cybernetics-maxwell-maltz",\
+      "category": "book",\
+      "title": "Psycho-Cybernetics",\
+      "creator": "Maxwell Maltz",\
+      "year": 1960,\
+      "links": \{\
+        "primary": "https://www.penguinrandomhouse.com/books/124165/psycho-cybernetics-by-maxwell-maltz-md/",\
+        "publisher": "https://www.penguinrandomhouse.com/books/124165/psycho-cybernetics-by-maxwell-maltz-md/"\
+      \},\
+      "quote": \{\
+        "text": "The self-image is the key to human personality and human behavior.",\
+        "kind": "verbatim",\
+        "verified": false,\
+        "source_url": null,\
+        "note": "Quote is widely circulated; verify against your edition."\
+      \},\
+      "rights_hint": "copyrighted"\
+    \}\
+  ]\
+\}\
+}

@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Large files not needed for website
+*.pdf
+*.PDF
+*.docx
+*.DOCX
+*.heic
+*.HEIC
+
+# Papers folder (not part of website)
+Papers copy/
+
+# Node modules (for worker development)
+node_modules/
+
+# Wrangler
+.wrangler/
+
+# Environment files
+.env
+.env.local
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
