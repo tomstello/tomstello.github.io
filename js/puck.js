@@ -701,9 +701,12 @@
       return;
     }
 
-    // Calculate delay if not specified (5-12 seconds between animations)
+    // Calculate delay - longer on mobile to save battery
+    const isMobile = window.innerWidth < 768 || ('ontouchstart' in window);
     if (delay === undefined) {
-      delay = 5000 + Math.random() * 7000;
+      delay = isMobile
+        ? 12000 + Math.random() * 10000  // 12-22 seconds on mobile
+        : 5000 + Math.random() * 7000;   // 5-12 seconds on desktop
     }
 
     // Clear any existing timer
@@ -761,11 +764,16 @@
   // ==========================================================================
 
   function initMouseTracking() {
+    // Skip mouse tracking entirely on touch devices
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+      return;
+    }
+
     let mouseTrackingTimeout = null;
     let isTracking = false;
 
     document.addEventListener('mousemove', (e) => {
-      // Don't track if window is open or on mobile
+      // Don't track if window is open or on small screens
       if (state.isWindowOpen || window.innerWidth < 768) return;
 
       state.lastMouseX = e.clientX;

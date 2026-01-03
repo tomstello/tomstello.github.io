@@ -918,6 +918,28 @@
    Mobile Adjustments
    ========================================================================== */
 
+/* Tablet and smaller */
+@media (max-width: 768px) {
+  .puck-container {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .puck-sprite {
+    width: 64px;
+    height: 64px;
+    /* Larger touch target */
+    padding: 8px;
+    margin: -8px;
+  }
+
+  /* Disable mouse-following on touch devices */
+  .puck-sprite--look {
+    transition: none;
+  }
+}
+
+/* Phone screens */
 @media (max-width: 480px) {
   .puck-container {
     right: 12px;
@@ -925,35 +947,159 @@
   }
 
   .puck-sprite {
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
   }
 
+  /* Full-width chat window on mobile */
   .puck-window {
-    width: calc(100vw - 24px);
-    right: 0;
-    bottom: 72px;
-    max-width: 360px;
+    position: fixed;
+    left: 8px;
+    right: 8px;
+    bottom: 76px;
+    width: auto;
+    max-width: none;
+    max-height: calc(100vh - 100px);
+    max-height: calc(100dvh - 100px); /* Dynamic viewport for mobile keyboards */
   }
 
   .puck-bubble {
-    max-width: calc(100vw - 100px);
+    max-width: calc(100vw - 90px);
     right: 0;
+    font-size: 13px;
   }
 
   .puck-chat {
-    height: 280px;
+    height: 50vh;
+    height: 50dvh;
+    max-height: 320px;
+    min-height: 200px;
+  }
+
+  /* Larger touch targets for titlebar buttons */
+  .puck-titlebar {
+    padding: 4px 4px 4px 6px;
+  }
+
+  .puck-titlebar__btn {
+    width: 28px;
+    height: 26px;
+    font-size: 14px;
+  }
+
+  .puck-titlebar__btn--clear {
+    font-size: 16px;
+  }
+
+  /* Larger input area for mobile */
+  .puck-input-area {
+    padding: 6px 8px 8px 8px;
+    gap: 8px;
+  }
+
+  .puck-input {
+    padding: 10px 12px;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+
+  .puck-send {
+    padding: 10px 20px;
+    font-size: 14px;
+    min-width: 60px;
+  }
+
+  /* Larger message text */
+  .puck-message__content {
+    font-size: 14px;
+    padding: 10px 14px;
+    max-width: 85%;
+  }
+
+  .puck-message__sender {
+    font-size: 11px;
   }
 }
 
+/* Very small phones */
 @media (max-width: 360px) {
+  .puck-container {
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .puck-sprite {
+    width: 48px;
+    height: 48px;
+  }
+
+  .puck-window {
+    left: 4px;
+    right: 4px;
+    bottom: 64px;
+  }
+
   .puck-chat {
-    height: 240px;
+    height: 45vh;
+    height: 45dvh;
+    min-height: 180px;
   }
 
   .puck-message__content {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .puck-bubble {
     font-size: 12px;
-    padding: 6px 10px;
+    padding: 10px 28px 10px 12px;
+  }
+}
+
+/* Handle mobile keyboard appearing */
+@media (max-height: 500px) and (max-width: 768px) {
+  .puck-window {
+    bottom: 60px;
+    max-height: calc(100vh - 70px);
+    max-height: calc(100dvh - 70px);
+  }
+
+  .puck-chat {
+    height: 30vh;
+    height: 30dvh;
+    min-height: 120px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .puck-sprite:hover {
+    transform: none;
+  }
+
+  .puck-sprite:active {
+    transform: scale(0.92);
+  }
+
+  .puck-titlebar__btn:hover {
+    background: var(--puck-button-face);
+  }
+
+  .puck-titlebar__btn:active {
+    background: #d4d4d4;
+  }
+
+  .puck-send:hover {
+    background: var(--puck-button-face);
+  }
+
+  .puck-send:active {
+    background: #d4d4d4;
+  }
+
+  /* Disable idle animations on mobile to save battery */
+  .puck-sprite--sway,
+  .puck-sprite--float {
+    animation: puck-bob 3s ease-in-out infinite !important;
   }
 }
 
