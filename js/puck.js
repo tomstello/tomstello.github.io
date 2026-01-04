@@ -258,6 +258,9 @@
     initMouseTracking();
     initScrollTracking();
 
+    // Start natural blinking
+    startBlinking();
+
     // Log a message for the curious
     console.log('%c🎭 Puck has entered the stage.', 'color: #7C3AED; font-weight: bold;');
     console.log('%cI live here now. I roast Thomas. It\'s honest work.', 'color: #8B5CF6; font-style: italic;');
@@ -309,6 +312,120 @@
   // DOM Creation
   // ==========================================================================
 
+  // Inline SVG for Puck sprite (allows CSS animation of body parts)
+  const PUCK_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 0 48 52" width="64" height="64" aria-hidden="true">
+  <g id="puck-hat-center">
+    <rect x="12" y="8" width="4" height="4" fill="#7C3AED"/>
+    <rect x="16" y="4" width="4" height="4" fill="#7C3AED"/>
+    <rect x="20" y="4" width="4" height="4" fill="#7C3AED"/>
+    <rect x="24" y="4" width="4" height="4" fill="#7C3AED"/>
+    <rect x="16" y="8" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="20" y="8" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="24" y="8" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="28" y="8" width="4" height="4" fill="#7C3AED"/>
+    <rect x="12" y="12" width="4" height="4" fill="#5B21B6"/>
+    <rect x="16" y="12" width="4" height="4" fill="#6B21A8"/>
+    <rect x="20" y="12" width="4" height="4" fill="#6B21A8"/>
+    <rect x="24" y="12" width="4" height="4" fill="#6B21A8"/>
+    <rect x="28" y="12" width="4" height="4" fill="#5B21B6"/>
+  </g>
+  <g id="puck-left-hat-bell">
+    <rect x="8" y="4" width="4" height="4" fill="#6B21A8"/>
+    <rect x="4" y="8" width="4" height="4" fill="#6B21A8"/>
+    <rect x="8" y="8" width="4" height="4" fill="#7C3AED"/>
+    <rect x="4" y="12" width="4" height="4" fill="#c9a959"/>
+  </g>
+  <g id="puck-right-hat-bell">
+    <rect x="32" y="4" width="4" height="4" fill="#6B21A8"/>
+    <rect x="36" y="8" width="4" height="4" fill="#6B21A8"/>
+    <rect x="32" y="8" width="4" height="4" fill="#7C3AED"/>
+    <rect x="36" y="12" width="4" height="4" fill="#c9a959"/>
+  </g>
+  <g id="puck-head">
+    <rect x="12" y="16" width="4" height="4" fill="#FCD9B6"/>
+    <rect x="16" y="16" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="20" y="16" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="24" y="16" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="28" y="16" width="4" height="4" fill="#FCD9B6"/>
+    <rect x="12" y="20" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="16" y="20" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="20" y="20" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="24" y="20" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="28" y="20" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="12" y="24" width="4" height="4" fill="#FCD9B6"/>
+    <rect x="16" y="24" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="20" y="24" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="24" y="24" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="28" y="24" width="4" height="4" fill="#FCD9B6"/>
+    <g id="puck-eyes">
+      <g id="puck-left-eye">
+        <rect class="puck-eye-bg" x="14" y="18" width="4" height="4" fill="#1a1a2e"/>
+        <rect class="puck-eye-pupil" x="14" y="18" width="2" height="2" fill="#ffffff"/>
+      </g>
+      <g id="puck-right-eye">
+        <rect class="puck-eye-bg" x="24" y="18" width="4" height="4" fill="#1a1a2e"/>
+        <rect class="puck-eye-pupil" x="24" y="18" width="2" height="2" fill="#ffffff"/>
+      </g>
+    </g>
+    <g id="puck-mouth" class="puck-mouth--smirk">
+      <rect x="16" y="26" width="2" height="2" fill="#c44"/>
+      <rect x="18" y="26" width="2" height="2" fill="#c44"/>
+      <rect x="20" y="26" width="2" height="2" fill="#c44"/>
+      <rect x="22" y="26" width="2" height="2" fill="#c44"/>
+      <rect x="24" y="26" width="2" height="2" fill="#c44"/>
+    </g>
+  </g>
+  <g id="puck-body">
+    <rect x="12" y="28" width="4" height="4" fill="#7C3AED"/>
+    <rect x="16" y="28" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="20" y="28" width="4" height="4" fill="#c9a959"/>
+    <rect x="24" y="28" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="28" y="28" width="4" height="4" fill="#7C3AED"/>
+    <rect x="12" y="32" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="16" y="32" width="4" height="4" fill="#c9a959"/>
+    <rect x="20" y="32" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="24" y="32" width="4" height="4" fill="#c9a959"/>
+    <rect x="28" y="32" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="12" y="36" width="4" height="4" fill="#7C3AED"/>
+    <rect x="16" y="36" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="20" y="36" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="24" y="36" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="28" y="36" width="4" height="4" fill="#7C3AED"/>
+  </g>
+  <g id="puck-left-arm">
+    <rect x="4" y="28" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="8" y="28" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="4" y="32" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="4" y="36" width="4" height="4" fill="#FEEBC8"/>
+    <rect class="puck-sparkle" x="0" y="36" width="2" height="2" fill="#FFD700"/>
+    <rect class="puck-sparkle" x="2" y="34" width="2" height="2" fill="#FFD700"/>
+  </g>
+  <g id="puck-right-arm">
+    <rect x="32" y="28" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="36" y="28" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="36" y="32" width="4" height="4" fill="#FEEBC8"/>
+    <rect x="36" y="36" width="4" height="4" fill="#FEEBC8"/>
+    <rect class="puck-sparkle" x="40" y="34" width="2" height="2" fill="#FFD700"/>
+    <rect class="puck-sparkle" x="42" y="36" width="2" height="2" fill="#FFD700"/>
+  </g>
+  <g id="puck-left-leg">
+    <rect x="14" y="40" width="4" height="4" fill="#4C1D95"/>
+    <rect x="14" y="44" width="4" height="4" fill="#4C1D95"/>
+    <rect x="10" y="48" width="4" height="4" fill="#7C3AED"/>
+    <rect x="14" y="48" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="6" y="48" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="6" y="44" width="4" height="4" fill="#c9a959"/>
+  </g>
+  <g id="puck-right-leg">
+    <rect x="22" y="40" width="4" height="4" fill="#4C1D95"/>
+    <rect x="22" y="44" width="4" height="4" fill="#4C1D95"/>
+    <rect x="22" y="48" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="26" y="48" width="4" height="4" fill="#7C3AED"/>
+    <rect x="30" y="48" width="4" height="4" fill="#8B5CF6"/>
+    <rect x="30" y="44" width="4" height="4" fill="#c9a959"/>
+  </g>
+</svg>`;
+
   function createDOM() {
     const container = document.createElement('div');
     container.className = 'puck-container';
@@ -322,7 +439,7 @@
               aria-label="Chat with Puck"
               aria-expanded="false"
               aria-controls="puck-window">
-        <img src="assets/puck/puck-idle.svg" alt="Puck the jester" id="puck-sprite-img">
+        ${PUCK_SVG}
       </button>
 
       <!-- Speech Bubble for Quips -->
@@ -365,7 +482,6 @@
     elements = {
       container,
       sprite: document.getElementById('puck-sprite'),
-      spriteImg: document.getElementById('puck-sprite-img'),
       bubble: document.getElementById('puck-bubble'),
       bubbleText: document.getElementById('puck-bubble-text'),
       bubbleDismiss: document.getElementById('puck-bubble-dismiss'),
@@ -377,6 +493,20 @@
       clear: document.getElementById('puck-clear'),
       minimize: document.getElementById('puck-minimize'),
       close: document.getElementById('puck-close'),
+      // SVG body parts for animation
+      svg: document.querySelector('#puck-sprite svg'),
+      leftArm: document.getElementById('puck-left-arm'),
+      rightArm: document.getElementById('puck-right-arm'),
+      leftLeg: document.getElementById('puck-left-leg'),
+      rightLeg: document.getElementById('puck-right-leg'),
+      head: document.getElementById('puck-head'),
+      eyes: document.getElementById('puck-eyes'),
+      leftEye: document.getElementById('puck-left-eye'),
+      rightEye: document.getElementById('puck-right-eye'),
+      mouth: document.getElementById('puck-mouth'),
+      body: document.getElementById('puck-body'),
+      leftHatBell: document.getElementById('puck-left-hat-bell'),
+      rightHatBell: document.getElementById('puck-right-hat-bell'),
     };
 
     // Render existing messages
@@ -728,22 +858,34 @@
   }
 
   function playRandomIdleAnimation() {
-    // Pick a random animation from the weighted pool
-    const anim = IDLE_ANIM_POOL[Math.floor(Math.random() * IDLE_ANIM_POOL.length)];
+    // 60% chance to use body animation, 40% chance for sprite animation
+    const useBodyAnim = Math.random() < 0.6;
 
     // Mark as animating to prevent overlap
     state.isIdleAnimating = true;
 
-    // Debug log
-    console.log('%c🎭 Puck idle animation: ' + anim.name, 'color: #7C3AED;');
+    if (useBodyAnim) {
+      // Play a random body animation
+      playRandomBodyAnimation();
+      // Body animations vary in length, use a reasonable default
+      setTimeout(() => {
+        state.isIdleAnimating = false;
+      }, 2000);
+    } else {
+      // Pick a random sprite animation from the weighted pool
+      const anim = IDLE_ANIM_POOL[Math.floor(Math.random() * IDLE_ANIM_POOL.length)];
 
-    // Play the animation
-    spriteAnimation(anim.name, anim.duration);
+      // Debug log
+      console.log('%c🎭 Puck idle animation: ' + anim.name, 'color: #7C3AED;');
 
-    // Clear animating state after animation completes
-    setTimeout(() => {
-      state.isIdleAnimating = false;
-    }, anim.duration + 100);
+      // Play the animation
+      spriteAnimation(anim.name, anim.duration);
+
+      // Clear animating state after animation completes
+      setTimeout(() => {
+        state.isIdleAnimating = false;
+      }, anim.duration + 100);
+    }
   }
 
   function pauseIdleAnimations() {
@@ -757,6 +899,129 @@
     if (!idleAnimTimer && !state.isWindowOpen) {
       scheduleIdleAnimation(3000); // Short delay before resuming
     }
+  }
+
+  // ==========================================================================
+  // Body Animations - Articulated sprite movement
+  // ==========================================================================
+
+  // Animation durations (ms) for auto-cleanup
+  const BODY_ANIM_DURATIONS = {
+    wave: 1000,
+    blink: 300,
+    think: 2000,
+    shrug: 800,
+    look: 1500,
+    tap: 900,
+    jingle: 800,
+    excited: 900,
+    suspicious: 1500,
+    surprised: 600,
+    annoyed: 1500,
+    breathe: 3000, // loops, don't auto-remove
+    waiting: 0, // loops, removed manually
+    point: 1200,
+    dismiss: 800,
+    creep: 2000,
+    recoil: 500,
+  };
+
+  // Currently active body animation
+  let activeBodyAnim = null;
+  let bodyAnimTimeout = null;
+  let blinkInterval = null;
+
+  /**
+   * Play a body animation by adding a class to the sprite
+   * @param {string} animName - Name of animation (wave, blink, think, etc.)
+   * @param {boolean} loop - If true, animation loops until manually stopped
+   */
+  function bodyAnimation(animName, loop = false) {
+    if (!elements.sprite) return;
+
+    // Clear any existing animation
+    if (activeBodyAnim && activeBodyAnim !== 'breathe') {
+      elements.sprite.classList.remove(`puck-anim-${activeBodyAnim}`);
+    }
+    if (bodyAnimTimeout) {
+      clearTimeout(bodyAnimTimeout);
+      bodyAnimTimeout = null;
+    }
+
+    // Add new animation class
+    const className = `puck-anim-${animName}`;
+    elements.sprite.classList.add(className);
+    activeBodyAnim = animName;
+
+    // Debug log
+    console.log('%c🎭 Puck body animation: ' + animName, 'color: #7C3AED;');
+
+    // Auto-remove after duration (unless looping)
+    const duration = BODY_ANIM_DURATIONS[animName];
+    if (duration && !loop) {
+      bodyAnimTimeout = setTimeout(() => {
+        elements.sprite.classList.remove(className);
+        if (activeBodyAnim === animName) {
+          activeBodyAnim = null;
+        }
+      }, duration);
+    }
+  }
+
+  /**
+   * Stop a looping body animation
+   */
+  function stopBodyAnimation(animName) {
+    if (!elements.sprite) return;
+    elements.sprite.classList.remove(`puck-anim-${animName}`);
+    if (activeBodyAnim === animName) {
+      activeBodyAnim = null;
+    }
+  }
+
+  /**
+   * Random blink at natural intervals
+   */
+  function startBlinking() {
+    // Blink every 3-7 seconds
+    function scheduleBlink() {
+      const delay = 3000 + Math.random() * 4000;
+      blinkInterval = setTimeout(() => {
+        // Only blink if not doing another animation
+        if (!activeBodyAnim || activeBodyAnim === 'breathe') {
+          bodyAnimation('blink');
+        }
+        scheduleBlink();
+      }, delay);
+    }
+    scheduleBlink();
+  }
+
+  function stopBlinking() {
+    if (blinkInterval) {
+      clearTimeout(blinkInterval);
+      blinkInterval = null;
+    }
+  }
+
+  /**
+   * Pick a random body animation for idle behavior
+   */
+  function playRandomBodyAnimation() {
+    const idleAnims = [
+      { name: 'look', weight: 4 },
+      { name: 'think', weight: 2 },
+      { name: 'shrug', weight: 1 },
+      { name: 'jingle', weight: 2 },
+      { name: 'tap', weight: 3 },
+      { name: 'creep', weight: 1 },
+      { name: 'suspicious', weight: 1 },
+    ];
+
+    // Build weighted pool
+    const pool = idleAnims.flatMap(a => Array(a.weight).fill(a.name));
+    const anim = pool[Math.floor(Math.random() * pool.length)];
+    bodyAnimation(anim);
   }
 
   // ==========================================================================
@@ -1138,10 +1403,18 @@
     saveState();
     scrollChatToBottom();
 
-    // Random sprite animation on assistant message
-    if (role === 'assistant' && Math.random() < 0.3) {
-      const anims = ['wiggle', 'bounce', 'phase'];
-      spriteAnimation(anims[Math.floor(Math.random() * anims.length)]);
+    // Animate when receiving messages
+    if (role === 'assistant') {
+      // 70% chance to do a body animation on response
+      if (Math.random() < 0.7) {
+        const responseAnims = ['wave', 'jingle', 'excited', 'shrug', 'point', 'look'];
+        const anim = responseAnims[Math.floor(Math.random() * responseAnims.length)];
+        bodyAnimation(anim);
+      } else if (Math.random() < 0.5) {
+        // Otherwise maybe a sprite animation
+        const anims = ['wiggle', 'bounce', 'phase'];
+        spriteAnimation(anims[Math.floor(Math.random() * anims.length)]);
+      }
     }
   }
 
@@ -1174,12 +1447,18 @@
     elements.chat.appendChild(typing);
     scrollChatToBottom();
     state.isTyping = true;
+
+    // Start waiting animation (thinking + foot tap)
+    bodyAnimation('waiting', true);
   }
 
   function hideTypingIndicator() {
     const typing = document.getElementById('puck-typing-indicator');
     if (typing) typing.remove();
     state.isTyping = false;
+
+    // Stop waiting animation
+    stopBodyAnimation('waiting');
   }
 
   function scrollChatToBottom() {
@@ -1390,9 +1669,8 @@
         setTimeout(() => CHAOS_EFFECTS.MATRIX(), 1000);
       }
     },
-    // Sprite animations - now with many more options
+    // Sprite animations (whole sprite moves)
     animate: (type) => spriteAnimation(type || 'bounce'),
-    // All available animations
     animations: {
       fidget: () => spriteAnimation('fidget'),
       sway: () => spriteAnimation('sway'),
@@ -1410,6 +1688,29 @@
       wiggle: () => spriteAnimation('wiggle'),
       glitch: () => spriteAnimation('glitch'),
       phase: () => spriteAnimation('phase'),
+    },
+    // Body part animations (articulated movement)
+    body: {
+      wave: () => bodyAnimation('wave'),
+      blink: () => bodyAnimation('blink'),
+      think: () => bodyAnimation('think'),
+      shrug: () => bodyAnimation('shrug'),
+      look: () => bodyAnimation('look'),
+      tap: () => bodyAnimation('tap'),
+      jingle: () => bodyAnimation('jingle'),
+      excited: () => bodyAnimation('excited'),
+      suspicious: () => bodyAnimation('suspicious'),
+      surprised: () => bodyAnimation('surprised'),
+      annoyed: () => bodyAnimation('annoyed'),
+      point: () => bodyAnimation('point'),
+      dismiss: () => bodyAnimation('dismiss'),
+      creep: () => bodyAnimation('creep'),
+      recoil: () => bodyAnimation('recoil'),
+      // Looping animations
+      breathe: () => bodyAnimation('breathe', true),
+      waiting: () => bodyAnimation('waiting', true),
+      // Stop looping
+      stop: (name) => stopBodyAnimation(name),
     },
   };
 

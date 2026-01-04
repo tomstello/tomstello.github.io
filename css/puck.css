@@ -489,7 +489,355 @@
 }
 
 /* ==========================================================================
-   Sprite Animations
+   SVG Body Part Animations - Articulated sprite movement
+   ========================================================================== */
+
+/* Transform origins for body parts */
+#puck-left-arm { transform-origin: 10px 28px; transform-box: fill-box; }
+#puck-right-arm { transform-origin: 32px 28px; transform-box: fill-box; }
+#puck-left-leg { transform-origin: 16px 40px; transform-box: fill-box; }
+#puck-right-leg { transform-origin: 24px 40px; transform-box: fill-box; }
+#puck-left-hat-bell { transform-origin: 8px 8px; transform-box: fill-box; }
+#puck-right-hat-bell { transform-origin: 34px 8px; transform-box: fill-box; }
+#puck-head { transform-origin: 20px 24px; transform-box: fill-box; }
+#puck-body { transform-origin: 20px 36px; transform-box: fill-box; }
+#puck-eyes { transform-origin: center; transform-box: fill-box; }
+#puck-left-eye { transform-origin: center; transform-box: fill-box; }
+#puck-right-eye { transform-origin: center; transform-box: fill-box; }
+
+/* --- WAVE: Right arm raises and waves --- */
+@keyframes puck-body-wave {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-60deg) translateY(-4px); }
+  40% { transform: rotate(-50deg) translateY(-4px); }
+  60% { transform: rotate(-65deg) translateY(-4px); }
+  80% { transform: rotate(-55deg) translateY(-4px); }
+}
+
+.puck-anim-wave #puck-right-arm {
+  animation: puck-body-wave 1s ease-in-out;
+}
+
+/* --- BLINK: Eyes close briefly --- */
+@keyframes puck-body-blink {
+  0%, 40%, 100% { transform: scaleY(1); }
+  45%, 55% { transform: scaleY(0.1); }
+}
+
+.puck-anim-blink #puck-eyes {
+  animation: puck-body-blink 0.3s ease-in-out;
+}
+
+/* --- THINK: Head tilts, hand goes to chin --- */
+@keyframes puck-body-think-head {
+  0%, 100% { transform: rotate(0deg); }
+  30%, 70% { transform: rotate(8deg) translateY(-1px); }
+}
+
+@keyframes puck-body-think-arm {
+  0%, 100% { transform: rotate(0deg) translate(0, 0); }
+  30%, 70% { transform: rotate(45deg) translate(8px, -12px); }
+}
+
+.puck-anim-think #puck-head {
+  animation: puck-body-think-head 2s ease-in-out;
+}
+
+.puck-anim-think #puck-right-arm {
+  animation: puck-body-think-arm 2s ease-in-out;
+}
+
+/* --- SHRUG: Both arms raise --- */
+@keyframes puck-body-shrug-left {
+  0%, 100% { transform: rotate(0deg); }
+  30%, 70% { transform: rotate(-30deg) translateY(-3px); }
+}
+
+@keyframes puck-body-shrug-right {
+  0%, 100% { transform: rotate(0deg); }
+  30%, 70% { transform: rotate(30deg) translateY(-3px); }
+}
+
+@keyframes puck-body-shrug-head {
+  0%, 100% { transform: translateY(0); }
+  30%, 70% { transform: translateY(2px); }
+}
+
+.puck-anim-shrug #puck-left-arm {
+  animation: puck-body-shrug-left 0.8s ease-in-out;
+}
+
+.puck-anim-shrug #puck-right-arm {
+  animation: puck-body-shrug-right 0.8s ease-in-out;
+}
+
+.puck-anim-shrug #puck-head {
+  animation: puck-body-shrug-head 0.8s ease-in-out;
+}
+
+/* --- LOOK AROUND: Eyes shift left and right --- */
+@keyframes puck-body-look {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+.puck-anim-look #puck-eyes {
+  animation: puck-body-look 1.5s ease-in-out;
+}
+
+/* --- TAP FOOT: One leg taps --- */
+@keyframes puck-body-tap {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-8deg); }
+}
+
+.puck-anim-tap #puck-left-leg {
+  animation: puck-body-tap 0.3s ease-in-out 3;
+}
+
+/* --- HAT JINGLE: Hat bells wobble --- */
+@keyframes puck-body-jingle-left {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
+  75% { transform: rotate(10deg); }
+}
+
+@keyframes puck-body-jingle-right {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(15deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+.puck-anim-jingle #puck-left-hat-bell {
+  animation: puck-body-jingle-left 0.4s ease-in-out 2;
+}
+
+.puck-anim-jingle #puck-right-hat-bell {
+  animation: puck-body-jingle-right 0.4s ease-in-out 2;
+}
+
+/* --- EXCITED: Everything bounces with energy --- */
+@keyframes puck-body-excited-arms {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-20deg) translateY(-2px); }
+  75% { transform: rotate(20deg) translateY(-2px); }
+}
+
+@keyframes puck-body-excited-body {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-3px) scale(1.02); }
+}
+
+.puck-anim-excited #puck-left-arm {
+  animation: puck-body-excited-arms 0.3s ease-in-out 3;
+}
+
+.puck-anim-excited #puck-right-arm {
+  animation: puck-body-excited-arms 0.3s ease-in-out 3 0.15s;
+}
+
+.puck-anim-excited #puck-body {
+  animation: puck-body-excited-body 0.3s ease-in-out 3;
+}
+
+.puck-anim-excited #puck-left-hat-bell {
+  animation: puck-body-jingle-left 0.3s ease-in-out 3;
+}
+
+.puck-anim-excited #puck-right-hat-bell {
+  animation: puck-body-jingle-right 0.3s ease-in-out 3;
+}
+
+/* --- SUSPICIOUS: Eyes narrow, body leans back --- */
+@keyframes puck-body-suspicious-eyes {
+  0%, 100% { transform: scaleY(1); }
+  30%, 70% { transform: scaleY(0.6); }
+}
+
+@keyframes puck-body-suspicious-lean {
+  0%, 100% { transform: rotate(0deg) translateX(0); }
+  30%, 70% { transform: rotate(-5deg) translateX(-2px); }
+}
+
+.puck-anim-suspicious #puck-eyes {
+  animation: puck-body-suspicious-eyes 1.5s ease-in-out;
+}
+
+.puck-anim-suspicious #puck-body {
+  animation: puck-body-suspicious-lean 1.5s ease-in-out;
+}
+
+.puck-anim-suspicious #puck-head {
+  animation: puck-body-suspicious-lean 1.5s ease-in-out;
+}
+
+/* --- SURPRISED: Eyes widen, body jerks back --- */
+@keyframes puck-body-surprised-eyes {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.3) translateY(-1px); }
+  100% { transform: scale(1); }
+}
+
+@keyframes puck-body-surprised-body {
+  0% { transform: translateY(0); }
+  20% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes puck-body-surprised-arms {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(-25deg) translateY(-3px); }
+  100% { transform: rotate(0deg); }
+}
+
+.puck-anim-surprised #puck-eyes {
+  animation: puck-body-surprised-eyes 0.6s ease-out;
+}
+
+.puck-anim-surprised #puck-body {
+  animation: puck-body-surprised-body 0.6s ease-out;
+}
+
+.puck-anim-surprised #puck-left-arm {
+  animation: puck-body-surprised-arms 0.6s ease-out;
+}
+
+.puck-anim-surprised #puck-right-arm {
+  animation: puck-body-surprised-arms 0.6s ease-out;
+}
+
+/* --- ANNOYED: Arms cross (fold), head tilts, eyes narrow --- */
+@keyframes puck-body-annoyed-left-arm {
+  0%, 100% { transform: rotate(0deg) translate(0, 0); }
+  30%, 70% { transform: rotate(40deg) translate(6px, -2px); }
+}
+
+@keyframes puck-body-annoyed-right-arm {
+  0%, 100% { transform: rotate(0deg) translate(0, 0); }
+  30%, 70% { transform: rotate(-40deg) translate(-6px, -2px); }
+}
+
+@keyframes puck-body-annoyed-head {
+  0%, 100% { transform: rotate(0deg); }
+  30%, 70% { transform: rotate(-6deg); }
+}
+
+.puck-anim-annoyed #puck-left-arm {
+  animation: puck-body-annoyed-left-arm 1.5s ease-in-out;
+}
+
+.puck-anim-annoyed #puck-right-arm {
+  animation: puck-body-annoyed-right-arm 1.5s ease-in-out;
+}
+
+.puck-anim-annoyed #puck-head {
+  animation: puck-body-annoyed-head 1.5s ease-in-out;
+}
+
+.puck-anim-annoyed #puck-eyes {
+  animation: puck-body-suspicious-eyes 1.5s ease-in-out;
+}
+
+/* --- IDLE BREATHE: Subtle body movement --- */
+@keyframes puck-body-breathe {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  50% { transform: translateY(-1px) scaleY(1.01); }
+}
+
+.puck-anim-breathe #puck-body {
+  animation: puck-body-breathe 3s ease-in-out infinite;
+}
+
+/* --- TYPING/WAITING: Foot taps while thinking --- */
+.puck-anim-waiting #puck-left-leg {
+  animation: puck-body-tap 0.4s ease-in-out infinite;
+}
+
+.puck-anim-waiting #puck-head {
+  animation: puck-body-think-head 3s ease-in-out infinite;
+}
+
+/* --- POINT: Arm extends outward --- */
+@keyframes puck-body-point {
+  0%, 100% { transform: rotate(0deg) translate(0, 0); }
+  30%, 70% { transform: rotate(-75deg) translate(-4px, -8px); }
+}
+
+.puck-anim-point #puck-right-arm {
+  animation: puck-body-point 1.2s ease-in-out;
+}
+
+/* --- DISMISS: Wave off, look away --- */
+@keyframes puck-body-dismiss-arm {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(-45deg) translateY(-3px); }
+  40% { transform: rotate(-30deg) translateY(-2px); }
+  60% { transform: rotate(-50deg) translateY(-3px); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes puck-body-dismiss-head {
+  0%, 100% { transform: rotate(0deg) translateX(0); }
+  40%, 60% { transform: rotate(10deg) translateX(2px); }
+}
+
+.puck-anim-dismiss #puck-left-arm {
+  animation: puck-body-dismiss-arm 0.8s ease-in-out;
+}
+
+.puck-anim-dismiss #puck-head {
+  animation: puck-body-dismiss-head 0.8s ease-in-out;
+}
+
+/* --- CREEP: Body leans forward conspiratorially --- */
+@keyframes puck-body-creep-body {
+  0%, 100% { transform: rotate(0deg) translateX(0); }
+  50% { transform: rotate(8deg) translateX(3px); }
+}
+
+@keyframes puck-body-creep-eyes {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(2px); }
+}
+
+.puck-anim-creep #puck-body {
+  animation: puck-body-creep-body 2s ease-in-out;
+}
+
+.puck-anim-creep #puck-head {
+  animation: puck-body-creep-body 2s ease-in-out;
+}
+
+.puck-anim-creep #puck-eyes {
+  animation: puck-body-creep-eyes 2s ease-in-out;
+}
+
+/* --- RECOIL: Full body jerks back --- */
+@keyframes puck-body-recoil {
+  0% { transform: translateX(0) rotate(0deg); }
+  30% { transform: translateX(-5px) rotate(-8deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+
+.puck-anim-recoil #puck-body {
+  animation: puck-body-recoil 0.5s ease-out;
+}
+
+.puck-anim-recoil #puck-head {
+  animation: puck-body-recoil 0.5s ease-out;
+}
+
+.puck-anim-recoil #puck-left-arm {
+  animation: puck-body-surprised-arms 0.5s ease-out;
+}
+
+.puck-anim-recoil #puck-right-arm {
+  animation: puck-body-surprised-arms 0.5s ease-out;
+}
+
+/* ==========================================================================
+   Sprite Animations (whole sprite)
    ========================================================================== */
 
 /* Excited bounce */
