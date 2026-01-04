@@ -1203,6 +1203,9 @@
     }
     state.lastMessageTime = now;
 
+    // Capture history BEFORE adding new message (to avoid sending it twice)
+    const historyToSend = state.messages.slice(-CONFIG.maxContextMessages);
+
     // Add user message
     addMessage('user', text);
     elements.input.value = '';
@@ -1219,7 +1222,7 @@
         },
         body: JSON.stringify({
           message: text,
-          history: state.messages.slice(-CONFIG.maxContextMessages),
+          history: historyToSend,
           page: state.currentPage,
         }),
       });
