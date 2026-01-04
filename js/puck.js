@@ -1279,6 +1279,7 @@
     MATRIX: () => triggerMatrixRain(),
     DRIFT: () => triggerBodyEffect('puck-chaos-drift', 3000),
     RAINBOW: () => triggerBodyEffect('puck-chaos-rainbow', 2000),
+    STATIC: () => triggerStaticEffect(),
   };
 
   function triggerBodyEffect(className, duration) {
@@ -1323,6 +1324,16 @@
     }
 
     setTimeout(() => container.remove(), 3500);
+  }
+
+  function triggerStaticEffect() {
+    const container = document.createElement('div');
+    container.className = 'puck-static-overlay';
+    document.body.appendChild(container);
+    spriteAnimation('glitch');
+
+    // Remove after duration
+    setTimeout(() => container.remove(), 2000);
   }
 
   function spriteAnimation(type, duration) {
@@ -1661,6 +1672,7 @@
       matrix: () => CHAOS_EFFECTS.MATRIX(),
       drift: () => CHAOS_EFFECTS.DRIFT(),
       rainbow: () => CHAOS_EFFECTS.RAINBOW(),
+      static: () => CHAOS_EFFECTS.STATIC(),
       all: () => {
         // Maximum chaos
         CHAOS_EFFECTS.SHAKE();
