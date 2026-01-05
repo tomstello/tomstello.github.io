@@ -269,7 +269,7 @@ The visitor is currently on the "${page}" page of Thomas's website.`;
         headers: {
           'Authorization': `Bearer ${env.OPENROUTER_API_KEY}`,
           'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://thomascostello.com',
+          'HTTP-Referer': 'https://thcostello.com',
           'X-Title': 'Puck Assistant',
         },
         body: JSON.stringify({
@@ -346,10 +346,10 @@ function getCORSHeaders(request, env) {
     allowOrigin = '*';
   } else if (isProduction && (origin === 'null' || origin === '')) {
     // In production, reject null/empty origin
-    allowOrigin = 'https://thomascostello.com';
+    allowOrigin = 'https://thcostello.com';
   } else {
     // Default to first allowed origin
-    allowOrigin = allowedOrigins[0] || 'https://thomascostello.com';
+    allowOrigin = allowedOrigins[0] || 'https://thcostello.com';
   }
 
   return {
