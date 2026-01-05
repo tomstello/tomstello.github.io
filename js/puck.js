@@ -21,11 +21,11 @@
     // API endpoint - update this after deploying the Cloudflare Worker
     apiEndpoint: 'https://puck-api.t-h-costello1.workers.dev/chat',
 
-    // Quip timing (milliseconds)
-    minQuipInterval: 35000,  // 35 seconds minimum between quips
-    maxQuipInterval: 75000,  // 75 seconds maximum
-    quipDismissDelay: 10000, // Auto-dismiss after 10 seconds
-    initialQuipDelay: 20000, // Wait 20 seconds before first quip
+    // Quip timing (milliseconds) - less intrusive, longer gaps
+    minQuipInterval: 90000,  // 90 seconds minimum between quips
+    maxQuipInterval: 180000, // 3 minutes maximum
+    quipDismissDelay: 8000,  // Auto-dismiss after 8 seconds
+    initialQuipDelay: 45000, // Wait 45 seconds before first quip
 
     // Storage keys
     storageKey: 'puck_conversation',

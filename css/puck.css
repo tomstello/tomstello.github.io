@@ -46,6 +46,13 @@
   transition: transform 0.15s ease;
   animation: puck-bob 3s ease-in-out infinite;
   filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.25));
+  /* Ensure content is centered */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .puck-sprite:hover {
@@ -56,7 +63,8 @@
   transform: scale(0.95);
 }
 
-.puck-sprite img {
+.puck-sprite img,
+.puck-sprite svg {
   width: 100%;
   height: 100%;
   image-rendering: pixelated;
@@ -64,6 +72,7 @@
   /* Center the sprite content */
   object-fit: contain;
   object-position: center;
+  display: block;
 }
 
 /* ==========================================================================
@@ -1335,9 +1344,14 @@
   .puck-sprite {
     width: 64px;
     height: 64px;
-    /* Larger touch target */
-    padding: 8px;
-    margin: -8px;
+    /* Larger touch target without affecting visual */
+    min-width: 64px;
+    min-height: 64px;
+  }
+
+  .puck-sprite svg {
+    width: 64px;
+    height: 64px;
   }
 
   /* Disable mouse-following on touch devices */
@@ -1354,6 +1368,13 @@
   }
 
   .puck-sprite {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
+  }
+
+  .puck-sprite svg {
     width: 56px;
     height: 56px;
   }
@@ -1435,6 +1456,13 @@
   }
 
   .puck-sprite {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .puck-sprite svg {
     width: 48px;
     height: 48px;
   }
