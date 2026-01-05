@@ -7,6 +7,8 @@
 # Large files not needed for website
 *.pdf
 *.PDF
+# But allow the CV
+!assets/docs/thomas-costello-cv.pdf
 *.docx
 *.DOCX
 *.heic

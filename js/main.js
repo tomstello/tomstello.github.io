@@ -83,11 +83,15 @@
     });
   }
 
-  // Mobile menu toggle
+  // Mobile menu toggle with accessibility
   if (navToggle) {
+    navToggle.setAttribute('aria-controls', 'nav-links');
+    navToggle.setAttribute('aria-expanded', 'false');
+
     navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('nav__links--open');
+      const isOpen = navLinks.classList.toggle('nav__links--open');
       navToggle.classList.toggle('nav__toggle--active');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   }
 
@@ -95,7 +99,10 @@
   document.querySelectorAll('.nav__link').forEach(link => {
     link.addEventListener('click', () => {
       if (navLinks) navLinks.classList.remove('nav__links--open');
-      if (navToggle) navToggle.classList.remove('nav__toggle--active');
+      if (navToggle) {
+        navToggle.classList.remove('nav__toggle--active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
     });
   });
 
