@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Thomas H. Costello - Psychologist and computational social scientist studying AI, belief change, and polarization at Carnegie Mellon University.">
+  <meta name="description" content="Thomas H. Costello — psychologist and computational social scientist at Carnegie Mellon University. Research on viewpoints, belief change, and AI persuasion.">
   <meta name="author" content="Thomas H. Costello">
 
   <!-- Canonical URL -->
@@ -11,7 +11,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Thomas H. Costello">
-  <meta property="og:description" content="Psychologist and computational social scientist at Carnegie Mellon University.">
+  <meta property="og:description" content="Psychologist and computational social scientist at Carnegie Mellon University. Research on viewpoints, belief change, and AI persuasion.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thcostello.com/">
   <meta property="og:image" content="https://thcostello.com/science-cover.jpg">
@@ -26,8 +26,23 @@
 
   <title>Thomas H. Costello</title>
 
-  <!-- Favicon (placeholder) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❧</text></svg>">
+
+  <!-- Apply stored theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/main.css">
@@ -36,307 +51,227 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- Navigation -->
-  <nav class="nav" id="nav">
+  <!-- Masthead -->
+  <header class="masthead">
     <div class="container">
-      <div class="nav__inner">
-        <a href="index.html" class="nav__logo">T. H. Costello</a>
-
-        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-        <ul class="nav__links" id="nav-links">
-          <li><a href="about.html" class="nav__link">about</a></li>
-          <li><a href="research.html" class="nav__link">research</a></li>
-          <li><a href="lab.html" class="nav__link">viewpoints lab</a></li>
-          <li><a href="media.html" class="nav__link">media</a></li>
-          <li><a href="likes.html" class="nav__link">likes</a></li>
-          <li><a href="future.html" class="nav__link">future</a></li>
-          <li><a href="contact.html" class="nav__link">contact</a></li>
-        </ul>
+      <div class="masthead__rules"></div>
+      <div class="masthead__row">
+        <a href="index.html" class="masthead__wordmark">T.&thinsp;H.&thinsp;Costello</a>
+        <div class="masthead__right">
+          <nav class="masthead__nav" aria-label="Main navigation">
+            <ul>
+              <li><a href="about.html" class="masthead__link">About</a></li>
+              <li><a href="research.html" class="masthead__link">Research</a></li>
+              <li><a href="lab.html" class="masthead__link">Viewpoints&nbsp;Lab</a></li>
+              <li><a href="media.html" class="masthead__link">Media</a></li>
+              <li><a href="likes.html" class="masthead__link">Likes</a></li>
+              <li><a href="future.html" class="masthead__link">Future</a></li>
+              <li><a href="contact.html" class="masthead__link">Contact</a></li>
+            </ul>
+          </nav>
+          <button class="theme-toggle" aria-label="Toggle dark mode" title="Paper / ink">◐</button>
+        </div>
       </div>
     </div>
-  </nav>
+  </header>
 
-  <!-- Hero Section -->
   <main id="main-content">
-  <section class="hero">
-    <!-- Decorative floating shapes -->
-    <div class="hero__shapes">
-      <div class="hero__shape hero__shape--1"></div>
-      <div class="hero__shape hero__shape--2"></div>
-      <div class="hero__shape hero__shape--3"></div>
-    </div>
 
-    <div class="container">
-      <div class="hero__content">
-        <p class="hero__greeting">Hello, I'm</p>
-        <h1 class="hero__title">Thomas Costello</h1>
-        <p class="hero__subtitle">
-          I study why people believe what they believe—and whether minds can change.
-          At Carnegie Mellon, I build AI systems that engage with misinformation through
-          dialogue rather than deletion.
+    <!-- Folio: title page -->
+    <section class="folio">
+      <div class="container">
+        <p class="folio__slug settle" style="--i: 0;">
+          <span>Thomas H. Costello — Psychologist</span>
+          <span>Carnegie Mellon University · Pittsburgh</span>
         </p>
-        <div class="hero__cta">
-          <a href="research.html" class="btn btn--primary">Explore my research</a>
-          <a href="lab.html" class="btn btn--secondary">Viewpoints Lab</a>
+        <h1 class="folio__title settle" style="--i: 1;">
+          Why people believe what they believe—<em>and whether minds can&nbsp;change.</em>
+        </h1>
+        <p class="folio__lede settle" style="--i: 2;">
+          I study the cognitive structures hidden beneath our stated issue positions —
+          <strong>viewpoints</strong> — what they look like, what makes them change, and
+          what follows from the fact that generative AI has begun to reshape the
+          informational network they are built from.
+        </p>
+        <div class="folio__actions settle" style="--i: 3;">
+          <a href="research.html" class="cta">Research</a>
+          <a href="lab.html" class="cta">Viewpoints Lab</a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Decorative element: perspective/viewpoint motif -->
-    <div class="hero__decoration" aria-hidden="true">
-      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width="0.5"/>
-        <circle cx="100" cy="100" r="60" stroke="currentColor" stroke-width="0.5"/>
-        <circle cx="100" cy="100" r="40" stroke="currentColor" stroke-width="0.5"/>
-        <circle cx="100" cy="100" r="20" stroke="currentColor" stroke-width="0.5"/>
-        <line x1="20" y1="100" x2="180" y2="100" stroke="currentColor" stroke-width="0.5"/>
-        <line x1="100" y1="20" x2="100" y2="180" stroke="currentColor" stroke-width="0.5"/>
-        <line x1="35" y1="35" x2="165" y2="165" stroke="currentColor" stroke-width="0.5"/>
-        <line x1="165" y1="35" x2="35" y2="165" stroke="currentColor" stroke-width="0.5"/>
-      </svg>
-    </div>
-  </section>
+    <!-- § I — Selected work -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-animate="fade-up">
+          <span class="section-head__no">§ I.</span>
+          <span class="section-head__title">Selected work</span>
+        </div>
 
-  <!-- Featured Work Section -->
-  <section class="section featured">
-    <div class="container">
-      <header class="featured__header" data-animate="fade-up">
-        <p class="featured__label">Featured Work</p>
-        <h2 class="featured__title">Recent highlights</h2>
-      </header>
-
-      <div class="featured__grid" data-stagger>
-        <!-- Science Paper -->
-        <article class="card" data-animate="fade-up">
-          <img src="science-cover.jpg" alt="Science Magazine Cover - Artificial Arguments" style="width: 100%; border-radius: var(--radius-md); margin-bottom: var(--space-4);">
-          <span class="card__tag">Science · Cover Story</span>
-          <h3 class="card__title">Durably reducing conspiracy beliefs through dialogues with AI</h3>
-          <p class="card__description">
-            In conversations with over 2,000 conspiracy believers, AI-driven dialogues reduced belief
-            by ~20% on average—effects that persisted for months. One in four participants completely
-            reversed their stance.
+        <article class="entry" data-animate="fade-up">
+          <span class="entry__no">i.</span>
+          <p class="entry__venue">Science · Cover story · Vol. 385</p>
+          <h2 class="entry__title">
+            <a href="research.html#science-2024">Durably reducing conspiracy beliefs through dialogues with AI</a>
+          </h2>
+          <p class="entry__desc">
+            Evidence-based dialogues with an AI model reduced participants&rsquo; conspiracy
+            beliefs by roughly 20 percent on average; the effects persisted for at least two
+            months and generalized across a wide range of conspiracies, including strongly
+            held and identity-relevant beliefs.
           </p>
-          <a href="research.html#science-2024" class="btn btn--ghost">Read more</a>
+          <a href="research.html#science-2024" class="cta">Read more</a>
         </article>
 
-        <!-- Nature Medicine -->
-        <article class="card" data-animate="fade-up">
-          <span class="card__tag">Nature Medicine</span>
-          <h3 class="card__title">Large language models as disrupters of misinformation</h3>
-          <p class="card__description">
-            A perspective on how LLMs might reshape the information ecosystem—for better and worse—and
-            what safeguards we need as persuasive AI systems become ubiquitous.
+        <article class="entry" data-animate="fade-up">
+          <span class="entry__no">ii.</span>
+          <p class="entry__venue">Nature Medicine · 2025</p>
+          <h2 class="entry__title">
+            <a href="research.html">Large language models as disrupters of misinformation</a>
+          </h2>
+          <p class="entry__desc">
+            Many warn, with reason, that AI will amplify misinformation or atrophy our
+            critical faculties. In this essay I make the case for cautious optimism about
+            what these systems could do for the information ecosystem.
           </p>
-          <a href="research.html" class="btn btn--ghost">Read more</a>
+          <a href="research.html" class="cta">Read more</a>
         </article>
 
-        <!-- DebunkBot -->
-        <article class="card" data-animate="fade-up">
-          <img src="debunkbot-screenshot.png" alt="DebunkBot interface" style="width: 100%; border-radius: var(--radius-md); margin-bottom: var(--space-4);">
-          <span class="card__tag">Public Tool</span>
-          <h3 class="card__title">DebunkBot.com</h3>
-          <p class="card__description">
-            A free tool that lets anyone have a conversation with an AI trained to thoughtfully
-            engage with conspiracy theories. Over 150,000 users and counting.
+        <article class="entry" data-animate="fade-up">
+          <span class="entry__no">iii.</span>
+          <p class="entry__venue">Public tool</p>
+          <h2 class="entry__title">
+            <a href="https://debunkbot.com" target="_blank" rel="noopener noreferrer">DebunkBot.com</a>
+          </h2>
+          <p class="entry__desc">
+            The public version of the chatbot from the <em>Science</em> study: anyone can
+            describe a conspiracy theory they believe and talk it through with an AI that
+            responds with evidence. It has now held more than 150,000 conversations with
+            members of the public.
           </p>
-          <a href="https://debunkbot.com" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">Try it</a>
+          <a href="https://debunkbot.com" target="_blank" rel="noopener noreferrer" class="cta">Try it</a>
         </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Epigraph / Interlude -->
-  <section class="section">
-    <div class="container container--narrow">
-      <blockquote class="epigraph" data-animate="fade-up" data-random-quote>
-        <p>"The test of a first-rate intelligence is the ability to hold two opposed ideas
-        in the mind at the same time, and still retain the ability to function."</p>
-        <cite>F. Scott Fitzgerald</cite>
-      </blockquote>
-    </div>
-  </section>
-
-  <!-- About Preview -->
-  <section class="section">
-    <div class="container">
-      <div class="about-preview">
-        <div class="about-preview__content" data-animate="fade-up">
-          <p class="about-preview__label">About</p>
-          <h2 class="about-preview__title">A psychologist interested in how beliefs form, persist, and—occasionally—change</h2>
-          <p class="about-preview__text">
-            I'm an Assistant Professor at Carnegie Mellon University, where I direct the
-            <strong>Viewpoints Lab</strong>. My work sits at the intersection of psychology,
-            political science, and artificial intelligence.
-          </p>
-          <p class="about-preview__text">
-            Before CMU, I was a postdoc at MIT Sloan with David Rand and Gordon Pennycook,
-            and completed my PhD at Emory under the mentorship of Scott Lilienfeld.
-          </p>
-          <a href="about.html" class="btn btn--ghost">More about me</a>
+    <!-- § II — About -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-animate="fade-up">
+          <span class="section-head__no">§ II.</span>
+          <span class="section-head__title">About</span>
         </div>
-        <div class="about-preview__image" data-animate="fade-up">
-          <img src="tom-portrait.jpg" alt="Thomas Costello" style="width: 100%; border-radius: var(--radius-lg);">
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Research Areas Preview -->
-  <section class="section" style="background-color: var(--color-bg-alt);">
-    <div class="container">
-      <header class="featured__header" data-animate="fade-up">
-        <p class="featured__label">Research Themes</p>
-        <h2 class="featured__title">What I study</h2>
-      </header>
-
-      <div class="research-areas" data-stagger>
-        <div class="research-area" data-animate="fade-up">
-          <div class="research-area__icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="20" cy="20" r="12"/>
-              <circle cx="20" cy="20" r="6"/>
-              <line x1="20" y1="4" x2="20" y2="8"/>
-              <line x1="20" y1="32" x2="20" y2="36"/>
-              <line x1="4" y1="20" x2="8" y2="20"/>
-              <line x1="32" y1="20" x2="36" y2="20"/>
-            </svg>
+        <div class="duet duet--offset">
+          <div class="article__body" data-animate="fade-up">
+            <p class="drop-cap">
+              I am an Assistant Professor in the Department of Social and Decision Sciences
+              at Carnegie Mellon University, where I direct the <strong>Viewpoints Lab</strong>,
+              with affiliations in the Human-Computer Interaction Institute, the Institute for
+              Complex Social Dynamics, and the Center for Collaboration Science. My research
+              uses tools from political psychology, decision science, human-computer
+              interaction, and AI to understand how people form, structure, and change social
+              and political beliefs.
+            </p>
+            <p>
+              I completed my PhD at Emory University under Scott Lilienfeld and Arber Tasimi,
+              then a postdoctoral fellowship at MIT Sloan with David Rand and Gordon Pennycook,
+              and spent a year on the faculty at American University before moving to Carnegie
+              Mellon.
+            </p>
+            <a href="about.html" class="cta">More about me</a>
           </div>
-          <h3 class="research-area__title">Belief Change</h3>
-          <p class="research-area__description">
-            What makes people update their beliefs? I study the cognitive and social
-            mechanisms behind attitude change, conspiracy beliefs, and motivated reasoning.
-          </p>
+          <figure class="figure portrait" data-animate="fade-up" style="margin-top: 0;">
+            <img src="assets/images/web/tom-2026-stairs.jpg" alt="Thomas Costello, Carnegie Mellon University, 2026" width="900" height="1350">
+            <figcaption>Pittsburgh, January 2026.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- § III — What I study -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-animate="fade-up">
+          <span class="section-head__no">§ III.</span>
+          <span class="section-head__title">What I study</span>
         </div>
 
-        <div class="research-area" data-animate="fade-up">
-          <div class="research-area__icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="8" y="10" width="24" height="20" rx="2"/>
-              <line x1="12" y1="16" x2="28" y2="16"/>
-              <line x1="12" y1="20" x2="24" y2="20"/>
-              <line x1="12" y1="24" x2="20" y2="24"/>
-            </svg>
+        <div class="ledger" data-stagger>
+          <div class="ledger__row">
+            <span class="ledger__key">01</span>
+            <div>
+              <h2 class="ledger__title">Political psychology and measurement</h2>
+              <p class="ledger__detail">
+                Familiar psychological categories — authoritarianism, cognitive and
+                ideological rigidity, extremism — are often too coarse, polysemic, and
+                multiply determined to explain political cognition. Two people can receive
+                the same score on an authoritarianism scale, a conspiracy scale, or an
+                attitude item for almost opposite reasons, and standard instruments hide
+                exactly the heterogeneity that determines when and why minds change.
+              </p>
+            </div>
           </div>
-          <h3 class="research-area__title">AI & Persuasion</h3>
-          <p class="research-area__description">
-            Can AI systems engage productively with misinformation? I develop and test
-            dialogue-based interventions using large language models.
-          </p>
-        </div>
-
-        <div class="research-area" data-animate="fade-up">
-          <div class="research-area__icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="14" cy="20" r="8"/>
-              <circle cx="26" cy="20" r="8"/>
-              <line x1="20" y1="12" x2="20" y2="28"/>
-            </svg>
+          <div class="ledger__row">
+            <span class="ledger__key">02</span>
+            <div>
+              <h2 class="ledger__title">AI as an instrument for belief science</h2>
+              <p class="ledger__detail">
+                Large language models can serve as scalable semi-structured interviewers and
+                experimental confederates: eliciting a belief in a person&rsquo;s own words,
+                then addressing their reasons with arguments targeted at the epistemic
+                assumptions and evidence behind that specific claim — what I term
+                <em>epistemic personalization</em>. In mechanism experiments, the evidence
+                does the work; persuasion collapses when the model must argue without facts.
+              </p>
+            </div>
           </div>
-          <h3 class="research-area__title">Political Psychology</h3>
-          <p class="research-area__description">
-            The psychology of ideology, authoritarianism, and polarization—studied
-            with an eye toward symmetry across the political spectrum.
-          </p>
+          <div class="ledger__row">
+            <span class="ledger__key">03</span>
+            <div>
+              <h2 class="ledger__title">AI in the information ecosystem</h2>
+              <p class="ledger__detail">
+                Persuasive capacity is fundamentally dual-use: in our experiments, models
+                instilled false beliefs about as easily as they dispelled them. Meanwhile,
+                chatbots have become a daily thinking infrastructure for hundreds of millions
+                of people, where the more consequential scenario may be ambient exposure —
+                answers whose defaults subtly push users toward particular conclusions over
+                weeks or months.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8" data-animate="fade-up">
+          <a href="research.html" class="cta">View all publications</a>
         </div>
       </div>
-
-      <div class="text-center mt-8" data-animate="fade-up">
-        <a href="research.html" class="btn btn--primary">View all publications</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Awards / Recognition -->
-  <section class="section">
-    <div class="container container--narrow">
-      <header class="featured__header" data-animate="fade-up">
-        <p class="featured__label">Recognition</p>
-        <h2 class="featured__title">Recent honors</h2>
-      </header>
-
-      <div data-animate="fade-up">
-        <figure style="margin: 0 0 var(--space-8) 0;">
-          <img src="aaas-ceremony.jpg" alt="Thomas Costello receiving the AAAS Newcomb Cleveland Prize" style="width: 100%; border-radius: var(--radius-md);">
-          <figcaption style="font-size: var(--text-sm); color: var(--color-muted); margin-top: var(--space-2); font-style: italic; text-align: center;">Receiving the AAAS Newcomb Cleveland Prize, 2026.</figcaption>
-        </figure>
-
-        <div class="publication">
-          <p class="publication__year">2026</p>
-          <h4 class="publication__title">
-            AAAS Newcomb Cleveland Prize
-            <span class="publication__featured">$25,000</span>
-          </h4>
-          <p class="publication__authors">For the most outstanding paper published in <em>Science</em></p>
-        </div>
-
-        <div class="publication">
-          <p class="publication__year">2025</p>
-          <h4 class="publication__title">APS Rising Star</h4>
-          <p class="publication__authors">Association for Psychological Science</p>
-        </div>
-
-        <div class="publication">
-          <p class="publication__year">2024</p>
-          <h4 class="publication__title">Science Magazine Cover</h4>
-          <p class="publication__authors">Volume 385 — AI and Conspiracy Beliefs</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
   </main>
 
-  <!-- Footer -->
+  <!-- Footer / colophon -->
   <footer class="footer">
     <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <p class="footer__logo">Thomas H. Costello</p>
-          <p class="footer__tagline">
-            Psychologist and computational social scientist studying belief,
-            persuasion, and the promise of AI for healthier discourse.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Navigate</h4>
-          <ul class="footer__links">
-            <li><a href="about.html">About</a></li>
-            <li><a href="research.html">Research</a></li>
-            <li><a href="lab.html">Viewpoints Lab</a></li>
-            <li><a href="media.html">Media</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Research</h4>
-          <ul class="footer__links">
-            <li><a href="research.html#publications">Publications</a></li>
-            <li><a href="assets/docs/thomas-costello-cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a></li>
-            <li><a href="https://scholar.google.com/citations?user=2oxoi9oAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Connect</h4>
-          <ul class="footer__links">
-            <li><a href="mailto:thcostello1@gmail.com">Email</a></li>
-            <li><a href="https://twitter.com/tomstello_" target="_blank" rel="noopener noreferrer">Twitter/X</a></li>
-            <li><a href="https://bsky.app/profile/tomcostello.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a></li>
-            <li><a href="https://www.linkedin.com/in/tom-costello-ba41b6105/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        <p>&copy; 2026 Thomas H. Costello. All rights reserved.</p>
-        <p>Carnegie Mellon University · Pittsburgh, PA</p>
-      </div>
+      <div class="footer__rules"></div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="lab.html">Viewpoints Lab</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="likes.html">Likes</a></li>
+          <li><a href="assets/docs/thomas-costello-cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2oxoi9oAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+        </ul>
+      </nav>
+      <p class="footer__meta">
+        © 2026 Thomas H. Costello · Carnegie Mellon University, Pittsburgh, PA ·
+        <a href="mailto:thcostello1@gmail.com">Email</a> ·
+        <a href="https://twitter.com/tomstello_" target="_blank" rel="noopener noreferrer">Twitter/X</a> ·
+        <a href="https://bsky.app/profile/tomcostello.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a> ·
+        <a href="https://www.linkedin.com/in/tom-costello-ba41b6105/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
     </div>
   </footer>
 

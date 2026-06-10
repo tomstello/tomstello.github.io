@@ -3,329 +3,320 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Thomas H. Costello - Psychologist and computational social scientist at Carnegie Mellon University.">
+  <meta name="description" content="About Thomas H. Costello — psychologist at Carnegie Mellon University, where he directs the Viewpoints Lab in the Department of Social and Decision Sciences.">
+  <meta name="author" content="Thomas H. Costello">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://thcostello.com/about.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="About | Thomas H. Costello">
-  <meta property="og:description" content="About Thomas H. Costello - Psychologist and computational social scientist at Carnegie Mellon University.">
+  <meta property="og:title" content="About — Thomas H. Costello">
+  <meta property="og:description" content="Psychologist at Carnegie Mellon University, where he directs the Viewpoints Lab in the Department of Social and Decision Sciences.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thcostello.com/about.html">
-  <meta property="og:image" content="https://thcostello.com/science-cover.jpg">
+  <meta property="og:image" content="https://thcostello.com/assets/images/web/tom-2026-stairs.jpg">
   <meta property="og:site_name" content="Thomas H. Costello">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@tomstello_">
-  <meta name="twitter:title" content="About | Thomas H. Costello">
-  <meta name="twitter:description" content="About Thomas H. Costello - Psychologist and computational social scientist at Carnegie Mellon University.">
-  <meta name="twitter:image" content="https://thcostello.com/science-cover.jpg">
+  <meta name="twitter:title" content="About — Thomas H. Costello">
+  <meta name="twitter:description" content="Psychologist and computational social scientist at Carnegie Mellon University.">
+  <meta name="twitter:image" content="https://thcostello.com/assets/images/web/tom-2026-stairs.jpg">
 
-  <title>About | Thomas H. Costello</title>
+  <title>About — Thomas H. Costello</title>
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❧</text></svg>">
+
+  <!-- Apply stored theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/puck.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- Navigation -->
-  <nav class="nav" id="nav">
+  <!-- Masthead -->
+  <header class="masthead">
     <div class="container">
-      <div class="nav__inner">
-        <a href="index.html" class="nav__logo">T. H. Costello</a>
-
-        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-        <ul class="nav__links" id="nav-links">
-          <li><a href="about.html" class="nav__link nav__link--active">about</a></li>
-          <li><a href="research.html" class="nav__link">research</a></li>
-          <li><a href="lab.html" class="nav__link">viewpoints lab</a></li>
-          <li><a href="media.html" class="nav__link">media</a></li>
-          <li><a href="likes.html" class="nav__link">likes</a></li>
-          <li><a href="future.html" class="nav__link">future</a></li>
-          <li><a href="contact.html" class="nav__link">contact</a></li>
-        </ul>
+      <div class="masthead__rules"></div>
+      <div class="masthead__row">
+        <a href="index.html" class="masthead__wordmark">T.&thinsp;H.&thinsp;Costello</a>
+        <div class="masthead__right">
+          <nav class="masthead__nav" aria-label="Main navigation">
+            <ul>
+              <li><a href="about.html" class="masthead__link masthead__link--active">About</a></li>
+              <li><a href="research.html" class="masthead__link">Research</a></li>
+              <li><a href="lab.html" class="masthead__link">Viewpoints&nbsp;Lab</a></li>
+              <li><a href="media.html" class="masthead__link">Media</a></li>
+              <li><a href="likes.html" class="masthead__link">Likes</a></li>
+              <li><a href="future.html" class="masthead__link">Future</a></li>
+              <li><a href="contact.html" class="masthead__link">Contact</a></li>
+            </ul>
+          </nav>
+          <button class="theme-toggle" aria-label="Toggle dark mode" title="Paper / ink">◐</button>
+        </div>
       </div>
-    </div>
-  </nav>
-
-  <!-- Page Header -->
-  <header class="page-header">
-    <div class="container">
-      <h1 class="page-header__title" data-animate="fade-up">About</h1>
-      <p class="page-header__subtitle" data-animate="fade-up">
-        The long and short of it
-      </p>
     </div>
   </header>
 
-  <!-- Main Content -->
   <main id="main-content">
-    <!-- Bio Section -->
+
+    <!-- Page header -->
+    <header class="page-header">
+      <div class="container">
+        <h1 class="page-header__title settle" style="--i: 0;">About</h1>
+      </div>
+    </header>
+
+    <!-- § I — Background -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-head" data-animate="fade-up">
+          <span class="section-head__no">§ I.</span>
+          <span class="section-head__title">Background</span>
+        </div>
+
+        <article class="article has-rail" data-animate="fade-up">
+          <div class="article__body">
+            <p class="drop-cap">
+              I am an Assistant Professor in Carnegie Mellon&rsquo;s Department of
+              Social and Decision Sciences, with affiliations in the Human-Computer
+              Interaction Institute and the Institute for Complex Social Dynamics,
+              where I direct the <a href="lab.html">Viewpoints Lab</a>. My research
+              asks what the cognitive structures hidden beneath our stated issue
+              positions &mdash; what I collectively term &ldquo;viewpoints&rdquo; &mdash;
+              look like, what makes them change, and what follows from the fact that
+              generative AI has begun to reshape the informational network they are
+              built from.
+            </p>
+
+            <p>
+              I did my B.A. in psychology and philosophy at Binghamton University,
+              writing an honors thesis with Steven Jay Lynn on false memories,
+              hypnosis, and imagination.
+            </p>
+
+            <p class="marginnote"><span class="sc">Clinical years</span><br>
+              Emory also trained me as a clinician: three years in the Emory
+              Psychological Clinic (2016–19) and a year in adult outpatient care at
+              Atlanta&rsquo;s Grady Hospital (2018–19).
+            </p>
+
+            <p>
+              From Binghamton I went to Emory University for my Ph.D. in psychology
+              (M.A. 2018, Ph.D. 2022), advised by
+              <a href="https://en.wikipedia.org/wiki/Scott_Lilienfeld" target="_blank" rel="noopener noreferrer">Scott O. Lilienfeld</a>
+              from 2016 to 2020 and by Arber Tasimi from 2021 to 2022. Scott passed
+              away in 2020, and his influence on my thinking about psychology,
+              skepticism, and intellectual honesty remains profound.
+            </p>
+
+            <p>
+              After Emory came a postdoctoral fellowship at MIT Sloan (2022–24) with
+              <a href="https://davidrand-cooperation.com/" target="_blank" rel="noopener noreferrer">David Rand</a>
+              and
+              <a href="https://gordonpennycook.com/" target="_blank" rel="noopener noreferrer">Gordon Pennycook</a>,
+              with whom I began using large language models as instruments for
+              studying belief change; the first paper from that collaboration ran as
+              the cover of <em>Science</em> in 2024, and I have remained a research
+              affiliate at Sloan since. I then spent a year as an Assistant Professor
+              of psychology at American University (2024–25) before moving to
+              Carnegie Mellon in 2025.
+            </p>
+
+            <a href="assets/docs/thomas-costello-cv.pdf" target="_blank" rel="noopener noreferrer" class="cta">Download CV (PDF)</a>
+          </div>
+        </article>
+
+        <figure class="figure" data-animate="fade-up">
+          <img src="assets/images/web/aaas-trio-2026.jpg" alt="Thomas Costello, David Rand, and Gordon Pennycook at the AAAS Newcomb Cleveland Prize ceremony" width="846" height="476">
+          <figcaption>With David Rand and Gordon Pennycook at the AAAS Newcomb Cleveland Prize ceremony, 2026.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- § II — Appointments -->
     <section class="section">
       <div class="container">
-        <div class="about-preview" style="align-items: start;">
-          <div class="about-preview__content" style="max-width: 100%;" data-animate="fade-up">
+        <div class="section-head" data-animate="fade-up">
+          <span class="section-head__no">§ II.</span>
+          <span class="section-head__title">Appointments</span>
+        </div>
 
-            <p class="drop-cap" style="font-size: var(--text-lg); line-height: var(--leading-relaxed); margin-bottom: var(--space-6);">
-              I'm a psychologist who studies why people believe the things they do—and what
-              it takes for those beliefs to change. My work spans conspiracy theories, political
-              attitudes, misinformation, and the emerging science of AI-assisted persuasion.
-            </p>
-
-            <p style="margin-bottom: var(--space-6);">
-              I'm currently an <strong>Assistant Professor</strong> at
-              <strong>Carnegie Mellon University</strong>, where I hold appointments in the
-              Department of Social and Decision Sciences, the Human-Computer Interaction Institute,
-              and the Institute for Complex Social Dynamics. I also direct the
-              <a href="lab.html" class="link-underline">Viewpoints Lab</a>.
-            </p>
-
-            <p style="margin-bottom: var(--space-6);">
-              My recent research has focused on developing AI systems that can engage with
-              misinformation through dialogue rather than censorship. In a series of experiments,
-              my collaborators and I have shown that conversations with AI can durably reduce
-              belief in conspiracy theories, shift political attitudes, and even change behavior
-              around issues like vaccination and climate change. This work has been published in
-              <em>Science</em>, <em>Nature</em>, and <em>Nature Medicine</em>, and featured in
-              outlets from the <em>New York Times</em> to NBC Nightly News.
-            </p>
-
-            <p style="margin-bottom: var(--space-6);">
-              Before CMU, I was a postdoctoral fellow at <strong>MIT Sloan</strong> working with
-              <a href="https://davidrand-cooperation.com/" target="_blank" rel="noopener noreferrer" class="link-underline">David Rand</a>
-              and <a href="https://gordonpennycook.com/" target="_blank" rel="noopener noreferrer" class="link-underline">Gordon Pennycook</a>.
-              I completed my PhD in psychology at <strong>Emory University</strong> under the
-              mentorship of
-              <a href="https://en.wikipedia.org/wiki/Scott_Lilienfeld" target="_blank" rel="noopener noreferrer" class="link-underline">Scott O. Lilienfeld</a>
-              (2016–2020) and Arber Tasimi (2021–2022). Scott passed away in 2020, and his
-              influence on my thinking about psychology, skepticism, and intellectual honesty
-              remains profound.
-            </p>
-
-            <p style="margin-bottom: var(--space-6);">
-              I completed my B.A. in Psychology and Philosophy at
-              <strong>Binghamton University</strong> (SUNY), where I worked with Steve Lynn
-              on research into false memories, hypnosis, and imagination.
-            </p>
-
-          </div>
-
-          <div class="about-preview__image" data-animate="fade-up">
-            <!-- Photo -->
-            <figure style="margin: 0 0 var(--space-6) 0;">
-              <img src="tom-portrait.jpg" alt="Thomas Costello" style="width: 100%; border-radius: var(--radius-lg);">
-            </figure>
-
-            <!-- Quick Facts Card -->
-            <div class="card" style="margin-bottom: var(--space-4);">
-              <h4 style="font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: var(--tracking-widest); color: var(--color-muted); margin-bottom: var(--space-4);">Quick Facts</h4>
-              <ul style="list-style: none; font-size: var(--text-sm); line-height: 2;">
-                <li><strong>Position:</strong> Assistant Professor</li>
-                <li><strong>Institution:</strong> Carnegie Mellon University</li>
-                <li><strong>Department:</strong> Social & Decision Sciences</li>
-                <li><strong>PhD:</strong> Emory University, 2022</li>
-                <li><strong>Research:</strong> Belief, AI, Political Psychology</li>
-              </ul>
+        <div class="duet duet--offset">
+          <div class="ledger" data-stagger>
+            <div class="ledger__row">
+              <span class="ledger__key">2025–</span>
+              <div>
+                <h2 class="ledger__title">Assistant Professor</h2>
+                <p class="ledger__detail">Department of Social and Decision Sciences, Carnegie Mellon University.</p>
+              </div>
             </div>
-
-            <a href="assets/docs/thomas-costello-cv.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="width: 100%; justify-content: center;">
-              Download CV (PDF)
-            </a>
-
-            <figure style="margin: var(--space-6) 0 0 0;">
-              <img src="tom-window.jpg" alt="Thomas Costello" style="width: 100%; border-radius: var(--radius-lg);">
-            </figure>
+            <div class="ledger__row">
+              <span class="ledger__key">2025–</span>
+              <div>
+                <h2 class="ledger__title">Affiliated Faculty</h2>
+                <p class="ledger__detail">Human-Computer Interaction Institute, Carnegie Mellon University.</p>
+              </div>
+            </div>
+            <div class="ledger__row">
+              <span class="ledger__key">2025–</span>
+              <div>
+                <h2 class="ledger__title">Core Faculty</h2>
+                <p class="ledger__detail">Institute for Complex Social Dynamics, Carnegie Mellon University.</p>
+              </div>
+            </div>
+            <div class="ledger__row">
+              <span class="ledger__key">2025–</span>
+              <div>
+                <h2 class="ledger__title">Faculty Affiliate</h2>
+                <p class="ledger__detail">Center for Collaboration Science (CoLab), Carnegie Mellon University.</p>
+              </div>
+            </div>
+            <div class="ledger__row">
+              <span class="ledger__key">2024–</span>
+              <div>
+                <h2 class="ledger__title">Research Affiliate</h2>
+                <p class="ledger__detail">Sloan School of Management, MIT.</p>
+              </div>
+            </div>
           </div>
+
+          <figure class="figure portrait" data-animate="fade-up" style="margin-top: 0;">
+            <img src="assets/images/web/tom-2026-steps-bw.jpg" alt="Thomas Costello seated on stone steps" width="1200" height="1800">
+            <figcaption>Pittsburgh, 2026.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <!-- Epigraph -->
-    <section class="section" style="background-color: var(--color-bg-alt);">
-      <div class="container container--narrow">
-        <blockquote class="epigraph" data-animate="fade-up" style="border-left-color: var(--color-gold); max-width: 100%;">
-          "The whole problem with the world is that fools and fanatics are always so certain
-          of themselves, and wiser people so full of doubts."
-          <cite>Bertrand Russell</cite>
-        </blockquote>
-      </div>
-    </section>
-
-    <!-- Research Interests -->
+    <!-- § III — Teaching -->
     <section class="section">
-      <div class="container container--narrow">
-        <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-8);" data-animate="fade-up">
-          Research Interests
-        </h2>
-
-        <div data-animate="fade-up">
-          <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-3); color: var(--color-accent);">
-            AI & Persuasion
-          </h3>
-          <p style="margin-bottom: var(--space-6);">
-            How can AI systems be designed to engage with misinformation productively? I develop
-            and test dialogue-based interventions that use LLMs to address conspiracy theories,
-            vaccine hesitancy, climate skepticism, and polarized political attitudes.
-          </p>
-
-          <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-3); color: var(--color-accent);">
-            Conspiracy Theories & Misinformation
-          </h3>
-          <p style="margin-bottom: var(--space-6);">
-            Why do people believe conspiracy theories? What psychological and social factors
-            predict susceptibility? And critically: what interventions actually work to reduce
-            these beliefs?
-          </p>
-
-          <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-3); color: var(--color-accent);">
-            Political Psychology
-          </h3>
-          <p style="margin-bottom: var(--space-6);">
-            The psychology of political belief, with particular attention to authoritarianism,
-            rigidity, and the question of whether psychological asymmetries between left and
-            right are real or artifacts of measurement.
-          </p>
-
-          <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-3); color: var(--color-accent);">
-            Personality & Individual Differences
-          </h3>
-          <p style="margin-bottom: var(--space-6);">
-            My earlier work examined the structure and correlates of personality, including
-            psychopathy, intellectual humility, and the interplay between personality and
-            political attitudes.
-          </p>
+      <div class="container">
+        <div class="section-head" data-animate="fade-up">
+          <span class="section-head__no">§ III.</span>
+          <span class="section-head__title">Teaching</span>
         </div>
-      </div>
-    </section>
 
-    <!-- Education Timeline -->
-    <section class="section" style="background-color: var(--color-bg-alt);">
-      <div class="container container--narrow">
-        <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-8);" data-animate="fade-up">
-          Education
-        </h2>
-
-        <div data-animate="fade-up">
-          <div class="publication">
-            <p class="publication__year">2022</p>
-            <h4 class="publication__title">Ph.D., Psychology</h4>
-            <p class="publication__authors">Emory University</p>
-            <p class="publication__venue">Advisors: Scott O. Lilienfeld & Arber Tasimi</p>
+        <div class="ledger mt-8" data-stagger>
+          <div class="ledger__row">
+            <span class="ledger__key">2026</span>
+            <div>
+              <h2 class="ledger__title">Thinking in Person vs. Thinking Online</h2>
+              <p class="ledger__detail">Department of Social and Decision Sciences, Carnegie Mellon University · Spring 2026.</p>
+            </div>
           </div>
-
-          <div class="publication">
-            <p class="publication__year">2018</p>
-            <h4 class="publication__title">M.A., Psychology</h4>
-            <p class="publication__authors">Emory University</p>
-            <p class="publication__venue">Advisor: Scott O. Lilienfeld</p>
+          <div class="ledger__row">
+            <span class="ledger__key">2025</span>
+            <div>
+              <h2 class="ledger__title">Psychology of Politics</h2>
+              <p class="ledger__detail">Department of Psychology, American University.</p>
+            </div>
           </div>
-
-          <div class="publication">
-            <p class="publication__year">2016</p>
-            <h4 class="publication__title">B.A., Psychology & Philosophy</h4>
-            <p class="publication__authors">Binghamton University (SUNY)</p>
-            <p class="publication__venue">Honors Thesis Advisor: Steven Jay Lynn</p>
+          <div class="ledger__row">
+            <span class="ledger__key">2024</span>
+            <div>
+              <h2 class="ledger__title">Research Methods</h2>
+              <p class="ledger__detail">Department of Psychology, American University.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Personal Note -->
+    <!-- § IV — Service -->
     <section class="section">
-      <div class="container container--narrow">
-        <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-8);" data-animate="fade-up">
-          Beyond the CV
-        </h2>
+      <div class="container">
+        <div class="section-head" data-animate="fade-up">
+          <span class="section-head__no">§ IV.</span>
+          <span class="section-head__title">Service</span>
+        </div>
 
-        <div data-animate="fade-up">
-          <p style="margin-bottom: var(--space-4);">
-            When I'm not running experiments or writing papers, I enjoy reading widely
-            (philosophy, history, fiction), thinking about the ethics of persuasion technology,
-            and occasionally reminding myself that not everything needs to be optimized.
-          </p>
-          <p style="margin-bottom: var(--space-8);">
-            I believe strongly in open science, adversarial collaboration, and the value of
-            engaging with ideas you disagree with. If you think I'm wrong about something,
-            I'd genuinely like to hear why.
-          </p>
-
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6); margin-top: var(--space-2);">
-            <figure style="margin: 0;" data-animate="fade-up">
-              <img src="aaas-backdrop.jpg" alt="Thomas Costello with co-authors at the AAAS Awards & Prizes ceremony" style="width: 100%; border-radius: var(--radius-md);">
-              <figcaption style="font-size: var(--text-sm); color: var(--color-muted); margin-top: var(--space-2); font-style: italic;">With co-authors at the AAAS Awards & Prizes ceremony, 2026.</figcaption>
-            </figure>
-            <figure style="margin: 0;" data-animate="fade-up">
-              <img src="book-room.jpg" alt="Thomas Costello in a room filled with books" style="width: 100%; border-radius: var(--radius-md);">
-              <figcaption style="font-size: var(--text-sm); color: var(--color-muted); margin-top: var(--space-2); font-style: italic;">Surrounded by the right amount of books.</figcaption>
-            </figure>
-            <figure style="margin: 0;" data-animate="fade-up">
-              <img src="arcade.jpg" alt="Thomas Costello playing an arcade game" style="width: 100%; border-radius: var(--radius-md);">
-              <figcaption style="font-size: var(--text-sm); color: var(--color-muted); margin-top: var(--space-2); font-style: italic;">Occasionally reminding myself that not everything needs to be optimized.</figcaption>
-            </figure>
+        <div class="ledger" data-stagger>
+          <div class="ledger__row">
+            <span class="ledger__key">2025–</span>
+            <div>
+              <h2 class="ledger__title">Editorial Board, <em>Political Psychology</em></h2>
+              <p class="ledger__detail">With editors-in-chief Mark Brandt and Elizabeth Suhay.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- § V — Outside the lab -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-animate="fade-up">
+          <span class="section-head__no">§ V.</span>
+          <span class="section-head__title">Outside the lab</span>
+        </div>
+
+        <div class="article__body" data-animate="fade-up">
+          <p>
+            I value open science and adversarial collaboration, and if you think
+            I&rsquo;m wrong about something, I&rsquo;d
+            <a href="contact.html">like to hear why</a>.
+          </p>
+        </div>
+
+        <span class="fleuron" aria-hidden="true">❦</span>
+
+        <div class="duet">
+          <figure class="figure" data-animate="fade-up">
+            <img src="book-room.jpg" alt="Thomas Costello in a room filled with books" width="900" height="506">
+          </figure>
+          <figure class="figure" data-animate="fade-up">
+            <img src="arcade.jpg" alt="Thomas Costello playing an arcade game" width="900" height="506">
+          </figure>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Footer -->
+  <!-- Footer / colophon -->
   <footer class="footer">
     <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <p class="footer__logo">Thomas H. Costello</p>
-          <p class="footer__tagline">
-            Psychologist and computational social scientist studying belief,
-            persuasion, and the promise of AI for healthier discourse.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Navigate</h4>
-          <ul class="footer__links">
-            <li><a href="about.html">About</a></li>
-            <li><a href="research.html">Research</a></li>
-            <li><a href="lab.html">Viewpoints Lab</a></li>
-            <li><a href="media.html">Media</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Research</h4>
-          <ul class="footer__links">
-            <li><a href="research.html#publications">Publications</a></li>
-            <li><a href="assets/docs/thomas-costello-cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a></li>
-            <li><a href="https://scholar.google.com/citations?user=2oxoi9oAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Connect</h4>
-          <ul class="footer__links">
-            <li><a href="mailto:thcostello1@gmail.com">Email</a></li>
-            <li><a href="https://twitter.com/tomstello_" target="_blank" rel="noopener noreferrer">Twitter/X</a></li>
-            <li><a href="https://bsky.app/profile/tomcostello.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a></li>
-            <li><a href="https://www.linkedin.com/in/tom-costello-ba41b6105/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        <p>&copy; 2026 Thomas H. Costello. All rights reserved.</p>
-        <p>Carnegie Mellon University · Pittsburgh, PA</p>
-      </div>
+      <div class="footer__rules"></div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="lab.html">Viewpoints Lab</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="likes.html">Likes</a></li>
+          <li><a href="assets/docs/thomas-costello-cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2oxoi9oAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+        </ul>
+      </nav>
+      <p class="footer__meta">
+        © 2026 Thomas H. Costello · Carnegie Mellon University, Pittsburgh, PA ·
+        <a href="mailto:thcostello1@gmail.com">Email</a> ·
+        <a href="https://twitter.com/tomstello_" target="_blank" rel="noopener noreferrer">Twitter/X</a> ·
+        <a href="https://bsky.app/profile/tomcostello.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a> ·
+        <a href="https://www.linkedin.com/in/tom-costello-ba41b6105/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
     </div>
   </footer>
 
+  <!-- JavaScript -->
   <script src="js/main.js"></script>
   <script src="js/puck.js"></script>
 </body>

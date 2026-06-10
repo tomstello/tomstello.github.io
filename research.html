@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Research and publications by Thomas H. Costello on AI, conspiracy beliefs, political psychology, and persuasion.">
+  <meta name="description" content="Publications and working papers by Thomas H. Costello — research on viewpoints, belief change, and AI persuasion at Carnegie Mellon University.">
+  <meta name="author" content="Thomas H. Costello">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://thcostello.com/research.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Research | Thomas H. Costello">
-  <meta property="og:description" content="Research and publications on AI, conspiracy beliefs, political psychology, and persuasion.">
+  <meta property="og:title" content="Research — Thomas H. Costello">
+  <meta property="og:description" content="Publications and working papers on viewpoints, belief change, and AI persuasion.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thcostello.com/research.html">
   <meta property="og:image" content="https://thcostello.com/science-cover.jpg">
@@ -19,399 +20,695 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@tomstello_">
-  <meta name="twitter:title" content="Research | Thomas H. Costello">
-  <meta name="twitter:description" content="Research and publications on AI, conspiracy beliefs, political psychology, and persuasion.">
+  <meta name="twitter:title" content="Research — Thomas H. Costello">
+  <meta name="twitter:description" content="Publications and working papers on viewpoints, belief change, and AI persuasion.">
   <meta name="twitter:image" content="https://thcostello.com/science-cover.jpg">
 
-  <title>Research | Thomas H. Costello</title>
+  <title>Research — Thomas H. Costello</title>
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❧</text></svg>">
+
+  <!-- Apply stored theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/puck.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- Navigation -->
-  <nav class="nav" id="nav">
+  <!-- Masthead -->
+  <header class="masthead">
     <div class="container">
-      <div class="nav__inner">
-        <a href="index.html" class="nav__logo">T. H. Costello</a>
-
-        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-        <ul class="nav__links" id="nav-links">
-          <li><a href="about.html" class="nav__link">about</a></li>
-          <li><a href="research.html" class="nav__link nav__link--active">research</a></li>
-          <li><a href="lab.html" class="nav__link">viewpoints lab</a></li>
-          <li><a href="media.html" class="nav__link">media</a></li>
-          <li><a href="likes.html" class="nav__link">likes</a></li>
-          <li><a href="future.html" class="nav__link">future</a></li>
-          <li><a href="contact.html" class="nav__link">contact</a></li>
-        </ul>
+      <div class="masthead__rules"></div>
+      <div class="masthead__row">
+        <a href="index.html" class="masthead__wordmark">T.&thinsp;H.&thinsp;Costello</a>
+        <div class="masthead__right">
+          <nav class="masthead__nav" aria-label="Main navigation">
+            <ul>
+              <li><a href="about.html" class="masthead__link">About</a></li>
+              <li><a href="research.html" class="masthead__link masthead__link--active">Research</a></li>
+              <li><a href="lab.html" class="masthead__link">Viewpoints&nbsp;Lab</a></li>
+              <li><a href="media.html" class="masthead__link">Media</a></li>
+              <li><a href="likes.html" class="masthead__link">Likes</a></li>
+              <li><a href="future.html" class="masthead__link">Future</a></li>
+              <li><a href="contact.html" class="masthead__link">Contact</a></li>
+            </ul>
+          </nav>
+          <button class="theme-toggle" aria-label="Toggle dark mode" title="Paper / ink">◐</button>
+        </div>
       </div>
-    </div>
-  </nav>
-
-  <!-- Page Header -->
-  <header class="page-header">
-    <div class="container">
-      <h1 class="page-header__title" data-animate="fade-up">Research</h1>
-      <p class="page-header__subtitle" data-animate="fade-up">
-        Publications, working papers, and ongoing projects
-      </p>
     </div>
   </header>
 
   <main id="main-content">
-    <!-- Stats -->
+
+    <!-- Page header -->
+    <header class="page-header">
+      <div class="container">
+        <h1 class="page-header__title settle" style="--i: 0;">Research</h1>
+        <p class="page-header__sub settle" style="--i: 1;">
+          My work began with theory and measurement problems in political psychology.
+          My recent work uses generative AI to make the person-level study of belief
+          systems tractable.
+        </p>
+      </div>
+    </header>
+
+    <!-- § I — Selected publications -->
     <section class="section" style="padding-top: 0;">
       <div class="container">
-        <div style="display: flex; justify-content: center; gap: var(--space-12); flex-wrap: wrap; text-align: center;" data-animate="fade-up">
-          <div>
-            <p style="font-size: var(--text-4xl); font-family: var(--font-serif); color: var(--color-accent);">41</p>
-            <p style="font-size: var(--text-sm); color: var(--color-muted); text-transform: uppercase; letter-spacing: var(--tracking-wider);">Publications</p>
-          </div>
-          <div>
-            <p style="font-size: var(--text-4xl); font-family: var(--font-serif); color: var(--color-accent);">2,273</p>
-            <p style="font-size: var(--text-sm); color: var(--color-muted); text-transform: uppercase; letter-spacing: var(--tracking-wider);">Citations</p>
-          </div>
-          <div>
-            <p style="font-size: var(--text-4xl); font-family: var(--font-serif); color: var(--color-accent);">20</p>
-            <p style="font-size: var(--text-sm); color: var(--color-muted); text-transform: uppercase; letter-spacing: var(--tracking-wider);">h-index</p>
-          </div>
+        <div class="section-head" data-animate="fade-up">
+          <span class="section-head__no">§ I.</span>
+          <span class="section-head__title">Selected publications</span>
         </div>
+
+        <article class="entry" id="science-2024" data-animate="fade-up">
+          <span class="entry__no">i.</span>
+          <p class="entry__venue">Science · Vol. 385 · 2024</p>
+          <h2 class="entry__title">
+            <a href="https://www.science.org/doi/10.1126/science.adq1814" target="_blank" rel="noopener noreferrer">Durably reducing conspiracy beliefs through dialogues with AI</a>
+          </h2>
+          <div>
+            <p class="entry__desc">
+              <span class="sc">Costello, Pennycook &amp; Rand.</span>
+              Participants described a conspiracy theory they believed and explained why they
+              found it compelling; a frontier LLM then addressed their reasons with evidence.
+              The dialogues reduced conspiracy beliefs by roughly 20 percent on average, the
+              effects persisted for at least two months, and they generalized across a wide
+              range of conspiracies — including strongly held, identity-relevant beliefs.
+              The paper received the AAAS&rsquo;s 2026 Newcomb Cleveland Prize.
+            </p>
+            <div style="display: flex; gap: var(--space-6); flex-wrap: wrap;">
+              <a href="https://www.science.org/doi/10.1126/science.adq1814" target="_blank" rel="noopener noreferrer" class="cta">Read the paper</a>
+              <a href="media.html" class="cta">Press coverage</a>
+            </div>
+          </div>
+          <figure class="figure" style="max-width: 18rem; margin-top: var(--space-4);">
+            <img src="science-cover.jpg" alt="Cover of Science magazine, Volume 385 — Artificial arguments" width="1250" height="1591">
+            <figcaption>The cover of <em>Science</em>, Vol. 385 — “Artificial arguments.”</figcaption>
+          </figure>
+        </article>
+
+        <article class="entry" data-animate="fade-up">
+          <span class="entry__no">ii.</span>
+          <p class="entry__venue">Journal of Personality and Social Psychology · 2022</p>
+          <h2 class="entry__title">
+            <a href="https://doi.org/10.1037/pspp0000341" target="_blank" rel="noopener noreferrer">Clarifying the structure and nature of left-wing authoritarianism</a>
+          </h2>
+          <p class="entry__desc">
+            <span class="sc">Costello, Bowes, Stevens, Waldman, Tasimi &amp; Lilienfeld.</span>
+            Much of the historical literature measured authoritarianism through right-wing
+            ideological content, leaving a core question unresolved: are some individuals on
+            the left disposed to authoritarianism? We address this longstanding problem,
+            showing that authoritarian tendencies exist on the political left as well as the
+            right and encouraging a re-description of authoritarianism as a broader
+            psychological tendency toward illiberalism — work that became the most cited
+            JPSP article published in 2022.
+          </p>
+        </article>
+
+        <article class="entry" data-animate="fade-up">
+          <span class="entry__no">iii.</span>
+          <p class="entry__venue">Journal of Personality and Social Psychology · 2023</p>
+          <h2 class="entry__title">
+            <a href="https://doi.org/10.1037/pspp0000446" target="_blank" rel="noopener noreferrer">Revisiting the rigidity-of-the-right hypothesis: A meta-analytic review</a>
+          </h2>
+          <p class="entry__desc">
+            <span class="sc">Costello, Bowes, Malka, Baldwin &amp; Tasimi.</span>
+            The field had long treated political conservatism, cognitive rigidity, and
+            motivational needs for certainty and safety as a psychological syndrome. This
+            meta-analysis finds that the relationship between ideology and cognitive rigidity
+            is instead contextually contingent, heterogeneous, and measure-dependent —
+            varying with how conservatism is defined, where the data are collected, and who
+            populates the sample.
+          </p>
+        </article>
+
+        <article class="entry" data-animate="fade-up">
+          <span class="entry__no">iv.</span>
+          <p class="entry__venue">Trends in Cognitive Sciences · 2023</p>
+          <h2 class="entry__title">
+            <a href="https://doi.org/10.1016/j.tics.2023.03.012" target="_blank" rel="noopener noreferrer">Thinking outside the ballot box</a>
+          </h2>
+          <p class="entry__desc">
+            <span class="sc">Costello, Zmigrod &amp; Tasimi.</span>
+            A theoretical synthesis arguing that the field needs a higher-resolution science
+            of social and political belief — one that studies the content, structure, and
+            dynamics of belief systems rather than treating ideology as a small set of latent
+            dimensions.
+          </p>
+        </article>
+
+        <article class="entry" data-animate="fade-up">
+          <span class="entry__no">v.</span>
+          <p class="entry__venue">Nature Medicine · 2025</p>
+          <h2 class="entry__title">
+            <a href="https://www.nature.com/articles/s41591-025-03821-5" target="_blank" rel="noopener noreferrer">Large language models as disrupters of misinformation</a>
+          </h2>
+          <p class="entry__desc">
+            <span class="sc">Costello.</span>
+            An essay on whether highly persuasive AI systems will harm or help the epistemic
+            practices of humanity. Many warn, with reason, that AI may amplify misinformation
+            or atrophy our critical faculties; I make the case for cautious optimism.
+          </p>
+        </article>
       </div>
     </section>
 
-    <!-- Featured Publications -->
-    <section class="section" style="background-color: var(--color-bg-alt);" id="science-2024">
-      <div class="container">
-        <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-8);" data-animate="fade-up">
-          Selected Publications
-        </h2>
-
-        <div data-animate="fade-up">
-          <!-- Science 2024 -->
-          <article class="publication" style="background-color: var(--color-warm-white); border-radius: var(--radius-lg); padding: var(--space-8); margin-bottom: var(--space-6); border: 1px solid var(--color-border-light);">
-            <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-              <span class="publication__featured" style="margin-left: 0;">Cover Story</span>
-              <span class="publication__featured" style="background-color: rgba(139, 115, 85, 0.1); color: var(--color-accent);">2026 AAAS Newcomb Cleveland Prize</span>
-            </div>
-            <h3 class="publication__title" style="font-size: var(--text-xl); margin-bottom: var(--space-3);">
-              Durably reducing conspiracy beliefs through dialogues with AI
-            </h3>
-            <p class="publication__authors" style="margin-bottom: var(--space-2);">
-              <strong>Costello, T.H.</strong>, Pennycook, G., & Rand, D.
-            </p>
-            <p class="publication__venue" style="margin-bottom: var(--space-4);">
-              Science, 385, eadq1814 (2024)
-            </p>
-            <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-4);">
-              In conversations with over 2,000 conspiracy believers, AI-driven dialogues reduced
-              belief by ~20% on average—effects that persisted for at least two months. One in
-              four participants completely reversed their stance.
-            </p>
-            <div class="publication__links">
-              <a href="https://www.science.org/doi/10.1126/science.adq1814" target="_blank" rel="noopener noreferrer" class="publication__link">DOI</a>
-              <a href="media.html" class="publication__link">Press Coverage</a>
-            </div>
-          </article>
-
-          <!-- Nature 2025 -->
-          <article class="publication">
-            <p class="publication__year">2025</p>
-            <h3 class="publication__title">
-              <a href="https://www.nature.com/articles/s41586-024-08377-z" target="_blank" rel="noopener noreferrer">Persuading voters using human–AI dialogues</a>
-            </h3>
-            <p class="publication__authors">
-              Lin, H., Czarnek, G., Lewis, B., White, J. P., Berinsky, A. J., <strong>Costello, T.H.</strong>, Pennycook, G., & Rand, D. G.
-            </p>
-            <p class="publication__venue">Nature</p>
-            <div class="publication__links">
-              <a href="https://www.nature.com/articles/s41586-024-08377-z" target="_blank" rel="noopener noreferrer" class="publication__link">DOI</a>
-            </div>
-          </article>
-
-          <!-- Nature Medicine -->
-          <article class="publication">
-            <p class="publication__year">2025</p>
-            <h3 class="publication__title">
-              <a href="https://www.nature.com/articles/s41591-024-03389-4" target="_blank" rel="noopener noreferrer">Large language models as disrupters of misinformation</a>
-            </h3>
-            <p class="publication__authors">
-              <strong>Costello, T.H.</strong>
-            </p>
-            <p class="publication__venue">Nature Medicine</p>
-            <div class="publication__links">
-              <a href="https://www.nature.com/articles/s41591-024-03389-4" target="_blank" rel="noopener noreferrer" class="publication__link">DOI</a>
-            </div>
-          </article>
-
-          <!-- Nature Reviews Psychology -->
-          <article class="publication">
-            <p class="publication__year">2023</p>
-            <h3 class="publication__title">
-              <a href="https://doi.org/10.1038/s44159-023-00161-4" target="_blank" rel="noopener noreferrer">The causes and societal consequences of authoritarianism</a>
-            </h3>
-            <p class="publication__authors">
-              Osborne, D., <strong>Costello, T.H.</strong>, Duckitt, J., & Sibley, C.
-            </p>
-            <p class="publication__venue">Nature Reviews Psychology, 2, 220-232</p>
-            <div class="publication__links">
-              <a href="https://doi.org/10.1038/s44159-023-00161-4" target="_blank" rel="noopener noreferrer" class="publication__link">DOI</a>
-            </div>
-          </article>
-
-          <!-- JPSP LWA -->
-          <article class="publication">
-            <p class="publication__year">2022</p>
-            <h3 class="publication__title">
-              <a href="https://doi.org/10.1037/pspp0000341" target="_blank" rel="noopener noreferrer">Clarifying the structure and nature of left-wing authoritarianism</a>
-              <span class="publication__featured">Most cited JPSP 2022</span>
-            </h3>
-            <p class="publication__authors">
-              <strong>Costello, T.H.</strong>, Bowes, S.M., Stevens, S.T., Waldman, I.W., Tasimi, A., & Lilienfeld, S.O.
-            </p>
-            <p class="publication__venue">Journal of Personality and Social Psychology, 122, 135-170</p>
-            <div class="publication__links">
-              <a href="https://doi.org/10.1037/pspp0000341" target="_blank" rel="noopener noreferrer" class="publication__link">DOI</a>
-              <a href="https://www.theatlantic.com/ideas/archive/2021/09/psychological-dimensions-left-wing-authoritarianism/620185/" target="_blank" rel="noopener noreferrer" class="publication__link">The Atlantic</a>
-            </div>
-          </article>
-
-          <!-- Trends in Cog Sci -->
-          <article class="publication">
-            <p class="publication__year">2023</p>
-            <h3 class="publication__title">
-              <a href="https://doi.org/10.1016/j.tics.2023.03.012" target="_blank" rel="noopener noreferrer">Thinking outside the ballot box</a>
-            </h3>
-            <p class="publication__authors">
-              <strong>Costello, T.H.</strong>, Zmigrod, L., & Tasimi, A.
-            </p>
-            <p class="publication__venue">Trends in Cognitive Sciences, 27, 605-615</p>
-            <div class="publication__links">
-              <a href="https://doi.org/10.1016/j.tics.2023.03.012" target="_blank" rel="noopener noreferrer" class="publication__link">DOI</a>
-            </div>
-          </article>
-
-          <!-- Psychological Bulletin -->
-          <article class="publication">
-            <p class="publication__year">2023</p>
-            <h3 class="publication__title">
-              <a href="https://doi.org/10.1037/bul0000392" target="_blank" rel="noopener noreferrer">The conspiratorial mind: A meta-analytic review of motivational and personological correlates</a>
-            </h3>
-            <p class="publication__authors">
-              Bowes, S.M., <strong>Costello, T.H.</strong>, & Tasimi, A.
-            </p>
-            <p class="publication__venue">Psychological Bulletin</p>
-            <div class="publication__links">
-              <a href="https://doi.org/10.1037/bul0000392" target="_blank" rel="noopener noreferrer" class="publication__link">DOI</a>
-            </div>
-          </article>
-
-          <!-- Rigidity meta-analysis -->
-          <article class="publication">
-            <p class="publication__year">2023</p>
-            <h3 class="publication__title">
-              <a href="https://doi.org/10.1037/pspp0000446" target="_blank" rel="noopener noreferrer">Revisiting the rigidity-of-the-right hypothesis: A meta-analytic review</a>
-            </h3>
-            <p class="publication__authors">
-              <strong>Costello, T.H.</strong>, Bowes, S.M., Malka, A., Baldwin, M., & Tasimi, A.
-            </p>
-            <p class="publication__venue">Journal of Personality and Social Psychology, 124, 1025-1052</p>
-            <div class="publication__links">
-              <a href="https://doi.org/10.1037/pspp0000446" target="_blank" rel="noopener noreferrer" class="publication__link">DOI</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Working Papers -->
+    <!-- § II — Working papers -->
     <section class="section">
       <div class="container">
-        <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-8);" data-animate="fade-up">
-          Working Papers
-        </h2>
+        <div class="section-head" data-animate="fade-up">
+          <span class="section-head__no">§ II.</span>
+          <span class="section-head__title">Working papers</span>
+        </div>
 
-        <div data-animate="fade-up">
-          <article class="publication">
-            <p class="publication__year">2025</p>
-            <h3 class="publication__title">
-              Reducing belief in conspiracy theories as they unfold using large language models
-            </h3>
-            <p class="publication__authors">
-              <strong>Costello, T.H.*</strong>, Rabb, N.*, Stagnaro, M. N., Pennycook, G., & Rand, D.
-            </p>
-            <p class="publication__venue">Working paper (* = shared first author)</p>
-          </article>
-
-          <article class="publication">
-            <p class="publication__year">2025</p>
-            <h3 class="publication__title">
-              Deep canvassing using AI
-            </h3>
-            <p class="publication__authors">
-              <strong>Costello, T.H.</strong>, Pennycook, G., Willer, R., & Rand, D.
-            </p>
-            <p class="publication__venue">Working paper</p>
-          </article>
-
-          <article class="publication">
-            <p class="publication__year">2025</p>
-            <h3 class="publication__title">
-              Personalized dialogues with AI effectively address parents' concerns about HPV vaccination
-            </h3>
-            <p class="publication__authors">
-              Xu, H.G.*, <strong>Costello, T.H.*</strong>, Schwartz, J.L., Niccolai, L.M., Pennycook, G., & Rand, D.
-            </p>
-            <p class="publication__venue">Working paper (* = shared first author)</p>
-          </article>
-
-          <article class="publication">
-            <p class="publication__year">2025</p>
-            <h3 class="publication__title">
-              Addressing climate change skepticism and inaction using human-AI dialogues
-            </h3>
-            <p class="publication__authors">
-              Czarnek, G., Orchinik, R., Lin, H., Xu, H.G., <strong>Costello, T.H.</strong>, Pennycook, G., & Rand, D.G.
-            </p>
-            <p class="publication__venue">Working paper</p>
-          </article>
-
-          <article class="publication">
-            <p class="publication__year">2025</p>
-            <h3 class="publication__title">
-              Just the facts: How dialogues with AI reduce conspiracy beliefs
-            </h3>
-            <p class="publication__authors">
-              <strong>Costello, T.H.</strong>, Pennycook, G., & Rand, D.
-            </p>
-            <p class="publication__venue">Working paper</p>
-          </article>
+        <div class="container--narrow" style="margin-left: 0;">
+          <ul class="bib" data-stagger>
+            <li>
+              <span class="me">Costello, T.H.</span>, Pelrine, K., Kowal, M., Arechar, A.A., Godbout, J.-F., Gleave, A., Rand, D., &amp; Pennycook, G. (2026).
+              Large language models can effectively convince people to believe conspiracies.
+              Under review at <span class="jnl">Nature</span>.
+            </li>
+            <li>
+              <span class="me">Costello, T.H.</span>*, Rabb, N.*, Stagnaro, M.N., Pennycook, G., &amp; Rand, D. (2025).
+              Reducing belief in conspiracy theories as they unfold using large language models.
+              (* shared first authorship)
+            </li>
+            <li>
+              Kowal, M., Timm, J., Godbout, J.-F., <span class="me">Costello, T.H.</span>, Arechar, A.A., Pennycook, G., … &amp; Pelrine, K. (2025).
+              It’s the thought that counts: Evaluating the attempts of frontier LLMs to persuade on harmful topics.
+            </li>
+            <li>
+              <span class="me">Costello, T.H.</span>, Pennycook, G., Willer, R., &amp; Rand, D. (2025).
+              Deep canvassing using AI reduces prejudice toward undocumented immigrants.
+            </li>
+            <li>
+              Xu, H.G.*, <span class="me">Costello, T.H.</span>*, Schwartz, J.L., Niccolai, L.M., Pennycook, G., &amp; Rand, D. (2025).
+              Personalized dialogues with AI effectively address parents’ concerns about HPV vaccination.
+              Revise &amp; resubmit at <span class="jnl">The Lancet Digital Health</span>.
+              (* shared first authorship)
+            </li>
+            <li>
+              Czarnek, G., Orchinik, R., Lin, H., Xu, H.G., <span class="me">Costello, T.H.</span>, Pennycook, G., &amp; Rand, D.G. (2025).
+              Addressing climate change skepticism and inaction using human–AI dialogues.
+              Revise &amp; resubmit at <span class="jnl">Nature Communications</span>.
+            </li>
+            <li>
+              <span class="me">Costello, T.H.</span>, Pennycook, G., &amp; Rand, D. (2025).
+              Just the facts: How dialogues with AI reduce conspiracy beliefs.
+              Revise &amp; resubmit at <span class="jnl">Psychological Science</span>.
+            </li>
+            <li>
+              <span class="me">Costello, T.H.</span>, Waldman, I.W., &amp; Pennycook, G.
+              Mapping the heterogeneity of political beliefs and rigidity. Preprint.
+            </li>
+            <li>
+              <span class="me">Costello, T.H.</span>, Newton, C., Lin, H., &amp; Pennycook, G.
+              A metacognitive blind spot in intellectual humility measures. Preprint.
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Full Publication List -->
-    <section class="section" style="background-color: var(--color-bg-alt);" id="publications">
+    <!-- § III — Complete publications -->
+    <section class="section" id="publications">
       <div class="container">
-        <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-4);" data-animate="fade-up">
-          All Publications
-        </h2>
-        <p style="color: var(--color-muted); margin-bottom: var(--space-8);" data-animate="fade-up">
-          For a complete list with links, please see my
-          <a href="assets/docs/thomas-costello-cv.pdf" target="_blank" rel="noopener noreferrer" class="link-underline">CV</a> or
-          <a href="https://scholar.google.com/citations?user=2oxoi9oAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="link-underline">Google Scholar</a>.
-        </p>
+        <div class="section-head" data-animate="fade-up">
+          <span class="section-head__no">§ III.</span>
+          <span class="section-head__title">Complete publications</span>
+        </div>
 
-        <div data-animate="fade-up" style="columns: 2; column-gap: var(--space-8);">
-          <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-3); break-inside: avoid;">
-            41. Lin et al. (2025). Persuading voters using human–AI dialogues. <em>Nature</em>.
-          </p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-3); break-inside: avoid;">
-            40. Boissin et al. (2025). Dialogues with LLMs reduce conspiracy beliefs even when perceived as human. <em>PNAS Nexus</em>.
-          </p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-3); break-inside: avoid;">
-            39. Malka et al. (2025). Polarized attitudes and anti-democratic orientation. <em>Political Studies</em>.
-          </p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-3); break-inside: avoid;">
-            38. Lowman, Costello, & Patrick (2025). Creating scale measures of latent factors. <em>Assessment</em>.
-          </p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-3); break-inside: avoid;">
-            37. Bowes et al. (2025). Adversarial collaboration on rigidity. <em>Political Psychology</em>.
-          </p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-3); break-inside: avoid;">
-            36. Costello (2025). LLMs as disrupters of misinformation. <em>Nature Medicine</em>.
-          </p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-3); break-inside: avoid;">
-            35. Binnendyk et al. (2025). Is overconfidence a trait? <em>Psychological Science</em>.
-          </p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-3); break-inside: avoid;">
-            34. Costello, Pennycook, & Rand (2025). Response to critics. <em>Science</em>.
-          </p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-3); break-inside: avoid;">
-            33. Costello, Pennycook, & Rand (2024). Durably reducing conspiracy beliefs. <em>Science</em>.
-          </p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-3); break-inside: avoid;">
-            32. Lilly et al. (2024). Identifying "types" of authoritarians. <em>European Journal of Personality</em>.
-          </p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-light); margin-bottom: var(--space-3); break-inside: avoid; font-style: italic;">
-            ... and 31 more. See CV for complete list.
-          </p>
+        <div class="container--narrow" style="margin-left: 0;" data-animate="fade-up">
+
+          <h2 class="bib-year">2026</h2>
+          <ul class="bib">
+            <li>
+              43. Axt, J.R., Connor, P., Hoogeveen, S., Clark, C.J., Vianello, M., Lahey, J.N., Hahn, A., To, J., Petty, R.E., <span class="me">Costello, T.H.</span>, Mitchell, G., Tetlock, P.E., &amp; Uhlmann, E.L. (2026).
+              On the relationship between indirect measures of Black versus White racial attitudes and discriminatory outcomes: An adversarial collaboration using a sample of White Americans.
+              <span class="jnl">Journal of Personality and Social Psychology</span>.
+              <span class="bib-tags"><a href="https://doi.org/10.1037/pspa0000480" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              42. Pennycook, G., <span class="me">Costello, T.H.</span>, &amp; Rand, D.G. (2026).
+              Using artificial intelligence to better understand human intelligence.
+              <span class="jnl">Current Directions in Psychological Science</span>.
+              <span class="bib-tags"><a href="https://doi.org/10.1177/09637214261417960" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+          </ul>
+
+          <h2 class="bib-year">2025</h2>
+          <ul class="bib">
+            <li>
+              41. Lin, H., Czarnek, G., Lewis, B., White, J.P., Berinsky, A.J., <span class="me">Costello, T.H.</span>, Pennycook, G., &amp; Rand, D.G. (2025).
+              Persuading voters using human–AI dialogues.
+              <span class="jnl">Nature</span>.
+              <span class="bib-tags"><a href="https://doi.org/10.1038/s41586-025-09771-9" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              40. Boissin, E., <span class="me">Costello, T.H.</span>, Alonso, D.M., Rand, D., &amp; Pennycook, G. (2025).
+              Dialogues with large language models reduce conspiracy beliefs even when the AI is perceived as human.
+              <span class="jnl">PNAS Nexus</span>.
+              <span class="bib-tags"><a href="https://doi.org/10.1093/pnasnexus/pgaf325" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              39. Malka, A., Federico, C.M., <span class="me">Costello, T.H.</span>, &amp; Panish, A. (2025).
+              Polarized attitudes and anti-democratic orientation: Robust evidence for paradoxical relationships among American partisans.
+              <span class="jnl">Political Studies</span>.
+              <span class="bib-tags"><a href="https://doi.org/10.1177/00323217251359156" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              38. Lowman, K.L., <span class="me">Costello, T.H.</span>, &amp; Patrick, C.J. (2025).
+              Creating scale measures of latent factors: A genetic algorithmic approach.
+              <span class="jnl">Assessment</span>.
+              <span class="bib-tags"><a href="https://doi.org/10.1177/10731911251376230" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              37. Bowes, S.M., Clark, C.J., Conway, L.G., <span class="me">Costello, T.H.</span>, Osborne, D., Tetlock, P.E., &amp; van Prooijen, J.-W. (2025).
+              An adversarial collaboration on the rigidity-of-the-right, symmetry thesis, or rigidity-of-extremes: The answer depends on the question.
+              <span class="jnl">Political Psychology</span>.
+              <span class="bib-tags"><a href="https://doi.org/10.1111/pops.70071" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              36. <span class="me">Costello, T.H.</span> (2025).
+              Large language models as disrupters of misinformation.
+              <span class="jnl">Nature Medicine</span>.
+              <span class="bib-tags"><a href="https://www.nature.com/articles/s41591-025-03821-5" target="_blank" rel="noopener noreferrer">[Article]</a></span>
+            </li>
+            <li>
+              35. Binnendyk, J., Li, S., <span class="me">Costello, T.H.</span>, Hale, R., Moore, D.A., &amp; Pennycook, G. (2025).
+              Is overconfidence a trait? An adversarial collaboration.
+              <span class="jnl">Psychological Science</span>.
+              <span class="bib-tags"><a href="https://doi.org/10.1177/09567976251401538" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              34. <span class="me">Costello, T.H.</span>, Pennycook, G., &amp; Rand, D.G. (2025).
+              The problem with AI dialogue at scale — Response.
+              <span class="jnl">Science</span>, 387, 1158.
+              <span class="bib-tags"><a href="https://doi.org/10.1126/science.adu6608" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+          </ul>
+
+          <h2 class="bib-year">2024</h2>
+          <ul class="bib">
+            <li>
+              33. <span class="me">Costello, T.H.</span>, Pennycook, G., &amp; Rand, D. (2024).
+              Durably reducing conspiracy beliefs through dialogues with AI.
+              <span class="jnl">Science</span>, 385, eadq1814.
+              <span class="bib-tags"><a href="https://www.science.org/doi/10.1126/science.adq1814" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              32. Lilly, K., <span class="me">Costello, T.H.</span>, Sibley, C., &amp; Osborne, D. (2024).
+              Identifying “types” of authoritarians: A latent profile analysis of left- and right-wing authoritarianism and social dominance orientation.
+              <span class="jnl">European Journal of Personality</span>.
+              <span class="bib-tags"><a href="https://doi.org/10.1177/08902070241280319" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+          </ul>
+
+          <h2 class="bib-year">2023</h2>
+          <ul class="bib">
+            <li>
+              31. Holford, D., Fasce, A., <span class="me">Costello, T.H.</span>, &amp; Lewandowsky, S. (2023).
+              Psychological profiles of anti-vaccination argument endorsement.
+              <span class="jnl">Scientific Reports</span>, 13, 11219.
+              <span class="bib-tags"><a href="https://doi.org/10.1038/s41598-023-30883-7" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              30. Bowes, S.M., <span class="me">Costello, T.H.</span>, &amp; Tasimi, A. (2023).
+              The conspiratorial mind: A meta-analytic review of motivational and personological correlates.
+              <span class="jnl">Psychological Bulletin</span>.
+              <span class="bib-tags"><a href="https://doi.org/10.1037/bul0000392" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              29. <span class="me">Costello, T.H.</span>, Zmigrod, L., &amp; Tasimi, A. (2023).
+              Thinking outside the ballot box.
+              <span class="jnl">Trends in Cognitive Sciences</span>, 27, 605–615.
+              <span class="bib-tags"><a href="https://doi.org/10.1016/j.tics.2023.03.012" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              28. Malka, A., &amp; <span class="me">Costello, T.H.</span> (2023).
+              Professed democracy support and openness to flagrant authoritarian actions in the American public.
+              <span class="jnl">American Politics Research</span>, 51, 327–342.
+              <span class="bib-tags"><a href="https://doi.org/10.1177/1532673X221109532" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              27. <span class="me">Costello, T.H.</span>, Bowes, S.M., Malka, A., Baldwin, M., &amp; Tasimi, A. (2023).
+              Revisiting the rigidity-of-the-right hypothesis: A meta-analytic review.
+              <span class="jnl">Journal of Personality and Social Psychology</span>, 124, 1025–1052.
+              <span class="bib-tags"><a href="https://doi.org/10.1037/pspp0000446" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              26. Osborne, D., <span class="me">Costello, T.H.</span>, Duckitt, J., &amp; Sibley, C. (2023).
+              The causes and societal consequences of authoritarianism.
+              <span class="jnl">Nature Reviews Psychology</span>, 2, 220–232.
+              <span class="bib-tags"><a href="https://doi.org/10.1038/s44159-023-00161-4" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              25. <span class="me">Costello, T.H.</span>, &amp; Bowes, S.M. (2023).
+              Absolute certainty and political ideology: A systematic test of curvilinearity.
+              <span class="jnl">Social Psychological and Personality Science</span>, 14, 93–102.
+              <span class="bib-tags"><a href="https://doi.org/10.1177/19485506211070410" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              24. <span class="me">Costello, T.H.</span>, &amp; Patrick, C.J. (2023).
+              Development and initial validation of two brief measures of left-wing authoritarianism: A machine learning approach.
+              <span class="jnl">Journal of Personality Assessment</span>, 105, 187–202.
+              <span class="bib-tags"><a href="https://doi.org/10.1080/00223891.2022.2081809" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+          </ul>
+
+          <h2 class="bib-year">2022</h2>
+          <ul class="bib">
+            <li>
+              23. Clark, C.J., <span class="me">Costello, T.H.</span>, Mitchell, G., &amp; Tetlock, P.E. (2022).
+              The road less travelled: Understanding adversaries is hard but smarter than ignoring them.
+              <span class="jnl">Journal of Applied Research in Memory and Cognition</span>, 11, 50–53.
+              <span class="bib-tags"><a href="https://doi.org/10.1037/mac0000020" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              22. Lilienfeld, S.O., Bowes, S.M., Strother, A.N., Liu, C.J., <span class="me">Costello, T.H.</span>, Norton, K.A., &amp; Latzman, R.D. (2022).
+              On the association between grants and scholarly achievement among the world’s most eminent psychologists.
+              <span class="jnl">Current Psychology</span>, 42, 29325–29336.
+              <span class="bib-tags"><a href="https://doi.org/10.1007/s12144-022-03911-4" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              21. <span class="me">Costello, T.H.</span>, Clark, C.J., &amp; Tetlock, P.E. (2022).
+              Shoring up the shaky psychological foundations of a micro-economic model of ideology: Adversarial collaboration solutions.
+              <span class="jnl">Psychological Inquiry</span>, 33, 88–94.
+              <span class="bib-tags"><a href="https://doi.org/10.1080/1047840X.2022.2065130" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              20. Murphy, B.A., Casto, K.V., Watts, A.L., <span class="me">Costello, T.H.</span>, Tatum, J.A., Verona, E.V., &amp; Algoe, S.B. (2022).
+              “Feeling powerful” versus “desiring power”: A pervasive and problematic conflation in personality assessment?
+              <span class="jnl">Journal of Research in Personality</span>, 101, 104305.
+              <span class="bib-tags"><a href="https://doi.org/10.1016/j.jrp.2022.104305" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              19. <span class="me">Costello, T.H.</span>, Bowes, S.M., Stevens, S.T., Waldman, I.W., Tasimi, A., &amp; Lilienfeld, S.O. (2022).
+              Clarifying the structure and nature of left-wing authoritarianism.
+              <span class="jnl">Journal of Personality and Social Psychology</span>, 122, 135–170.
+              <span class="bib-tags"><a href="https://doi.org/10.1037/pspp0000341" target="_blank" rel="noopener noreferrer">[DOI]</a><a href="https://www.theatlantic.com/ideas/archive/2021/09/psychological-dimensions-left-wing-authoritarianism/620185/" target="_blank" rel="noopener noreferrer">[The Atlantic]</a></span>
+            </li>
+            <li>
+              18. Clark, C.J., <span class="me">Costello, T.H.</span>, Mitchell, G., &amp; Tetlock, P.E. (2022).
+              Keep your enemies close: Adversarial collaborations will improve behavioral science.
+              <span class="jnl">Journal of Applied Research in Memory and Cognition</span>, 11, 1–18.
+              <span class="bib-tags"><a href="https://doi.org/10.1037/mac0000004" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+          </ul>
+
+          <h2 class="bib-year">2021</h2>
+          <ul class="bib">
+            <li>
+              17. Bowes, S.M., <span class="me">Costello, T.H.</span>, Lee, C., Davis, D.E., McElroy-Heltzel, S., &amp; Lilienfeld, S.O. (2021).
+              Stepping outside the echo chamber: Is intellectual humility associated with less political myside bias?
+              <span class="jnl">Personality and Social Psychology Bulletin</span>, 48, 150–164.
+              <span class="bib-tags"><a href="https://doi.org/10.1177/0146167221997619" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              16. <span class="me">Costello, T.H.</span>, &amp; Lilienfeld, S.O. (2021).
+              Social and economic political ideology consistently operate as mutual suppressors: Implications for personality, social, and political psychology.
+              <span class="jnl">Social Psychological and Personality Science</span>, 12, 1425–1436.
+              <span class="bib-tags"><a href="https://doi.org/10.1177/1948550620964679" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              15. Avendaño, D., Fasce, A., <span class="me">Costello, T.H.</span>, &amp; Adrián-Ventura, J. (2021).
+              Spanish adaptation of the Left-wing Authoritarianism Index.
+              <span class="jnl">Journal of Personality Assessment</span>, 104, 692–699.
+              <span class="bib-tags"><a href="https://doi.org/10.1080/00223891.2021.1981345" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              14. Conway III, L.G., McFarland, J.D., <span class="me">Costello, T.H.</span>, &amp; Lilienfeld, S.O. (2021).
+              The curious case of left-wing authoritarianism: When authoritarian persons meet anti-authoritarian norms.
+              <span class="jnl">Journal of Theoretical Social Psychology</span>, 5, 423–442.
+              <span class="bib-tags"><a href="https://doi.org/10.1002/jts5.108" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+          </ul>
+
+          <h2 class="bib-year">2020</h2>
+          <ul class="bib">
+            <li>
+              13. <span class="me">Costello, T.H.</span>, Bowes, S.M., &amp; Lilienfeld, S.O. (2020).
+              “Escape from Freedom”: Authoritarianism-related traits, political ideology, personality, and belief in free will/determinism.
+              <span class="jnl">Journal of Research in Personality</span>, 86, 1–16.
+              <span class="bib-tags"><a href="https://doi.org/10.1016/j.jrp.2020.103957" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              12. <span class="me">Costello, T.H.</span>, Watts, A.L., Murphy, B.A., &amp; Lilienfeld, S.O. (2020).
+              Extending the nomological network of interpersonal sexual objectification to psychopathic and allied traits.
+              <span class="jnl">Personality Disorders: Theory, Research, and Treatment</span>, 11, 237–248.
+              <span class="bib-tags"><a href="https://doi.org/10.1037/per0000377" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              11. Lilienfeld, S.O., <span class="me">Costello, T.H.</span>, Bowes, S.M., &amp; Strother, A. (2020).
+              Has psychology found its conscience?
+              <span class="jnl">European Journal of Personality</span>, 34, 529–530.
+            </li>
+            <li>
+              10. Bowes, S.M., <span class="me">Costello, T.H.</span>, Ma, W., &amp; Lilienfeld, S.O. (2020).
+              Looking under the tinfoil hat: Clarifying the personological and psychopathological correlates of conspiracy beliefs.
+              <span class="jnl">Journal of Personality</span>, 89, 422–436.
+              <span class="bib-tags"><a href="https://doi.org/10.1111/jopy.12588" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              9. Bowes, S.M., Ammirati, R.J., <span class="me">Costello, T.H.</span>, Basterfield, C., &amp; Lilienfeld, S.O. (2020).
+              Cognitive biases, heuristics, and logical fallacies in clinical practice: A brief field guide for practicing clinicians and supervisors.
+              <span class="jnl">Professional Psychology: Research and Practice</span>, 51, 435–445.
+              <span class="bib-tags"><a href="https://doi.org/10.1037/pro0000309" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+          </ul>
+
+          <h2 class="bib-year">2019</h2>
+          <ul class="bib">
+            <li>
+              8. <span class="me">Costello, T.H.</span>, Smith, S.F., Bowes, S., Riley, S., Berns, G., &amp; Lilienfeld, S.O. (2019).
+              Risky business: Psychopathy, framing effects, and financial outcomes.
+              <span class="jnl">Journal of Research in Personality</span>, 78, 125–132.
+              <span class="bib-tags"><a href="https://doi.org/10.1016/j.jrp.2018.11.006" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              7. Lilienfeld, S.O., Watts, A.L., Murphy, B., <span class="me">Costello, T.H.</span>, Bowes, S.M., Smith, S.F., Latzman, R.D., Haslam, N., &amp; Tabb, K. (2019).
+              Psychopathy as an Emergent Interpersonal Syndrome: Further reflections and future directions.
+              <span class="jnl">Journal of Personality Disorders</span>, 33, 645–652.
+              <span class="bib-tags"><a href="https://doi.org/10.1521/pedi.2019.33.5.645" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              6. Lilienfeld, S.O., Watts, A.L., Murphy, B., <span class="me">Costello, T.H.</span>, Bowes, S.M., Smith, S.F., Latzman, R.D., Haslam, N., &amp; Tabb, K. (2019).
+              Personality disorders as Emergent Interpersonal Syndromes: Psychopathic personality as a case example.
+              <span class="jnl">Journal of Personality Disorders</span>, 33, 577–622.
+              <span class="bib-tags"><a href="https://doi.org/10.1521/pedi.2019.33.5.577" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+          </ul>
+
+          <h2 class="bib-year">2018</h2>
+          <ul class="bib">
+            <li>
+              5. <span class="me">Costello, T.H.</span>, Unterberger, A., Watts, A.L., &amp; Lilienfeld, S.O. (2018).
+              Psychopathy and pride: Testing Lykken’s hypothesis regarding the implications of fearlessness for prosocial and antisocial behavior.
+              <span class="jnl">Frontiers in Psychology</span>, 9, 185.
+              <span class="bib-tags"><a href="https://doi.org/10.3389/fpsyg.2018.00185" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              4. Murphy, B.A., <span class="me">Costello, T.H.</span>, Watts, A.L., Berg, J.M., &amp; Lilienfeld, S.O. (2018).
+              Strengths and weaknesses of two empathy measures: A comparison of the measurement precision, construct validity, and incremental validity of two multidimensional indices.
+              <span class="jnl">Assessment</span>, 27, 246–260.
+              <span class="bib-tags"><a href="https://doi.org/10.1177/1073191118777636" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              3. Bowes, S., Watts, A.L., <span class="me">Costello, T.H.</span>, Murphy, B.A., &amp; Lilienfeld, S.O. (2018).
+              Psychopathy and entertainment preferences: Clarifying the role of abnormal and normal personality in music and movie interests.
+              <span class="jnl">Personality and Individual Differences</span>, 129, 33–37.
+              <span class="bib-tags"><a href="https://doi.org/10.1016/j.paid.2018.03.009" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              2. Murphy, B.A., <span class="me">Costello, T.H.</span>, &amp; Lilienfeld, S.O. (2018).
+              Is empathic contagion helpful or harmful? Overlooked heterogeneity in the Empathy Index.
+              <span class="jnl">Psychological Assessment</span>, 30, 1703–1708.
+              <span class="bib-tags"><a href="https://doi.org/10.1037/pas0000641" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+          </ul>
+
+          <h2 class="bib-year">2017</h2>
+          <ul class="bib">
+            <li>
+              1. Lilienfeld, S.O., &amp; <span class="me">Costello, T.H.</span> (2017).
+              From crisis to salvation.
+              <span class="jnl">PsycCRITIQUES</span>, 62, 30–34.
+              <span class="bib-tags"><a href="https://doi.org/10.1037/a0041020" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- § IV — Chapters & commentaries -->
     <section class="section">
-      <div class="container container--narrow text-center">
-        <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-4);" data-animate="fade-up">
-          Interested in collaborating?
-        </h2>
-        <p style="color: var(--color-text-light); margin-bottom: var(--space-6);" data-animate="fade-up">
-          I'm always open to new collaborations, especially on projects at the intersection
-          of AI and behavioral science.
-        </p>
-        <a href="contact.html" class="btn btn--primary" data-animate="fade-up">Get in touch</a>
+      <div class="container">
+        <div class="section-head" data-animate="fade-up">
+          <span class="section-head__no">§ IV.</span>
+          <span class="section-head__title">Chapters &amp; commentaries</span>
+        </div>
+
+        <div class="container--narrow" style="margin-left: 0;" data-animate="fade-up">
+
+          <h2 class="bib-year">Chapters in edited volumes</h2>
+          <ul class="bib">
+            <li>
+              <span class="me">Costello, T.H.</span> (2023).
+              The conundrum of measuring authoritarianism.
+              In Cobb, C., Lynn, S.J., &amp; O’Donohue, W. (Eds.),
+              <span class="jnl">Clinical psychological science: The seminal work of Scott Lilienfeld</span>.
+              Springer: New York, NY.
+              <span class="bib-tags"><a href="https://doi.org/10.1007/978-3-031-14332-8_20" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              Lilienfeld, S.O., Basterfield, C., Bowes, S.M., &amp; <span class="me">Costello, T.H.</span> (2020).
+              Nobelists gone wild: Case studies in the domain-specificity of critical thinking.
+              In Sternberg, B., &amp; Halpern, D. (Eds.),
+              <span class="jnl">Critical thinking in psychology</span> (2nd ed.).
+              Cambridge, United Kingdom: Cambridge University Press.
+              <span class="bib-tags"><a href="https://doi.org/10.1017/9781108684354.003" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+          </ul>
+
+          <h2 class="bib-year">Commentaries &amp; replies</h2>
+          <ul class="bib">
+            <li>
+              <span class="me">Costello, T.H.</span>, Pennycook, G., &amp; Rand, D.G. (2025).
+              The problem with AI dialogue at scale — Response.
+              <span class="jnl">Science</span>, 387, 1158.
+              <span class="bib-tags"><a href="https://doi.org/10.1126/science.adu6608" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              <span class="me">Costello, T.H.</span>, Clark, C.J., &amp; Tetlock, P.E. (2022).
+              Shoring up the shaky psychological foundations of a micro-economic model of ideology: Adversarial collaboration solutions.
+              <span class="jnl">Psychological Inquiry</span>, 33, 88–94.
+              <span class="bib-tags"><a href="https://doi.org/10.1080/1047840X.2022.2065130" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              Clark, C.J., <span class="me">Costello, T.H.</span>, Mitchell, G., &amp; Tetlock, P.E. (2022).
+              The road less travelled: Understanding adversaries is hard but smarter than ignoring them.
+              <span class="jnl">Journal of Applied Research in Memory and Cognition</span>, 11, 50–53.
+              <span class="bib-tags"><a href="https://doi.org/10.1037/mac0000020" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              Lilienfeld, S.O., <span class="me">Costello, T.H.</span>, Bowes, S.M., &amp; Strother, A. (2020).
+              Has psychology found its conscience?
+              <span class="jnl">European Journal of Personality</span>, 34, 529–530.
+            </li>
+            <li>
+              Lilienfeld, S.O., Watts, A.L., Murphy, B., <span class="me">Costello, T.H.</span>, Bowes, S.M., Smith, S.F., Latzman, R.D., Haslam, N., &amp; Tabb, K. (2019).
+              Psychopathy as an Emergent Interpersonal Syndrome: Further reflections and future directions.
+              <span class="jnl">Journal of Personality Disorders</span>, 33, 645–652.
+              <span class="bib-tags"><a href="https://doi.org/10.1521/pedi.2019.33.5.645" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+            <li>
+              Lilienfeld, S.O., &amp; <span class="me">Costello, T.H.</span> (2017).
+              From crisis to salvation.
+              <span class="jnl">PsycCRITIQUES</span>, 62, 30–34.
+              <span class="bib-tags"><a href="https://doi.org/10.1037/a0041020" target="_blank" rel="noopener noreferrer">[DOI]</a></span>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
+
+    <!-- § V — Popular press -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-animate="fade-up">
+          <span class="section-head__no">§ V.</span>
+          <span class="section-head__title">Popular press</span>
+        </div>
+
+        <div class="container--narrow" style="margin-left: 0;" data-animate="fade-up">
+          <ul class="bib">
+            <li>
+              <span class="me">Costello, T.H.</span>, Pennycook, G., &amp; Rand, D. (2025, October 30).
+              Chatbots are surprisingly effective at debunking conspiracy theories.
+              <span class="jnl">MIT Technology Review</span>.
+              <span class="bib-tags"><a href="https://www.technologyreview.com/2025/10/30/1126471/chatbots-are-surprisingly-effective-at-debunking-conspiracy-theories/" target="_blank" rel="noopener noreferrer">[Article]</a></span>
+            </li>
+            <li>
+              <span class="me">Costello, T.H.</span> (2023).
+              Curated summary: “Current research overstates American support for political violence” by Westwood, Grimmer, Tyler, and Nall (2022).
+              <span class="jnl">Library of Partisan Animosity</span>.
+            </li>
+            <li>
+              <span class="me">Costello, T.H.</span>, &amp; Bowes, S.M. (2022, August).
+              Popper was right about the link between certainty and extremism.
+              <span class="jnl">Psyche</span>.
+              <span class="bib-tags"><a href="https://psyche.co/ideas/popper-was-right-about-the-link-between-certainty-and-extremism" target="_blank" rel="noopener noreferrer">[Article]</a></span>
+            </li>
+            <li>
+              Lilienfeld, S.O., Bowes, S.M., <span class="me">Costello, T.H.</span>, &amp; Strother, A. (2020, March/April).
+              Intellectual humility: A guiding principle for the skeptical movement.
+              <span class="jnl">Skeptical Inquirer</span>.
+            </li>
+            <li>
+              Basterfield, C., Lilienfeld, S.O., Bowes, S., &amp; <span class="me">Costello, T.H.</span> (2020, May/June).
+              The Nobel disease: When intelligence fails to protect against irrationality.
+              <span class="jnl">Skeptical Inquirer</span>.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Colophon CTA -->
+    <section class="section">
+      <div class="container">
+        <span class="fleuron">❦</span>
+        <div class="article__body" data-animate="fade-up">
+          <a href="assets/docs/thomas-costello-cv.pdf" target="_blank" rel="noopener noreferrer" class="cta">Curriculum vitae (PDF)</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Footer -->
+  <!-- Footer / colophon -->
   <footer class="footer">
     <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <p class="footer__logo">Thomas H. Costello</p>
-          <p class="footer__tagline">
-            Psychologist and computational social scientist studying belief,
-            persuasion, and the promise of AI for healthier discourse.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Navigate</h4>
-          <ul class="footer__links">
-            <li><a href="about.html">About</a></li>
-            <li><a href="research.html">Research</a></li>
-            <li><a href="lab.html">Viewpoints Lab</a></li>
-            <li><a href="media.html">Media</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Research</h4>
-          <ul class="footer__links">
-            <li><a href="research.html#publications">Publications</a></li>
-            <li><a href="assets/docs/thomas-costello-cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a></li>
-            <li><a href="https://scholar.google.com/citations?user=2oxoi9oAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Connect</h4>
-          <ul class="footer__links">
-            <li><a href="mailto:thcostello1@gmail.com">Email</a></li>
-            <li><a href="https://twitter.com/tomstello_" target="_blank" rel="noopener noreferrer">Twitter/X</a></li>
-            <li><a href="https://bsky.app/profile/tomcostello.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a></li>
-            <li><a href="https://www.linkedin.com/in/tom-costello-ba41b6105/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        <p>&copy; 2026 Thomas H. Costello. All rights reserved.</p>
-        <p>Carnegie Mellon University · Pittsburgh, PA</p>
-      </div>
+      <div class="footer__rules"></div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="lab.html">Viewpoints Lab</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="likes.html">Likes</a></li>
+          <li><a href="assets/docs/thomas-costello-cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2oxoi9oAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+        </ul>
+      </nav>
+      <p class="footer__meta">
+        © 2026 Thomas H. Costello · Carnegie Mellon University, Pittsburgh, PA ·
+        <a href="mailto:thcostello1@gmail.com">Email</a> ·
+        <a href="https://twitter.com/tomstello_" target="_blank" rel="noopener noreferrer">Twitter/X</a> ·
+        <a href="https://bsky.app/profile/tomcostello.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a> ·
+        <a href="https://www.linkedin.com/in/tom-costello-ba41b6105/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
     </div>
   </footer>
 
+  <!-- JavaScript -->
   <script src="js/main.js"></script>
   <script src="js/puck.js"></script>
 </body>

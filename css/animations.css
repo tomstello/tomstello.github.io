@@ -1,341 +1,109 @@
 /* ==========================================================================
-   Animations - Thomas H. Costello
-   Subtle, whimsical motion
+   animations.css — editorial motion
+   Type settles like set lead; marginalia and rules fade in as you read.
+   Everything respects prefers-reduced-motion.
    ========================================================================== */
 
-/* ==========================================================================
+/* --------------------------------------------------------------------------
    Keyframes
-   ========================================================================== */
+   -------------------------------------------------------------------------- */
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes inkIn {
   from {
     opacity: 0;
+    filter: blur(2px);
   }
   to {
     opacity: 1;
+    filter: blur(0);
   }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes ruleDraw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* --------------------------------------------------------------------------
+   Load-in: .settle elements appear in sequence (set --i per element)
+   -------------------------------------------------------------------------- */
+
+.settle {
+  opacity: 0;
+  animation: settle 0.7s var(--ease-settle) forwards;
+  animation-delay: calc(var(--i, 0) * 110ms);
 }
 
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+/* Masthead rules draw outward on load */
+.masthead__rules,
+.footer__rules {
+  transform-origin: left;
+  animation: ruleDraw 0.9s var(--ease-settle);
 }
 
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  25% {
-    transform: translateY(-20px) rotate(2deg);
-  }
-  50% {
-    transform: translateY(0) rotate(0deg);
-  }
-  75% {
-    transform: translateY(20px) rotate(-2deg);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes slideInFromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes gentleBounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes wiggle {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(3deg);
-  }
-  75% {
-    transform: rotate(-3deg);
-  }
-}
-
-/* ==========================================================================
-   Animation Classes
-   ========================================================================== */
-
-.animate-fade-in {
-  animation: fadeIn 0.6s ease forwards;
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.animate-fade-in-down {
-  animation: fadeInDown 0.6s ease forwards;
-}
-
-.animate-fade-in-left {
-  animation: fadeInLeft 0.6s ease forwards;
-}
-
-.animate-fade-in-right {
-  animation: fadeInRight 0.6s ease forwards;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-pulse {
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.5s ease forwards;
-}
-
-.animate-gentle-bounce {
-  animation: gentleBounce 2s ease-in-out infinite;
-}
-
-/* ==========================================================================
-   Delay Utilities
-   ========================================================================== */
-
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.delay-500 { animation-delay: 0.5s; }
-.delay-600 { animation-delay: 0.6s; }
-.delay-700 { animation-delay: 0.7s; }
-.delay-800 { animation-delay: 0.8s; }
-.delay-1000 { animation-delay: 1s; }
-
-/* ==========================================================================
-   Hover Transitions
-   ========================================================================== */
-
-/* Lift effect */
-.hover-lift {
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-/* Glow effect */
-.hover-glow {
-  transition: box-shadow var(--transition-base);
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 20px rgba(139, 115, 85, 0.2);
-}
-
-/* Color shift */
-.hover-color-shift {
-  transition: color var(--transition-fast), background-color var(--transition-fast);
-}
-
-/* Scale effect */
-.hover-scale {
-  transition: transform var(--transition-fast);
-}
-
-.hover-scale:hover {
-  transform: scale(1.02);
-}
-
-/* Underline grow */
-.hover-underline-grow {
-  position: relative;
-}
-
-.hover-underline-grow::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-accent);
-  transition: width var(--transition-base), left var(--transition-base);
-}
-
-.hover-underline-grow:hover::after {
-  width: 100%;
-  left: 0;
-}
-
-/* ==========================================================================
-   Page Transitions
-   ========================================================================== */
-
-.page-transition {
-  animation: fadeIn 0.4s ease;
-}
-
-/* ==========================================================================
-   Loading States
-   ========================================================================== */
-
-.skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--color-border-light) 25%,
-    var(--color-bg) 50%,
-    var(--color-border-light) 75%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: var(--radius-sm);
-}
-
-/* ==========================================================================
-   Scroll-triggered Animations (via JS)
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   Scroll reveal: [data-animate] + .is-visible (toggled by main.js)
+   -------------------------------------------------------------------------- */
 
 [data-animate] {
   opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.7s var(--ease-settle),
+    transform 0.7s var(--ease-settle);
 }
 
-[data-animate="fade-up"] {
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+[data-animate="fade-in"] {
+  transform: none;
 }
 
-[data-animate="fade-up"].is-visible {
+[data-animate].is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-[data-animate="fade-in"] {
-  transition: opacity 0.6s ease;
+/* Staggered children: parent carries [data-stagger]; children inherit delay */
+[data-stagger] > * {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.7s var(--ease-settle),
+    transform 0.7s var(--ease-settle);
 }
 
-[data-animate="fade-in"].is-visible {
+[data-stagger].is-visible > * {
   opacity: 1;
+  transform: translateY(0);
 }
 
-[data-animate="scale-in"] {
-  transform: scale(0.95);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
+[data-stagger].is-visible > *:nth-child(1) { transition-delay: 0ms; }
+[data-stagger].is-visible > *:nth-child(2) { transition-delay: 90ms; }
+[data-stagger].is-visible > *:nth-child(3) { transition-delay: 180ms; }
+[data-stagger].is-visible > *:nth-child(4) { transition-delay: 270ms; }
+[data-stagger].is-visible > *:nth-child(5) { transition-delay: 360ms; }
+[data-stagger].is-visible > *:nth-child(6) { transition-delay: 450ms; }
+[data-stagger].is-visible > *:nth-child(7) { transition-delay: 540ms; }
+[data-stagger].is-visible > *:nth-child(8) { transition-delay: 630ms; }
 
-[data-animate="scale-in"].is-visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Stagger delays for children */
-[data-stagger] > *:nth-child(1) { transition-delay: 0.05s; }
-[data-stagger] > *:nth-child(2) { transition-delay: 0.1s; }
-[data-stagger] > *:nth-child(3) { transition-delay: 0.15s; }
-[data-stagger] > *:nth-child(4) { transition-delay: 0.2s; }
-[data-stagger] > *:nth-child(5) { transition-delay: 0.25s; }
-[data-stagger] > *:nth-child(6) { transition-delay: 0.3s; }
-[data-stagger] > *:nth-child(7) { transition-delay: 0.35s; }
-[data-stagger] > *:nth-child(8) { transition-delay: 0.4s; }
-
-/* ==========================================================================
-   Reduced Motion
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   Reduced motion: print doesn't move
+   -------------------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -344,9 +112,13 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 
-  .hero__shape {
-    animation: none;
+  .settle,
+  [data-animate],
+  [data-stagger] > * {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

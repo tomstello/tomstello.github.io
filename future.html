@@ -3,34 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A space for reflection - What do you want to be true?">
+  <meta name="description" content="What do you want to be true in five years?">
+  <meta name="author" content="Thomas H. Costello">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://thcostello.com/future.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Future | Thomas H. Costello">
-  <meta property="og:description" content="A space for reflection - What do you want to be true?">
+  <meta property="og:title" content="Future — Thomas H. Costello">
+  <meta property="og:description" content="What do you want to be true in five years?">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thcostello.com/future.html">
-  <meta property="og:image" content="https://thcostello.com/science-cover.jpg">
+  <meta property="og:image" content="https://thcostello.com/assets/images/web/tom-2026-stairs.jpg">
   <meta property="og:site_name" content="Thomas H. Costello">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@tomstello_">
-  <meta name="twitter:title" content="Future | Thomas H. Costello">
-  <meta name="twitter:description" content="A space for reflection - What do you want to be true?">
-  <meta name="twitter:image" content="https://thcostello.com/science-cover.jpg">
+  <meta name="twitter:title" content="Future — Thomas H. Costello">
+  <meta name="twitter:description" content="What do you want to be true in five years?">
+  <meta name="twitter:image" content="https://thcostello.com/assets/images/web/tom-2026-stairs.jpg">
 
-  <title>Future | Thomas H. Costello</title>
+  <title>Future — Thomas H. Costello</title>
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9672;</text></svg>">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❧</text></svg>">
+
+  <!-- Apply stored theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/puck.css">
+
   <style>
     .future-container {
-      min-height: calc(100vh - 200px);
+      min-height: calc(100vh - 320px);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -42,11 +62,11 @@
     .future-question {
       font-family: var(--font-serif);
       font-size: clamp(1.5rem, 5vw, 2.5rem);
-      color: var(--color-text);
+      font-weight: 300;
+      color: var(--ink);
       max-width: 600px;
-      line-height: var(--leading-relaxed);
+      line-height: var(--leading-snug);
       margin-bottom: var(--space-12);
-      font-weight: 400;
     }
 
     .future-input-wrapper {
@@ -60,29 +80,22 @@
       padding: var(--space-4) 0;
       font-family: var(--font-serif);
       font-size: var(--text-lg);
-      color: var(--color-text);
+      color: var(--ink);
       background: transparent;
       border: none;
-      border-bottom: 2px solid var(--color-border-light);
+      border-bottom: 1px solid var(--rule-strong);
       outline: none;
-      transition: border-color var(--transition-normal);
+      transition: border-color var(--t-base) ease;
       text-align: center;
     }
 
     .future-input:focus {
-      border-bottom-color: var(--color-accent);
+      border-bottom-color: var(--accent);
     }
 
     .future-input::placeholder {
-      color: var(--color-muted);
+      color: var(--ink-faint);
       font-style: italic;
-    }
-
-    .future-hint {
-      font-size: var(--text-sm);
-      color: var(--color-muted);
-      letter-spacing: var(--tracking-wider);
-      margin-bottom: var(--space-12);
     }
 
     .future-entries {
@@ -92,16 +105,18 @@
     }
 
     .future-entries__title {
+      font-family: var(--font-sans);
       font-size: var(--text-xs);
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: var(--tracking-widest);
-      color: var(--color-muted);
+      letter-spacing: var(--tracking-caps);
+      color: var(--ink-faint);
       margin-bottom: var(--space-4);
     }
 
     .future-entry {
       padding: var(--space-3) 0;
-      border-bottom: 1px solid var(--color-border-light);
+      border-bottom: 1px solid var(--rule-faint);
       text-align: left;
       display: flex;
       justify-content: space-between;
@@ -116,73 +131,78 @@
     .future-entry__text {
       font-family: var(--font-serif);
       font-style: italic;
-      color: var(--color-text-light);
+      color: var(--ink-soft);
     }
 
     .future-entry__date {
+      font-family: var(--font-sans);
       font-size: var(--text-xs);
-      color: var(--color-muted);
+      color: var(--ink-faint);
       white-space: nowrap;
     }
 
     .future-clear {
       margin-top: var(--space-4);
+      font-family: var(--font-sans);
       font-size: var(--text-xs);
-      color: var(--color-muted);
+      color: var(--ink-faint);
       background: none;
       border: none;
       cursor: pointer;
       text-decoration: underline;
-      opacity: 0.6;
-      transition: opacity var(--transition-fast);
+      text-underline-offset: 0.2em;
+      opacity: 0.7;
+      transition: opacity var(--t-fast) ease;
     }
 
     .future-clear:hover {
       opacity: 1;
+      color: var(--accent);
     }
 
-    .future-note {
-      margin-top: var(--space-16);
-      font-size: var(--text-sm);
-      color: var(--color-muted);
-      max-width: 400px;
-      line-height: var(--leading-relaxed);
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
     }
   </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- Navigation -->
-  <nav class="nav" id="nav">
+  <!-- Masthead -->
+  <header class="masthead">
     <div class="container">
-      <div class="nav__inner">
-        <a href="index.html" class="nav__logo">T. H. Costello</a>
-
-        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-        <ul class="nav__links" id="nav-links">
-          <li><a href="about.html" class="nav__link">about</a></li>
-          <li><a href="research.html" class="nav__link">research</a></li>
-          <li><a href="lab.html" class="nav__link">viewpoints lab</a></li>
-          <li><a href="media.html" class="nav__link">media</a></li>
-          <li><a href="likes.html" class="nav__link">likes</a></li>
-          <li><a href="future.html" class="nav__link nav__link--active">future</a></li>
-          <li><a href="contact.html" class="nav__link">contact</a></li>
-        </ul>
+      <div class="masthead__rules"></div>
+      <div class="masthead__row">
+        <a href="index.html" class="masthead__wordmark">T.&thinsp;H.&thinsp;Costello</a>
+        <div class="masthead__right">
+          <nav class="masthead__nav" aria-label="Main navigation">
+            <ul>
+              <li><a href="about.html" class="masthead__link">About</a></li>
+              <li><a href="research.html" class="masthead__link">Research</a></li>
+              <li><a href="lab.html" class="masthead__link">Viewpoints&nbsp;Lab</a></li>
+              <li><a href="media.html" class="masthead__link">Media</a></li>
+              <li><a href="likes.html" class="masthead__link">Likes</a></li>
+              <li><a href="future.html" class="masthead__link masthead__link--active">Future</a></li>
+              <li><a href="contact.html" class="masthead__link">Contact</a></li>
+            </ul>
+          </nav>
+          <button class="theme-toggle" aria-label="Toggle dark mode" title="Paper / ink">◐</button>
+        </div>
       </div>
     </div>
-  </nav>
+  </header>
 
   <main id="main-content">
     <div class="future-container">
-      <p class="future-question">What do you want to be true in five years?</p>
+      <h1 class="future-question">What do you want to be true in five years?</h1>
 
       <div class="future-input-wrapper">
+        <label for="answer" class="visually-hidden">Your answer</label>
         <input
           type="text"
           class="future-input"
@@ -201,55 +221,32 @@
     </div>
   </main>
 
-  <!-- Footer -->
+  <!-- Footer / colophon -->
   <footer class="footer">
     <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <p class="footer__logo">Thomas H. Costello</p>
-          <p class="footer__tagline">
-            Psychologist and computational social scientist studying belief,
-            persuasion, and the promise of AI for healthier discourse.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Navigate</h4>
-          <ul class="footer__links">
-            <li><a href="about.html">About</a></li>
-            <li><a href="research.html">Research</a></li>
-            <li><a href="lab.html">Viewpoints Lab</a></li>
-            <li><a href="media.html">Media</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Research</h4>
-          <ul class="footer__links">
-            <li><a href="research.html#publications">Publications</a></li>
-            <li><a href="assets/docs/thomas-costello-cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a></li>
-            <li><a href="https://scholar.google.com/citations?user=2oxoi9oAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Connect</h4>
-          <ul class="footer__links">
-            <li><a href="mailto:thcostello1@gmail.com">Email</a></li>
-            <li><a href="https://twitter.com/tomstello_" target="_blank" rel="noopener noreferrer">Twitter/X</a></li>
-            <li><a href="https://bsky.app/profile/tomcostello.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a></li>
-            <li><a href="https://www.linkedin.com/in/tom-costello-ba41b6105/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        <p>&copy; 2026 Thomas H. Costello. All rights reserved.</p>
-        <p>Carnegie Mellon University - Pittsburgh, PA</p>
-      </div>
+      <div class="footer__rules"></div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="lab.html">Viewpoints Lab</a></li>
+          <li><a href="media.html">Media</a></li>
+          <li><a href="likes.html">Likes</a></li>
+          <li><a href="assets/docs/thomas-costello-cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a></li>
+          <li><a href="https://scholar.google.com/citations?user=2oxoi9oAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+        </ul>
+      </nav>
+      <p class="footer__meta">
+        © 2026 Thomas H. Costello · Carnegie Mellon University, Pittsburgh, PA ·
+        <a href="mailto:thcostello1@gmail.com">Email</a> ·
+        <a href="https://twitter.com/tomstello_" target="_blank" rel="noopener noreferrer">Twitter/X</a> ·
+        <a href="https://bsky.app/profile/tomcostello.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a> ·
+        <a href="https://www.linkedin.com/in/tom-costello-ba41b6105/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </p>
     </div>
   </footer>
 
+  <!-- JavaScript -->
   <script src="js/main.js"></script>
   <script src="js/puck.js"></script>
   <script>
