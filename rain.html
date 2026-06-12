@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>rain</title>
+  <link rel="stylesheet" href="css/puck.css">
   <style>
     * {
       margin: 0;
@@ -25,7 +26,15 @@
       font-family: 'Georgia', serif;
     }
 
+    canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
     .word {
+      position: relative;
+      z-index: 1;
       color: #888;
       font-size: 1.5rem;
       letter-spacing: 0.3em;
@@ -35,26 +44,123 @@
       animation-delay: 30s;
     }
 
+    .hint {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      text-align: center;
+      color: #444;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: lowercase;
+      transition: opacity 2s ease;
+    }
+
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
+  <canvas id="rain"></canvas>
   <p class="word">stay</p>
+  <p class="hint" id="hint">tap anywhere for sound</p>
 
   <script>
+    // --- visual rain ---
+    const canvas = document.getElementById('rain');
+    const ctx = canvas.getContext('2d');
+    let drops = [];
+
+    function size() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const n = Math.floor(canvas.width / 9);
+      drops = [];
+      for (let i = 0; i < n; i++) {
+        drops.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          len: 8 + Math.random() * 14,
+          speed: 220 + Math.random() * 260,
+          drift: -20 + Math.random() * 12,
+          alpha: 0.04 + Math.random() * 0.12,
+        });
+      }
+    }
+    size();
+    window.addEventListener('resize', size);
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let last = performance.now();
+
+    function frame(now) {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.lineWidth = 1;
+      for (const d of drops) {
+        ctx.strokeStyle = 'rgba(160, 170, 180, ' + d.alpha + ')';
+        ctx.beginPath();
+        ctx.moveTo(d.x, d.y);
+        ctx.lineTo(d.x + d.drift * (d.len / d.speed), d.y + d.len);
+        ctx.stroke();
+        d.y += d.speed * dt;
+        d.x += d.drift * dt;
+        if (d.y > canvas.height + d.len) {
+          d.y = -d.len - Math.random() * 80;
+          d.x = Math.random() * (canvas.width + 40);
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+    if (!reduced) requestAnimationFrame(frame);
+
+    // --- sound: synthesized rain, no files, starts on first tap ---
+    let audioStarted = false;
+    function startRainSound() {
+      if (audioStarted) return;
+      audioStarted = true;
+      document.getElementById('hint').style.opacity = '0';
+      try {
+        const ac = new (window.AudioContext || window.webkitAudioContext)();
+        const seconds = 4;
+        const buffer = ac.createBuffer(2, ac.sampleRate * seconds, ac.sampleRate);
+        for (let ch = 0; ch < 2; ch++) {
+          const data = buffer.getChannelData(ch);
+          let lastOut = 0;
+          for (let i = 0; i < data.length; i++) {
+            // brown-ish noise: soft, low, rain-like
+            const white = Math.random() * 2 - 1;
+            lastOut = (lastOut + 0.02 * white) / 1.02;
+            data[i] = lastOut * 3.5;
+          }
+        }
+        const src = ac.createBufferSource();
+        src.buffer = buffer;
+        src.loop = true;
+        const filter = ac.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 900;
+        const gain = ac.createGain();
+        gain.gain.value = 0;
+        src.connect(filter).connect(gain).connect(ac.destination);
+        src.start();
+        gain.gain.linearRampToValueAtTime(0.5, ac.currentTime + 4);
+      } catch (e) { /* no sound, still rains */ }
+    }
+    document.addEventListener('pointerdown', startRainSound);
+
     // Allow escape key to leave
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         window.history.back();
       }
     });
   </script>
+  <script src="js/puck.js"></script>
 </body>
 </html>
