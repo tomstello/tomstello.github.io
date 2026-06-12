@@ -405,6 +405,27 @@
   cursor: not-allowed;
 }
 
+.puck-argue {
+  padding: 6px 10px;
+  background: var(--puck-button-face);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  /* Win95 button */
+  border: 2px solid;
+  border-color: var(--puck-window-border-light) var(--puck-window-border-darker)
+                var(--puck-window-border-darker) var(--puck-window-border-light);
+}
+
+.puck-argue:hover {
+  background: #d4d4d4;
+}
+
+.puck-argue:active {
+  border-color: var(--puck-window-border-darker) var(--puck-window-border-light)
+                var(--puck-window-border-light) var(--puck-window-border-darker);
+}
+
 /* ==========================================================================
    Typing Indicator
    ========================================================================== */

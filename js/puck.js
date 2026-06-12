@@ -774,6 +774,7 @@
                  placeholder="Type a message..."
                  autocomplete="off"
                  aria-label="Message to Puck">
+          <button class="puck-argue" id="puck-argue" title="Pick a fight he is contractually obligated to lose">Argue</button>
           <button class="puck-send" id="puck-send">Send</button>
         </div>
       </div>
@@ -793,6 +794,7 @@
       chat: document.getElementById('puck-chat'),
       input: document.getElementById('puck-input'),
       send: document.getElementById('puck-send'),
+      argue: document.getElementById('puck-argue'),
       clear: document.getElementById('puck-clear'),
       minimize: document.getElementById('puck-minimize'),
       close: document.getElementById('puck-close'),
@@ -856,6 +858,11 @@
     // Chat input
     elements.input.addEventListener('keydown', handleInputKeydown);
     elements.send.addEventListener('click', sendMessage);
+    elements.argue.addEventListener('click', () => {
+      if (state.isTyping) return;
+      elements.input.value = 'argue with me';
+      sendMessage();
+    });
 
     // Keyboard shortcuts
     document.addEventListener('keydown', handleGlobalKeydown);
