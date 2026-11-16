@@ -426,6 +426,36 @@
                 var(--puck-window-border-light) var(--puck-window-border-darker);
 }
 
+/* Starter questions, shown in the chat until the visitor says something */
+.puck-starters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.puck-starter {
+  padding: 4px 8px;
+  background: var(--puck-button-face);
+  color: var(--puck-text);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  /* Win95 button */
+  border: 2px solid;
+  border-color: var(--puck-window-border-light) var(--puck-window-border-darker)
+                var(--puck-window-border-darker) var(--puck-window-border-light);
+}
+
+.puck-starter:hover {
+  background: #d4d4d4;
+}
+
+.puck-starter:active {
+  border-color: var(--puck-window-border-darker) var(--puck-window-border-light)
+                var(--puck-window-border-light) var(--puck-window-border-darker);
+}
+
 /* ==========================================================================
    Typing Indicator
    ========================================================================== */
@@ -1573,6 +1603,18 @@
 
 @media print {
   .puck-container {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Print - Puck stays off the paper
+   ========================================================================== */
+
+@media print {
+  .puck-container,
+  .puck-matrix-rain,
+  .puck-static-overlay {
     display: none !important;
   }
 }

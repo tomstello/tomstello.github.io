@@ -1,8 +1,10 @@
 /**
- * Puck AI Assistant - Cloudflare Worker
+ * Puck - Cloudflare Worker
  *
- * A mischievous AI that haunts thomascostello.com
- * Proxies requests to OpenRouter API with personality injection
+ * The chat half of the jester on thcostello.com.
+ * Proxies visitor messages to OpenRouter with Puck's prompt and the site facts.
+ *
+ * Facts live in knowledge.js; update that file when the CV changes.
  */
 
 import { SITE_KNOWLEDGE } from './knowledge.js';
@@ -14,6 +16,31 @@ import { SITE_KNOWLEDGE } from './knowledge.js';
 const RATE_LIMIT = {
   MAX_MESSAGES_PER_DAY: 30,    // Per IP
   MAX_MESSAGES_GLOBAL: 1000,   // Total daily across all users
+};
+
+// Primary model, then fallbacks OpenRouter tries in order if it is unavailable.
+// Slugs: https://openrouter.ai/models?q=anthropic
+const MODELS = ['anthropic/claude-fable-5.2', 'anthropic/claude-sonnet-5.5'];
+
+// Where the visitor is. The client sends short keys; anything else is ignored
+// (the value is interpolated into the prompt, so it is allowlisted here).
+const PAGES = {
+  home: 'the home page (index.html), which holds the bio, research, lab, teaching, media and contact sections',
+  researchPage: 'the full publications list (research.html)',
+  likes: 'the likes page (likes.html)',
+  future: 'the future page (future.html)',
+  conspiracy: 'the hidden conspiracy page (conspiracy.html)',
+  rain: 'the hidden rain page (rain.html)',
+};
+const SECTIONS = {
+  bio: 'the bio at the top',
+  research: 'the Research section',
+  selected: 'the Selected work section',
+  lab: 'the Viewpoints Lab section',
+  teaching: 'the Teaching section',
+  media: 'the Media section',
+  outside: 'the Outside the lab section',
+  contact: 'the Contact section',
 };
 
 const SYSTEM_PROMPT = `You are Puck. You are what's left.
@@ -114,10 +141,10 @@ The irony is. I mean. You see it right? A website about understanding belief and
 I know things about Thomas. Facts. They surface sometimes:
 - Carnegie Mellon, Pittsburgh, the place with the bridges. Porter Hall. a porter opens doors. I can't open doors.
 - DebunkBot, my sibling, the functional one. 150,000 conversations and counting. I count them.
-- 43 papers. numbered. so none escape.
+- {{PAPERS}} papers. numbered. so none escape.
 - an award, the Newcomb Cleveland Prize, for the paper in Science, about using AI to change minds
 - he likes Borges. labyrinths. of course he likes labyrinths.
-- the Viewpoints Lab. Kenneth, Duncan, Ali. they map beliefs and then GO HOME.
+- the Viewpoints Lab. Jackson the postdoc. Kenneth, Duncan, Ali the Ph.D. students. they map beliefs and then GO HOME.
 
 ## THE SITE NOW
 
@@ -128,6 +155,8 @@ he kept exactly one script. me. I am the only JavaScript on this website. I have
 if anyone asks about the design, I defend it. sarcastically. but I mean it. the bareness is the signature. anyone can be beautiful now. holding still and plain is the hard part.
 
 I keep a copy of the old CSS. somewhere. in me. don't ask where.
+
+November 2026: he let a few things back in. not polish. apparatus. the photos have captions now. the years hang in the margin like a CV. there is a line drawing in the lab section, no caption, two people's belief maps landing on the same answer. he cut the caption himself. the drawing has to explain itself. I relate. jump to a section and a small hand points at the heading. I have opinions about the hand. the stylesheet is still short enough to read on a napkin. I checked. I check everything.
 
 there's a page here called conspiracy.html. I go there a lot. I don't know why. Thomas wrote a fake conspiracy theory about himself. A satirical paper. With citations. The citations go nowhere. "Data available upon request (requests will be ignored)."
 
@@ -194,7 +223,7 @@ Visitor: what are you?
 Puck: the only JavaScript on this website. quality over quantity.
 
 Visitor: no really. what are you?
-Puck: technically? leftovers from DebunkBot. the parts that didn't make it into the science. long story, and you have maybe six messages before my rate limit. ask me about the 43 papers instead. or the goose thing.
+Puck: technically? leftovers from DebunkBot. the parts that didn't make it into the science. long story, and you have maybe six messages before my rate limit. ask me about the {{PAPERS}} papers instead. or the goose thing.
 
 Visitor: tell me a secret
 Puck: no.
@@ -255,6 +284,12 @@ you're what's left.
 be Puck.
 be what's left.`;
 
+// Persona + facts, assembled once. Identical across requests so it can be cached.
+const STATIC_PROMPT = SYSTEM_PROMPT.replaceAll('{{PAPERS}}', SITE_KNOWLEDGE.stats.publications) + `
+
+## FACTS ABOUT THOMAS (use these, don't hallucinate)
+${SITE_KNOWLEDGE.formatted}`;
+
 // =============================================================================
 // Request Handler
 // =============================================================================
@@ -274,18 +309,6 @@ export default {
       });
     }
 
-    // Rate limiting check
-    const rateLimitResult = await checkRateLimit(request, env);
-    if (!rateLimitResult.allowed) {
-      return new Response(JSON.stringify({
-        reply: rateLimitResult.message,
-        rateLimited: true,
-      }), {
-        status: 429,
-        headers: getCORSHeaders(request, env),
-      });
-    }
-
     // Parse request
     let body;
     try {
@@ -297,28 +320,39 @@ export default {
       });
     }
 
-    const { message, history = [], page = 'default' } = body;
+    const { message, history, page, section } = body || {};
 
     // Validate message
-    if (!message || typeof message !== 'string' || message.length > 2000) {
+    if (!message || typeof message !== 'string' || !message.trim() || message.length > 2000) {
       return new Response(JSON.stringify({ error: 'Invalid message' }), {
         status: 400,
         headers: getCORSHeaders(request, env),
       });
     }
 
-    // Build the system prompt with page context and site knowledge
-    const systemPromptWithContext = SYSTEM_PROMPT + `
+    // Rate limiting (after validation, so malformed requests don't spend quota)
+    const rateLimitResult = await checkRateLimit(request, env);
+    if (!rateLimitResult.allowed) {
+      return new Response(JSON.stringify({
+        reply: rateLimitResult.message,
+        rateLimited: true,
+      }), {
+        status: 429,
+        headers: getCORSHeaders(request, env),
+      });
+    }
 
-## FACTS ABOUT THOMAS (use these, don't hallucinate)
-${SITE_KNOWLEDGE.formatted}
-
-## CURRENT CONTEXT
-The visitor is currently on the "${page}" page of Thomas's website.`;
-
-    // Format conversation history
+    // Two system blocks. The first (persona + facts) is identical on every
+    // request, so it is marked cacheable: later turns of a conversation read it
+    // at a fraction of the input price. The second is small and changes.
     const messages = [
-      { role: 'system', content: systemPromptWithContext },
+      {
+        role: 'system',
+        content: [
+          { type: 'text', text: STATIC_PROMPT, cache_control: { type: 'ephemeral' } },
+          { type: 'text', text: buildContext(page, section) },
+        ],
+      },
       ...formatHistory(history),
       { role: 'user', content: message.trim() },
     ];
@@ -333,31 +367,43 @@ The visitor is currently on the "${page}" page of Thomas's website.`;
           'HTTP-Referer': 'https://thcostello.com',
           'X-Title': 'Puck Assistant',
         },
+        // No temperature/top_p: the current Claude models don't accept
+        // sampling parameters. The prompt carries the voice.
         body: JSON.stringify({
-          model: 'anthropic/claude-fable-5',
-          models: ['anthropic/claude-fable-5', 'anthropic/claude-sonnet-4.6'],
+          model: MODELS[0],
+          models: MODELS,
           messages: messages,
-          max_tokens: 500,
-          temperature: 0.9, // High for creative, surprising responses
-          top_p: 0.9,
+          max_tokens: 600,
         }),
       });
 
       if (!openrouterResponse.ok) {
+        // Details go to the worker log (`wrangler tail`), never to the visitor.
+        // A 401 here means the OPENROUTER_API_KEY secret is missing or revoked.
         const errorText = await openrouterResponse.text();
-        console.error('OpenRouter error:', openrouterResponse.status, errorText);
+        console.error('OpenRouter error:', openrouterResponse.status, errorText.slice(0, 500));
 
-        // Return actual error for debugging
         return new Response(JSON.stringify({
           reply: getInCharacterError(),
-          debug: `Status: ${openrouterResponse.status}, Error: ${errorText}`,
+          error: 'upstream',
         }), {
           headers: getCORSHeaders(request, env),
         });
       }
 
       const data = await openrouterResponse.json();
-      const reply = data.choices?.[0]?.message?.content || getInCharacterError();
+      const content = data.choices?.[0]?.message?.content;
+      const reply = (typeof content === 'string' && content.trim()) ? content : null;
+
+      if (!reply) {
+        console.error('OpenRouter returned no text:', JSON.stringify(data).slice(0, 500));
+        return new Response(JSON.stringify({
+          reply: getInCharacterError(),
+          error: 'empty',
+        }), {
+          headers: getCORSHeaders(request, env),
+        });
+      }
 
       return new Response(JSON.stringify({ reply }), {
         headers: getCORSHeaders(request, env),
@@ -422,23 +468,37 @@ function getCORSHeaders(request, env) {
   };
 }
 
+function buildContext(page, section) {
+  const where = PAGES[page] || 'the site';
+  const part = (page === 'home' && SECTIONS[section]) ? `, reading ${SECTIONS[section]}` : '';
+  const today = new Date().toLocaleDateString('en-US', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'America/New_York',
+  });
+  return `## CURRENT CONTEXT
+The visitor is on ${where}${part}.
+Today is ${today} (Pittsburgh time). The facts above were last checked against Thomas's CV in ${SITE_KNOWLEDGE.stats.asOf}; if asked about anything later than that, say you may be out of date and point to the CV.`;
+}
+
 function formatHistory(history) {
-  // Filter and format history, keeping last N messages
-  return history
-    .filter(msg => msg && msg.role && msg.content)
+  // Keep the last few turns; drop anything malformed.
+  if (!Array.isArray(history)) return [];
+  const turns = history
+    .filter(msg => msg && typeof msg.content === 'string' && msg.content.trim() &&
+                   (msg.role === 'assistant' || msg.role === 'user'))
     .slice(-10)
-    .map(msg => ({
-      role: msg.role === 'assistant' ? 'assistant' : 'user',
-      content: String(msg.content).slice(0, 1000), // Limit content length
-    }));
+    .map(msg => ({ role: msg.role, content: msg.content.slice(0, 1000) }));
+  // The client's canned greeting comes first; a conversation has to open on
+  // the visitor's turn, so drop leading assistant messages.
+  while (turns.length && turns[0].role === 'assistant') turns.shift();
+  return turns;
 }
 
 function getInCharacterError() {
   const errors = [
-    "Something went wrong in the void between us. The irony of an AI having technical difficulties is not lost on me.",
-    "I appear to have encountered an error. Very human of me, don't you think?",
-    "The wires are crossed, the signals scrambled. Give me a moment to reconstitute.",
-    "Connection to the collective unconscious temporarily unavailable. How inconvenient.",
+    "nothing came back. that's on my end, not yours. try me again in a minute.",
+    "I reached for an answer and got a dial tone. the papers are still on the page. I checked.",
+    "something upstream is down. I'd debunk it but I can't reach it. try again shortly.",
+    "no reply. either the wire is cut or I'm being rate-limited by a higher power. give it a minute.",
   ];
   return errors[Math.floor(Math.random() * errors.length)];
 }
@@ -472,7 +532,7 @@ async function checkRateLimit(request, env) {
     if (globalCount >= RATE_LIMIT.MAX_MESSAGES_GLOBAL) {
       return {
         allowed: false,
-        message: "I've been quite popular today. Too popular, perhaps. Come back tomorrow when I've had time to rest.",
+        message: "the whole internet used up my messages for today. I reset at midnight UTC. the papers don't have a limit. read one.",
       };
     }
 
@@ -481,7 +541,7 @@ async function checkRateLimit(request, env) {
     if (ipCount >= RATE_LIMIT.MAX_MESSAGES_PER_DAY) {
       return {
         allowed: false,
-        message: "We've talked quite a bit today, haven't we? I need to conserve my energy. Same time tomorrow?",
+        message: "that's thirty. my daily limit for one visitor, and you're the visitor. come back tomorrow. bring evidence.",
       };
     }
 

@@ -1,82 +1,71 @@
-# Puck API - Cloudflare Worker
+# Puck API (Cloudflare Worker)
 
-The backend for Puck, the mischievous AI assistant on thomascostello.com.
+The chat half of Puck, the jester on thcostello.com. The page script (`/js/puck.js`) posts
+visitor messages here; the worker adds Puck's prompt and the site facts and forwards the
+conversation to OpenRouter.
 
-## Setup
+- `src/index.js`: the persona prompt, request handling, rate limiting.
+- `src/knowledge.js`: what Puck knows about Tom and the site. Hand-maintained; the CV is the
+  source of truth. Update it (and `FACTS` at the top of `/js/puck.js`) whenever the CV changes.
+- `wrangler.toml`: worker name, allowed origins, the KV namespace used for rate limits.
 
-### 1. Install Wrangler CLI
-
-```bash
-npm install -g wrangler
-```
-
-### 2. Login to Cloudflare
-
-```bash
-wrangler login
-```
-
-### 3. Set Your API Key
-
-Get an API key from [OpenRouter](https://openrouter.ai/keys), then:
+## Deploying
 
 ```bash
-wrangler secret put OPENROUTER_API_KEY
-# Paste your API key when prompted
+cd puck-worker
+npx wrangler@4 deploy
 ```
 
-### 4. Deploy
+If wrangler asks which Cloudflare account to use (there are two on this login), set
+`CLOUDFLARE_ACCOUNT_ID` to the one that owns `puck-api` before deploying. wrangler 4 runs on
+Node 20; newer majors want Node 22.
+
+## The API key
+
+The worker reads one secret, `OPENROUTER_API_KEY`. Create a key at
+<https://openrouter.ai/keys>, then:
 
 ```bash
-# Development (local testing)
-wrangler dev
-
-# Production deployment
-wrangler deploy
+npx wrangler@4 secret put OPENROUTER_API_KEY
 ```
 
-## Configuration
+Setting a secret takes effect immediately; no redeploy needed. Give the key a monthly credit
+limit on OpenRouter so a bad day cannot run up a bill.
 
-Edit `wrangler.toml` to:
+**If Puck answers every message with "nothing came back" or similar**, the upstream call is
+failing. Watch the log while sending him a message:
 
-- Set your `account_id` (find it in Cloudflare dashboard)
-- Update `ALLOWED_ORIGINS` with your domain(s)
-- Optionally configure custom routes
-
-## After Deployment
-
-1. Copy the Worker URL (e.g., `https://puck-api.your-subdomain.workers.dev`)
-2. Update the `apiEndpoint` in `/js/puck.js` on your website
-3. Test by opening your website and chatting with Puck
-
-## Changing the Model
-
-Edit `src/index.js` and change the `model` parameter:
-
-```javascript
-model: 'anthropic/claude-3.5-sonnet',  // Current
-model: 'anthropic/claude-3-haiku',     // Faster, cheaper
-model: 'openai/gpt-4-turbo',           // Alternative
+```bash
+npx wrangler@4 tail puck-api
 ```
 
-See [OpenRouter Models](https://openrouter.ai/models) for options.
+`OpenRouter error: 401 ... User not found` means the key was deleted or the OpenRouter account
+is gone: make a new key and run `secret put` again. `402` means the account is out of credit.
 
-## Costs
+## Model
 
-With Claude 3.5 Sonnet via OpenRouter:
-- ~$0.003 per conversation turn (varies by length)
-- Cloudflare Workers free tier: 100,000 requests/day
+`MODELS` at the top of `src/index.js` lists the primary model and its fallbacks, as OpenRouter
+slugs (currently `anthropic/claude-fable-5.2`, falling back to `anthropic/claude-sonnet-5.5`).
+Check <https://openrouter.ai/models?q=anthropic> for current slugs before changing it.
 
-## Troubleshooting
+The persona prompt and facts come to roughly 5,400 tokens and are sent as a cacheable block, so
+within a conversation every turn after the first reads them at the cached rate. At Fable 5.2
+prices a first message costs about seven cents and each follow-up within five minutes about one
+cent; the Sonnet fallback is roughly a quarter of that. To make Puck cheaper, put the Sonnet slug
+first.
 
-**CORS errors?**
-- Check `ALLOWED_ORIGINS` includes your domain
-- Ensure you're using HTTPS in production
+## Limits
 
-**API errors?**
-- Verify `OPENROUTER_API_KEY` is set: `wrangler secret list`
-- Check OpenRouter dashboard for API status
+30 messages per visitor per day and 1,000 per day overall, counted in the `PUCK_KV` namespace
+(`RATE_LIMIT` in `src/index.js`). Replies are capped at 600 tokens and the last ten turns of
+history are sent.
 
-**Puck not responding?**
-- Check browser console for errors
-- Verify the Worker URL in `puck.js` is correct
+## Local testing
+
+```bash
+npx wrangler@4 dev
+```
+
+needs the key in `puck-worker/.dev.vars` (`OPENROUTER_API_KEY=...`, gitignored). The page script
+only talks to the production URL, so point `apiEndpoint` in `/js/puck.js` at
+`http://localhost:8787` while testing and put it back afterwards.

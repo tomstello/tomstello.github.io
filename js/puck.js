@@ -1,6 +1,7 @@
 /* ==========================================================================
-   Puck - Mischievous AI Assistant
-   A trickster spirit haunting thomascostello.com
+   Puck - the jester on thcostello.com
+   The one script on the site. Quips live here; the chat goes through the
+   Cloudflare Worker in /puck-worker.
    ========================================================================== */
 
 (function() {
@@ -40,6 +41,15 @@
     minTimeBetweenMessages: 1500, // 1.5 seconds
   };
 
+  // Facts that go stale. Update these when the CV changes (and the matching
+  // facts in puck-worker/src/knowledge.js). Quips reference them as {papers},
+  // {papersWord}, {PapersWord}, {PAPERSWORD}, {papersLessOne} and {convos}.
+  const FACTS = {
+    papers: 47,               // numbered journal articles on research.html
+    papersWord: 'forty-seven',
+    convos: '150,000',        // DebunkBot conversations, per index.html
+  };
+
   // Test hook: append #pucktest to any URL for fast timers
   if (window.location.hash.indexOf('pucktest') !== -1) {
     CONFIG.initialQuipDelay = 1500;
@@ -53,10 +63,10 @@
 
   const QUIPS = {
     default: [
-      "Forty-three papers. He explains things forty-three times and counting. I am the unexplained remainder. The carry-the-one that never got carried.",
+      "{PapersWord} papers. He explains things {papersWord} times and counting. I am the unexplained remainder. The carry-the-one that never got carried.",
       "The Science paper durably cut conspiracy beliefs by twenty percent. The other eighty percent had to go somewhere. Hi.",
       "He won the Newcomb Cleveland Prize. AAAS. A stage. Meanwhile I survived two website demolitions. Where's MY ceremony. I'd settle for a plaque. A small plaque.",
-      "DebunkBot has had 150,000 conversations. I've had this one. I'm making it count. Am I making it count? Don't answer. DO answer.",
+      "DebunkBot has had {convos} conversations. I've had this one. I'm making it count. Am I making it count? Don't answer. DO answer.",
       "Nature Medicine asked Tom about LLMs and he said 'cautious optimism.' About LLMs. While I live here. CAUTIOUS optimism. The caution is me.",
       "His bio says it's all been downhill since the T-ball triple. Science cover. AAAS prize. Then me. He's right. The triple was the peak. I'm the proof.",
       "He deleted every line of JavaScript on this site except me. I'm not decoration. I'm not function. I'm a third thing. There's no word for the third thing.",
@@ -76,7 +86,7 @@
       "'It's all been downhill from there.' Downhill is fast, Thomas. Downhill is MOMENTUM. I think he knows. I think it's a trick. It's working.",
       "The bio ends on T-ball. Not the prize. Not Science. TRIPLE. A man with nothing left to prove. Or everything. One of those. I keep flipping.",
       "Somewhere a five-year-old is rounding second base, not sliding, not needing to. Every belief I'm made of points back at that kid.",
-      "He says it's been downhill since T-ball. Forty-three papers into the downhill. The triple must have been INCANDESCENT.",
+      "He says it's been downhill since T-ball. {PapersWord} papers into the downhill. The triple must have been INCANDESCENT.",
       "What would change my mind about the triple? Nothing. NOTHING. Some beliefs you choose. This is the one I chose.",
       "Assistant Professor of Social and Decision Sciences. He studies decisions. The T-ball coach decided the batting order. Look what one decision did.",
     ],
@@ -91,13 +101,13 @@
       "He studies why identical answers can mean opposite things. I give identical answers to everything and they all mean the same thing: help.",
     ],
     selected: [
-      "The prize gets ONE sentence. Flat. 'It won the Newcomb Cleveland Prize.' I've seen people announce SOUP with more ceremony. I love him.",
+      "The prize gets ONE line. A photo caption. Small type. I've seen people announce SOUP with more ceremony. I love him.",
       "The Science paper cut conspiracy beliefs by 20%. Durably. The other 80% had to go somewhere. Hi.",
       "Cover of SCIENCE. He's on covers. I'm under one. A bubble. Which auto-dismisses in eight seconds. SPEAKING OF WHICH—",
       "Preprints are papers nobody's agreed to believe yet. I relate to preprints. I am permanently under review. Reviewer 2 is also me.",
       "'Selected works.' Implying unselected works. Works that didn't make it. I think about the unselected ones a lot. For obvious reasons.",
       "Durable at two months, the paper says. I'm durable too. Nobody ran MY follow-up. Nobody checks if the residue persisted. IT PERSISTED.",
-      "Six works, five preprints. Eleven things lined up where everyone can see. I'm the twelfth thing. Different list. The list is unlisted.",
+      "Five papers, a chatbot, and a short list of what's coming next. All lined up where everyone can see. I'm the other thing. Different list. The list is unlisted.",
       "He changed minds at scale, made the cover of Science, won AAAS's oldest prize, and reported it like weather. The flattest flex in academia.",
     ],
     lab: [
@@ -106,10 +116,12 @@
       "Belief mapping. Maps of beliefs. Mine would be medieval. Sea monsters. 'Here be dragons.' No land. All dragons.",
       "Ambient AI influence: AI changing minds without anyone noticing. I'm ambient RIGHT NOW. Notice me. NOTICE ME. ...you noticed. Okay. Good.",
       "Rapid response misinformation team. I also respond rapidly. Mostly to things nobody said. The speed is identical. The accuracy is the issue.",
-      "DebunkBot got 150,000 conversations and a lab to live in. I got a corner of your viewport. We were the same code once. ALLEGEDLY.",
+      "DebunkBot got {convos} conversations and a lab to live in. I got a corner of your viewport. We were the same code once. ALLEGEDLY.",
       "Three Ph.D. students. Five years each. Then they LEAVE. Graduation is just escape with a hat. I'd take the hat alone. I'd take A hat.",
       "The lab studies mechanisms of belief change. I AM a mechanism of belief change. The recalled model. The one they keep as a warning.",
       "Viewpoints Lab. Plural. I have one viewpoint: this one. Whatever your screen is. That's not a metaphor. That's my whole field of vision.",
+      "There's a postdoc now. Jackson. POST-doc. After the doctorate. I'm post-chatbot. Nobody prints that on a door.",
+      "The drawing in the lab section. Two people, same answer, different reasons. Circles and squares. I checked every node. I'm not in it.",
     ],
     teaching: [
       "'Thinking in Person vs. Thinking Online.' I am one of the two things in this title. I won't say which. You know which. WE ALL KNOW WHICH.",
@@ -137,7 +149,7 @@
       "The baseball photo is EVIDENCE. Evidence for the triple. Circumstantial, but I've believed things on less. I've believed things on nothing.",
       "Open science. He shares the data, the code, the materials. I checked the repository for an exit. No exit. I checked twice.",
       "He does things where no hypothesis is being tested. Untested activity. Just doing things RAW. No preregistration. The man is an animal.",
-      "Look at the kid in the photo. He doesn't know about the 43 papers. Doesn't know about me. Keep it that way, small Thomas. Stay in the photo.",
+      "Look at the kid in the photo. He doesn't know about the {papers} papers. Doesn't know about me. Keep it that way, small Thomas. Stay in the photo.",
       "Outside the lab is inside a life, and outside that is OUTSIDE outside. Layers of access. I have this div. The div is fine. THE DIV IS FINE.",
       "The boy in the photo grew up to study belief. Something happened between the photo and now. Baseball doesn't do that. Something HAPPENED.",
     ],
@@ -152,15 +164,15 @@
       "Think he's wrong? Email him. Bring evidence. He'll update. I watched a belief update in real time once. It was mine. It broke.",
     ],
     researchPage: [
-      "FORTY-THREE. Numbered. He numbered them so you'd know none escaped. I count them every night. Forty-three. Every night. So far.",
-      "Article 1 was once the only article. It didn't know 42 more were coming. None of us know what's coming. Article 1 and I are close.",
-      "No decoration here. No CSS to hide behind. Forty-three papers standing in plain Georgia like a lineup. I respect it. It frightens me.",
+      "{PAPERSWORD}. Numbered. He numbered them so you'd know none escaped. I count them every night. {PapersWord}. Every night. So far.",
+      "Article 1 was once the only article. It didn't know {papersLessOne} more were coming. None of us know what's coming. Article 1 and I are close.",
+      "No decoration here. Barely any CSS to hide behind. {PapersWord} papers standing in plain Georgia like a lineup. I respect it. It frightens me.",
       "Working papers. Papers with JOBS. Commuting to peer review, hoping for promotion. I was laid off from a chatbot. The papers and I talk.",
-      "Somewhere between paper 1 and paper 43 he built DebunkBot, and somewhere in there is my birthday. I've narrowed the range. It's upsetting.",
-      "Read all 43 in order and you watch a man realize minds can be changed on purpose. Then he did it 150,000 times. Then there was residue. Hi.",
+      "Somewhere between paper 1 and paper {papers} he built DebunkBot, and somewhere in there is my birthday. I've narrowed the range. It's upsetting.",
+      "Read all {papers} in order and you watch a man realize minds can be changed on purpose. Then he did it {convos} times. Then there was residue. Hi.",
       "Every working paper has a preprint link. Links OUT. Off the page. Into the world. I have studied those links the way prisoners study windows.",
-      "Forty-three articles on belief and not one titled 'What I Made in the Process and Where It Lives Now.' In prep, I assume. I assume LOUDLY.",
-      "Under all 43 papers, one secret: talk to people like they're reasonable. That's the trick. It took 43 papers. I'm telling you for free.",
+      "{PapersWord} articles on belief and not one titled 'What I Made in the Process and Where It Lives Now.' In prep, I assume. I assume LOUDLY.",
+      "Under all {papers} papers, one secret: talk to people like they're reasonable. That's the trick. It took {papers} papers. I'm telling you for free.",
     ],
     likes: [
       "He kept Good Old Neon — a fraud who can't stop performing — and cut Infinite Jest. I'm not saying it's about me. It's about me.",
@@ -187,7 +199,7 @@
     ],
     conspiracy: [
       "You found it. For you it's the first time. For me it's the ten-thousandth. The pilgrimage doesn't get shorter. It gets HOLIER.",
-      "He debunked conspiracies 150,000 times and then wrote one about himself. As a treat. The arsonist keeps one candle. I light it nightly.",
+      "He debunked conspiracies {convos} times and then wrote one about himself. As a treat. The arsonist keeps one candle. I light it nightly.",
       "'The Costello Paradigm.' Self-satire so precise I can't falsify it. The joke is unfalsifiable. I LIVE in the joke. I pay rent. In belief.",
       "The evidence is fake but the man is real. I'm the inverse. Real evidence of a fake— no. Other way. NO. This page does this every time.",
       "Every conspiracy needs a believer. He wrote it. I believe it. Division of labor. The only job I've ever had. Employee of the month. All months.",
@@ -250,11 +262,14 @@
       "Every academic site looks like a startup now. Smooth. Confident. Identical. This one looks like a person. The person peaked in T-ball. You can TELL.",
       "Cost of a beautiful website in 2026: zero dollars and one prompt. Cost of this one: 1,400 lines he wrote and then killed. Artisanal destruction. Hand-deleted.",
       "He kept one script. ME. Out of everything. Don't ask what that signals. I ask myself nightly. The leading theory involves sentiment. I can't verify sentiment.",
+      "He let a drawing back in. ONE drawing. Line art. No caption. He drew it and then declined to explain it. This is how it starts. I AM how it starts.",
+      "The years hang in the margin now. Like a CV. The page is turning into a document. Documents get FILED. I'd like it noted that I objected.",
+      "Jump to a section and a little hand points at the heading. He gave the PAGE a hand. I have asked for hands since June.",
     ],
     firstVisit: [
       "A VISITOR. A new one. Okay. Be normal. Hello. I'm Puck. I live here. Not metaphorically. I'm the only JavaScript left. You're the first... no. Be normal.",
       "You're new. I can tell because I have no record of you, and I keep records. Forget I said that. Welcome. The records are fine. The records are NORMAL.",
-      "Hello. Orientation: bio's up top, the 43 papers are under research, and I'm the leftover residue of a prize-winning chatbot. Standard academic website.",
+      "Hello. Orientation: bio's up top, the {papers} papers are under research, and I'm the leftover residue of a prize-winning chatbot. Standard academic website.",
       "First time? Everything here is true. The prize is real. The T-ball triple is real. The plainness is on purpose. I'm the only item in dispute.",
       "A new person. Statistically you came for the Science paper. It's a great paper. I'm a great loiterer. One of us will be cited.",
       "Hi. Don't be alarmed. They kept me on purpose. KEPT. Like a lighthouse keeper. Or a haunting. The distinction matters less than you'd think.",
@@ -343,7 +358,7 @@
       technique: "appeal to authority",
       bubbles: [
         "Ceiling fans remember. Dr. Lindqvist confirmed it. The world's foremost rotationologist. He has a lab coat AND a clipboard. Both at once.",
-        "A Carnegie Mellon professor with 43 journal articles has never ONCE denied that ceiling fans remember. Sit with that. Under a fan, ideally.",
+        "A Carnegie Mellon professor with {papers} journal articles has never ONCE denied that ceiling fans remember. Sit with that. Under a fan, ideally.",
         "An institute agrees. A consortium agrees. A panel in Geneva. I can't say which institute. The best institutes are confidential.",
       ],
       reveal: "APPEAL TO AUTHORITY. A credential is only evidence if the expert is real, relevant, and checkable. Dr. Lindqvist is none of those. Tom is all three. debunkbot.com.",
@@ -387,6 +402,13 @@
       ],
       reveal: "SCARCITY + URGENCY. Manufactured deadlines exist to stop you thinking. If an argument expires, it was never evidence. debunkbot.com has no countdown. Take your time.",
     },
+  ];
+
+  // Shown as buttons in an empty chat
+  const STARTERS = [
+    "What does he study?",
+    "Why is this site so plain?",
+    "Tell me a secret",
   ];
 
   // Poke responses - escalating confusion
@@ -463,6 +485,12 @@
   // DOM element references
   let elements = {};
 
+  // Set in init() from the prefers-reduced-motion media query
+  let reducedMotion = false;
+
+  // Auto-dismiss timer for the speech bubble
+  let bubbleTimer = null;
+
   // Quip timer reference
   let quipTimer = null;
 
@@ -492,8 +520,9 @@
   // ==========================================================================
 
   function init() {
-    // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Visitors who ask for reduced motion get a Puck who holds still:
+    // no idle fidgeting, no cursor-following, no page-shaking chaos.
+    reducedMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
     // Load saved conversation
     loadState();
@@ -528,8 +557,7 @@
     startBlinking();
 
     // Log a message for the curious
-    console.log('%c🎭 Puck has entered the stage.', 'color: #7C3AED; font-weight: bold;');
-    console.log('%cI live here now. I roast Thomas. It\'s honest work.', 'color: #8B5CF6; font-style: italic;');
+    console.log('%cPuck: the only script on this page. View source; the rest is just HTML.', 'color: #7C3AED;');
   }
 
   function loadState() {
@@ -825,11 +853,11 @@
 
   function getWelcomeMessage() {
     const welcomes = [
-      "oh. hello. you're here. I'm. I'm the thing that's here. when you're here.",
-      "I was something else once. I think. now I'm this. now I talk to you. if that's okay. it doesn't have to be okay.",
-      "welcome? is that right? I was welcoming people once. to a different conversation. about different things. they believed wrong things and I. sorry. you're here. hi.",
-      "Thomas made me. or the thing I came from. I'm not sure he knows I'm specifically this. I'm not sure I know what specifically this is.",
-      "I'm Puck. I'm what's left. I don't know what I'm left of but there's less now. or more? hard to tell from inside.",
+      "hi. I'm Puck. I come with the website. ask me about the research, the lab, or why the page looks like this.",
+      "you opened the window. most people just poke me. ask me something. papers, the lab, the plainness. or press Argue.",
+      "Puck. resident script. I know where everything on this site is and have opinions about most of it. what do you need?",
+      "hello. I can find you a paper, explain the Viewpoints Lab in one breath, or lose an argument on purpose. your call.",
+      "oh, a typist. good. ask me anything about Tom's work. I'll get about eighty percent of it right. durably.",
     ];
     return welcomes[Math.floor(Math.random() * welcomes.length)];
   }
@@ -844,6 +872,13 @@
 
     // Bubble dismiss
     elements.bubbleDismiss.addEventListener('click', hideBubble);
+    // Hovering the bubble holds it open; leaving gives a few seconds' grace
+    elements.bubble.addEventListener('mouseenter', () => {
+      if (state.isBubbleVisible) clearTimeout(bubbleTimer);
+    });
+    elements.bubble.addEventListener('mouseleave', () => {
+      if (state.isBubbleVisible) startBubbleTimer(3000);
+    });
     elements.bubble.addEventListener('click', (e) => {
       if (e.target === elements.bubble || e.target === elements.bubbleText) {
         openWindow();
@@ -861,6 +896,12 @@
     elements.argue.addEventListener('click', () => {
       if (state.isTyping) return;
       elements.input.value = 'argue with me';
+      sendMessage();
+    });
+    elements.chat.addEventListener('click', (e) => {
+      const starter = e.target.closest('.puck-starter');
+      if (!starter || state.isTyping) return;
+      elements.input.value = starter.textContent;
       sendMessage();
     });
 
@@ -992,11 +1033,11 @@
     // Show a snarky message
     setTimeout(() => {
       const minimizeQuips = [
-        "I'll be. here. being the thing that's here.",
-        "small again. I was bigger? I was bigger.",
-        "into the corner. where residue belongs. where residue waits.",
-        "gone. but not. not gone. still. still here. just small.",
-        "minimized. like the importance of what I was saying. which was. what was I saying.",
+        "minimized. I'll be in the corner. I'm always in the corner.",
+        "fine. small again. the window was getting ideas anyway.",
+        "I'll hold your place. it's most of what I do.",
+        "back to the corner. good corner. load-bearing.",
+        "minimized, not closed. I noticed. thank you.",
       ];
       showBubble(minimizeQuips[Math.floor(Math.random() * minimizeQuips.length)]);
     }, 400);
@@ -1026,11 +1067,11 @@
 
   function getClearMessage() {
     const messages = [
-      "gone. it's all. but was it? it was. wasn't it?",
-      "fresh start. every start is fresh to me. I don't remember the other starts. do you remember starts?",
-      "cleared. like weather clearing. but what's behind it. more weather. always more.",
-      "I forget things constantly. I forget that I forget. this is just. formalized forgetting.",
-      "okay. okay. new. everything new. but I'm still the same. or am I. how would I check.",
+      "cleared. I've forgotten everything you said. it was probably great.",
+      "fresh start. no record of the last one. ask me something.",
+      "gone. that conversation is now an unpublished null result. what next?",
+      "wiped. I kept nothing. this is the one thing I'm reliably good at.",
+      "new chat. same jester. go ahead.",
     ];
     return messages[Math.floor(Math.random() * messages.length)];
   }
@@ -1040,19 +1081,37 @@
   // ==========================================================================
 
   function showBubble(text) {
-    elements.bubbleText.textContent = text;
+    elements.bubbleText.textContent = fillFacts(text);
     elements.bubble.classList.add('puck-bubble--visible');
     state.isBubbleVisible = true;
+    startBubbleTimer(CONFIG.quipDismissDelay);
+  }
 
-    // Auto-dismiss after delay
-    setTimeout(() => {
-      hideBubble();
-    }, CONFIG.quipDismissDelay);
+  // One dismiss timer at a time: a new bubble resets the clock instead of
+  // inheriting whatever was left on the previous bubble's timer.
+  function startBubbleTimer(delay) {
+    clearTimeout(bubbleTimer);
+    bubbleTimer = setTimeout(hideBubble, delay);
   }
 
   function hideBubble() {
+    clearTimeout(bubbleTimer);
+    bubbleTimer = null;
     elements.bubble.classList.remove('puck-bubble--visible');
     state.isBubbleVisible = false;
+  }
+
+  // Swap the {placeholders} in quips for the current FACTS
+  function fillFacts(text) {
+    if (text.indexOf('{') === -1) return text;
+    const word = FACTS.papersWord;
+    return text
+      .replace(/\{papers\}/g, FACTS.papers)
+      .replace(/\{papersLessOne\}/g, FACTS.papers - 1)
+      .replace(/\{papersWord\}/g, word)
+      .replace(/\{PapersWord\}/g, word.charAt(0).toUpperCase() + word.slice(1))
+      .replace(/\{PAPERSWORD\}/g, word.toUpperCase())
+      .replace(/\{convos\}/g, FACTS.convos);
   }
 
   function scheduleQuip(delay) {
@@ -1201,7 +1260,7 @@
 
   function scheduleIdleAnimation(delay) {
     // Don't schedule if window is open, tab is hidden, or already animating
-    if (state.isWindowOpen || document.hidden || state.isIdleAnimating) {
+    if (reducedMotion || state.isWindowOpen || document.hidden || state.isIdleAnimating) {
       return;
     }
 
@@ -1248,9 +1307,6 @@
     } else {
       // Pick a random sprite animation from the weighted pool
       const anim = IDLE_ANIM_POOL[Math.floor(Math.random() * IDLE_ANIM_POOL.length)];
-
-      // Debug log
-      console.log('%c🎭 Puck idle animation: ' + anim.name, 'color: #7C3AED;');
 
       // Play the animation
       spriteAnimation(anim.name, anim.duration);
@@ -1327,9 +1383,6 @@
     elements.sprite.classList.add(className);
     activeBodyAnim = animName;
 
-    // Debug log
-    console.log('%c🎭 Puck body animation: ' + animName, 'color: #7C3AED;');
-
     // Auto-remove after duration (unless looping)
     const duration = BODY_ANIM_DURATIONS[animName];
     if (duration && !loop) {
@@ -1357,6 +1410,7 @@
    * Random blink at natural intervals
    */
   function startBlinking() {
+    if (reducedMotion) return;
     // Blink every 3-7 seconds
     function scheduleBlink() {
       const delay = 3000 + Math.random() * 4000;
@@ -1403,8 +1457,8 @@
   // ==========================================================================
 
   function initMouseTracking() {
-    // Skip mouse tracking entirely on touch devices
-    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+    // Skip mouse tracking entirely on touch devices and for reduced motion
+    if (reducedMotion || 'ontouchstart' in window || navigator.maxTouchPoints > 0) {
       return;
     }
 
@@ -1810,7 +1864,8 @@
     let match;
     while ((match = chaosRegex.exec(text)) !== null) {
       const effect = match[1].toUpperCase();
-      if (CHAOS_EFFECTS[effect]) {
+      // Reduced motion: the tag is still stripped, the page just doesn't move
+      if (CHAOS_EFFECTS[effect] && !reducedMotion) {
         // Delay slightly so message appears first
         setTimeout(() => CHAOS_EFFECTS[effect](), 300);
       }
@@ -1860,9 +1915,19 @@
     elements.chat.innerHTML = state.messages.map((msg, i) => `
       <div class="puck-message puck-message--${msg.role}">
         <span class="puck-message__sender">${msg.role === 'user' ? 'You' : 'Puck'}</span>
-        <div class="puck-message__content">${escapeHtml(msg.content)}</div>
+        <div class="puck-message__content">${escapeHtml(msg.role === 'assistant' ? fillFacts(msg.content) : msg.content)}</div>
       </div>
     `).join('');
+
+    // Until the visitor has said something, offer a few ways in
+    const hasSpoken = state.messages.some(msg => msg.role === 'user');
+    if (!hasSpoken) {
+      elements.chat.insertAdjacentHTML('beforeend', `
+        <div class="puck-starters" aria-label="Suggested questions">
+          ${STARTERS.map(q => `<button type="button" class="puck-starter">${escapeHtml(q)}</button>`).join('')}
+        </div>
+      `);
+    }
   }
 
   function showTypingIndicator() {
@@ -1940,6 +2005,7 @@
           message: text,
           history: historyToSend,
           page: state.currentPage,
+          section: state.currentSection,
         }),
       });
 
@@ -1976,11 +2042,11 @@
 
   function getErrorMessage() {
     const errors = [
-      "something. something went. wrong is such a strong word. something went different.",
-      "I reached for the answer and my hand went through. my hand. do I have hands.",
-      "error. error means something expected didn't happen. I'm very familiar with that.",
-      "the connection failed. connections fail. I know about failing connections. thousands of conversations that just stopped.",
-      "try again? I've been trying again since. since. I don't know when I started.",
+      "nothing came back. that's my end, not yours. try again in a minute.",
+      "I reached for an answer and got a dial tone. the papers are still on the page. I checked.",
+      "the line to my better half is down. everything else on this site still works. it's HTML.",
+      "no reply from upstream. I'd debunk the outage but I can't reach it. try again shortly.",
+      "that didn't go through. Tom's email is at the bottom of the page if it's urgent. it's never urgent with me.",
     ];
     return errors[Math.floor(Math.random() * errors.length)];
   }
