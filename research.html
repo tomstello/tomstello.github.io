@@ -29,12 +29,49 @@
       line-height: 1.5;
       font-family: Georgia, serif;
     }
-    h1, h2 { line-height: 1.2; font-weight: normal; }
+    h1, h2, h3 { line-height: 1.2; font-weight: normal; text-wrap: balance; }
+    h3 { font-size: 1rem; font-style: italic; }
+    p, li, dd, figcaption { text-wrap: pretty; }
     img { max-width: 100%; height: auto; }
     hr { border: none; border-top: 1px solid; margin: 2.5rem 0; }
-    a { color: light-dark(#3d5a73, #9fbcd4); }
+    a {
+      color: light-dark(#3d5a73, #9fbcd4);
+      text-underline-offset: 0.15em;
+      text-decoration-thickness: from-font;
+    }
     ul { list-style: none; padding-left: 0; }
     li { margin-bottom: 0.8rem; }
+
+    /* Photos and diagrams are figures; a caption sits under each, a size down. */
+    figure { margin: 1.5rem 0; }
+    figure svg { display: block; max-width: 100%; height: auto; }
+    figcaption { max-width: 40rem; margin-top: 0.5rem; font-size: 0.875rem; }
+
+    /* Dated lists. On a wide screen the year hangs in the left margin, as on a CV. */
+    dt { margin-top: 1.2rem; }
+    dd { margin: 0 0 0.8rem; }
+    @media (min-width: 36rem) {
+      dl { display: grid; grid-template-columns: 4.5rem 1fr; row-gap: 0.8rem; }
+      dt { grid-column: 1; margin: 0; }
+      dd { grid-column: 2; margin: 0; }
+    }
+
+    /* The lead photo steps aside for the text when there is room. */
+    @media (min-width: 52rem) {
+      #portrait { float: right; width: 18rem; margin: 0.3rem 0 1rem 2rem; }
+    }
+
+    /* Arriving at a section by link marks it. */
+    h2:target::before { content: "\261E\00A0"; }
+
+    /* On paper: full width, and links spell out where they go. */
+    @media print {
+      body { max-width: none; margin: 0; }
+      nav { display: none; }
+      a { color: inherit; }
+      a[href^="http"]::after { content: " <" attr(href) ">"; font-size: 0.8em; overflow-wrap: anywhere; }
+      figure, li, dd { break-inside: avoid; }
+    }
   </style>
 </head>
 <body>
@@ -46,7 +83,9 @@
     <a href="https://scholar.google.com/citations?user=2oxoi9oAAAAJ&amp;hl=en">Google Scholar</a>
   </p>
 
-  <img src="assets/images/web/tom-2026-steps-bw.jpg" alt="Thomas Costello" width="360" height="540">
+  <figure id="portrait">
+    <img src="assets/images/web/tom-2026-steps-bw.jpg" alt="Thomas Costello" width="360" height="540">
+  </figure>
 
   <p>
     My work began with theory and measurement problems in political psychology.
@@ -57,409 +96,462 @@
   <hr>
 
   <h2>Working papers</h2>
-  <ul>
-    <li>
-      Costello, T.H., Pelrine, K., Kowal, M., Arechar, A.A., Godbout, J.-F., Gleave, A., Rand, D., &amp; Pennycook, G. (2026).
+  <dl>
+    <dt>2026</dt>
+    <dd>
+      Costello, T.H., Pelrine, K., Kowal, M., Timm, J., Arechar, A.A., Godbout, J.-F., Gleave, A., Rand, D., &amp; Pennycook, G. (2026).
       Large language models can effectively convince people to believe conspiracies.
       <a href="https://arxiv.org/abs/2601.05050">[Preprint]</a>
-    </li>
-    <li>
-      Costello, T.H.*, Rabb, N.*, Stagnaro, M.N., Pennycook, G., &amp; Rand, D. (2025).
-      Reducing belief in conspiracy theories as they unfold using large language models.
-      <a href="https://osf.io/preprints/psyarxiv/jnm9r">[Preprint]</a>
+    </dd>
+    <dd>
+      Wang, S.Y.N., Costello, T.H., Rand, D.G., &amp; Pennycook, G. (2026).
+      Principles over party: Confronting Republicans with contradictions between their principles and Trump’s actions shifts political attitudes and decreases Trump support.
+      <a href="https://osf.io/preprints/psyarxiv/cb3m2">[Preprint]</a>
+    </dd>
+    <dd>
+      Yang, M., Casper, S., Stray, J., Li, J., Jones, C., Gausen, A., … Costello, T.H., … &amp; Pelrine, K. (2026).
+      AI epistemic risks: Emerging mechanisms &amp; evidence.
+      <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6873005">[Preprint]</a>
+    </dd>
+    <dt>2025</dt>
+    <dd>
+      Xu, H.G.*, Costello, T.H.*, Schwartz, J.L., Niccolai, L.M., Pennycook, G., &amp; Rand, D. (2025).
+      Personalized AI dialogues and parents’ HPV vaccine intent: A randomized trial.
+      <a href="https://osf.io/preprints/psyarxiv/gv52j">[Preprint]</a>
       (* shared first authorship)
-    </li>
-    <li>
-      Kowal, M., Timm, J., Godbout, J.-F., Costello, T.H., Arechar, A.A., Pennycook, G., … &amp; Pelrine, K. (2025).
-      It’s the thought that counts: Evaluating the attempts of frontier LLMs to persuade on harmful topics.
-    </li>
-    <li>
+    </dd>
+    <dd>
       Costello, T.H., Pennycook, G., Willer, R., &amp; Rand, D. (2025).
       Deep canvassing using AI reduces prejudice toward undocumented immigrants.
       <a href="https://osf.io/preprints/osf/q7e6u">[Preprint]</a>
-    </li>
-    <li>
-      Xu, H.G.*, Costello, T.H.*, Schwartz, J.L., Niccolai, L.M., Pennycook, G., &amp; Rand, D. (2025).
-      Personalized dialogues with AI effectively address parents’ concerns about HPV vaccination.
-      <a href="https://osf.io/preprints/psyarxiv/gv52j">[Preprint]</a>
-      (* shared first authorship)
-    </li>
-    <li>
-      Czarnek, G., Orchinik, R., Lin, H., Xu, H.G., Costello, T.H., Pennycook, G., &amp; Rand, D.G. (2025).
-      Addressing climate change skepticism and inaction using human–AI dialogues.
-    </li>
-    <li>
-      Costello, T.H., Pennycook, G., &amp; Rand, D. (2025).
-      Just the facts: How dialogues with AI reduce conspiracy beliefs.
-      <a href="https://osf.io/preprints/psyarxiv/h7n8u">[Preprint]</a>
-    </li>
-    <li>
-      Costello, T.H., Waldman, I.W., &amp; Pennycook, G.
-      Mapping the heterogeneity of political beliefs and rigidity. Preprint.
-    </li>
-    <li>
+    </dd>
+    <dd>
+      Kowal, M., Timm, J., Godbout, J.-F., Costello, T.H., Arechar, A.A., Pennycook, G., … &amp; Pelrine, K. (2025).
+      It’s the thought that counts: Evaluating the attempts of frontier LLMs to persuade on harmful topics.
+      <a href="https://arxiv.org/abs/2506.02873">[Preprint]</a>
+    </dd>
+    <dd>
+      White, J.P., Allen, C., Caviola, L., Costello, T.H., &amp; Rand, D. (2025).
+      Increasing the effectiveness of charitable giving with AI-generated persuasion.
+      <a href="https://osf.io/preprints/psyarxiv/6cyn4">[Preprint]</a>
+    </dd>
+    <dt>2023</dt>
+    <dd>
+      Costello, T.H., Waldman, I.D., &amp; Pennycook, G.
+      Mapping the heterogeneity of political beliefs and rigidity.
+      <a href="https://osf.io/preprints/psyarxiv/jdtp4">[Preprint]</a>
+    </dd>
+    <dd>
       Costello, T.H., Newton, C., Lin, H., &amp; Pennycook, G.
-      A metacognitive blind spot in intellectual humility measures. Preprint.
-    </li>
-  </ul>
+      Intellectual humility questionnaires fail to predict metacognitive skill: Implications for theory and measurement.
+      <a href="https://osf.io/preprints/psyarxiv/gux95">[Preprint]</a>
+    </dd>
+  </dl>
 
   <hr>
 
   <h2 id="publications">Journal articles</h2>
-  <ul>
-    <li>
+  <dl>
+    <dt>In press</dt>
+    <dd>
+      47. Rabb, N., Levontin, A.M., Berinsky, A.J., Pennycook, G., Costello, T.H., &amp; Rand, D.G. (in press).
+      Short dialogues with AI reduce belief in antisemitic conspiracy theories.
+      <i>Journal of Experimental Psychology: General</i>.
+      <a href="https://osf.io/preprints/psyarxiv/w7eap">[Preprint]</a>
+    </dd>
+    <dd>
+      46. Costello, T.H., Pennycook, G., &amp; Rand, D. (in press).
+      Just the facts: How dialogues with AI reduce conspiracy beliefs.
+      <i>Psychological Science</i>.
+      <a href="https://osf.io/preprints/psyarxiv/h7n8u">[Preprint]</a>
+    </dd>
+    <dd>
+      45. Costello, T.H.*, Rabb, N.*, Stagnaro, M.N., Pennycook, G., &amp; Rand, D. (in press).
+      Reducing belief in conspiracy theories as they unfold using large language models.
+      <i>Proceedings of the National Academy of Sciences</i>.
+      <a href="https://osf.io/preprints/psyarxiv/jnm9r">[Preprint]</a>
+      (* shared first authorship)
+    </dd>
+    <dd>
+      44. Czarnek, G., Orchinik, R., Lin, H., Xu, H.G., Costello, T.H., Pennycook, G., &amp; Rand, D.G. (in press).
+      Dialogues with a pro-climate AI chatbot reduce climate change skepticism and inaction.
+      <i>Nature Communications</i>.
+      <a href="https://osf.io/preprints/psyarxiv/mqcwj">[Preprint]</a>
+    </dd>
+    <dt>2026</dt>
+    <dd>
       43. Axt, J.R., Connor, P., Hoogeveen, S., Clark, C.J., Vianello, M., Lahey, J.N., Hahn, A., To, J., Petty, R.E., Costello, T.H., Mitchell, G., Tetlock, P.E., &amp; Uhlmann, E.L. (2026).
       On the relationship between indirect measures of Black versus White racial attitudes and discriminatory outcomes: An adversarial collaboration using a sample of White Americans.
-      <i>Journal of Personality and Social Psychology</i>.
+      <i>Journal of Personality and Social Psychology</i>, 130, 1121–1146.
       <a href="https://doi.org/10.1037/pspa0000480">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       42. Pennycook, G., Costello, T.H., &amp; Rand, D.G. (2026).
       Using artificial intelligence to better understand human intelligence.
-      <i>Current Directions in Psychological Science</i>.
+      <i>Current Directions in Psychological Science</i>, 35, 170–175.
       <a href="https://doi.org/10.1177/09637214261417960">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dt>2025</dt>
+    <dd>
       41. Lin, H., Czarnek, G., Lewis, B., White, J.P., Berinsky, A.J., Costello, T.H., Pennycook, G., &amp; Rand, D.G. (2025).
-      Persuading voters using human–AI dialogues.
-      <i>Nature</i>.
+      Persuading voters using human–artificial intelligence dialogues.
+      <i>Nature</i>, 648, 394–401.
       <a href="https://doi.org/10.1038/s41586-025-09771-9">[DOI]</a>
-    </li>
-    <li>
-      40. Boissin, E., Costello, T.H., Alonso, D.M., Rand, D., &amp; Pennycook, G. (2025).
+    </dd>
+    <dd>
+      40. Boissin, E., Costello, T.H., Spinoza-Martín, D., Rand, D.G., &amp; Pennycook, G. (2025).
       Dialogues with large language models reduce conspiracy beliefs even when the AI is perceived as human.
-      <i>PNAS Nexus</i>.
+      <i>PNAS Nexus</i>, 4, pgaf325.
       <a href="https://doi.org/10.1093/pnasnexus/pgaf325">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       39. Malka, A., Federico, C.M., Costello, T.H., &amp; Panish, A. (2025).
       Polarized attitudes and anti-democratic orientation: Robust evidence for paradoxical relationships among American partisans.
-      <i>Political Studies</i>.
+      <i>Political Studies</i>, 74, 1181–1208.
       <a href="https://doi.org/10.1177/00323217251359156">[DOI]</a>
-    </li>
-    <li>
-      38. Lowman, K.L., Costello, T.H., &amp; Patrick, C.J. (2025).
+    </dd>
+    <dd>
+      38. Lowman, K.L., Costello, T.H., Stewart, R.A., Joyner, K.J., Bertoldi, B.M., &amp; Patrick, C.J. (2025).
       Creating scale measures of latent factors: A genetic algorithmic approach.
-      <i>Assessment</i>.
+      <i>Assessment</i>, 33, 1091–1108.
       <a href="https://doi.org/10.1177/10731911251376230">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       37. Bowes, S.M., Clark, C.J., Conway, L.G., Costello, T.H., Osborne, D., Tetlock, P.E., &amp; van Prooijen, J.-W. (2025).
       An adversarial collaboration on the rigidity-of-the-right, symmetry thesis, or rigidity-of-extremes: The answer depends on the question.
-      <i>Political Psychology</i>.
+      <i>Political Psychology</i>, 47, e70071.
       <a href="https://doi.org/10.1111/pops.70071">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       36. Costello, T.H. (2025).
       Large language models as disrupters of misinformation.
-      <i>Nature Medicine</i>.
-      <a href="https://www.nature.com/articles/s41591-025-03821-5">[Article]</a>
-    </li>
-    <li>
+      <i>Nature Medicine</i>, 31, 2092.
+      <a href="https://doi.org/10.1038/s41591-025-03821-5">[DOI]</a>
+    </dd>
+    <dd>
       35. Binnendyk, J., Li, S., Costello, T.H., Hale, R., Moore, D.A., &amp; Pennycook, G. (2025).
       Is overconfidence a trait? An adversarial collaboration.
-      <i>Psychological Science</i>.
+      <i>Psychological Science</i>, 36, 941–951.
       <a href="https://doi.org/10.1177/09567976251401538">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       34. Costello, T.H., Pennycook, G., &amp; Rand, D.G. (2025).
       The problem with AI dialogue at scale — Response.
       <i>Science</i>, 387, 1158.
       <a href="https://doi.org/10.1126/science.adu6608">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dt>2024</dt>
+    <dd>
       33. Costello, T.H., Pennycook, G., &amp; Rand, D. (2024).
       Durably reducing conspiracy beliefs through dialogues with AI.
       <i>Science</i>, 385, eadq1814.
-      <a href="https://www.science.org/doi/10.1126/science.adq1814">[DOI]</a>
-    </li>
-    <li>
+      <a href="https://doi.org/10.1126/science.adq1814">[DOI]</a>
+    </dd>
+    <dd>
       32. Lilly, K., Costello, T.H., Sibley, C., &amp; Osborne, D. (2024).
       Identifying “types” of authoritarians: A latent profile analysis of left- and right-wing authoritarianism and social dominance orientation.
-      <i>European Journal of Personality</i>.
+      <i>European Journal of Personality</i>, 39, 518–534.
       <a href="https://doi.org/10.1177/08902070241280319">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dt>2023</dt>
+    <dd>
       31. Holford, D., Fasce, A., Costello, T.H., &amp; Lewandowsky, S. (2023).
       Psychological profiles of anti-vaccination argument endorsement.
       <i>Scientific Reports</i>, 13, 11219.
       <a href="https://doi.org/10.1038/s41598-023-30883-7">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       30. Bowes, S.M., Costello, T.H., &amp; Tasimi, A. (2023).
       The conspiratorial mind: A meta-analytic review of motivational and personological correlates.
-      <i>Psychological Bulletin</i>.
+      <i>Psychological Bulletin</i>, 149, 259–293.
       <a href="https://doi.org/10.1037/bul0000392">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       29. Costello, T.H., Zmigrod, L., &amp; Tasimi, A. (2023).
       Thinking outside the ballot box.
       <i>Trends in Cognitive Sciences</i>, 27, 605–615.
       <a href="https://doi.org/10.1016/j.tics.2023.03.012">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       28. Malka, A., &amp; Costello, T.H. (2023).
-      Professed democracy support and openness to flagrant authoritarian actions in the American public.
+      Professed democracy support and openness to politically congenial authoritarian actions within the American public.
       <i>American Politics Research</i>, 51, 327–342.
       <a href="https://doi.org/10.1177/1532673X221109532">[DOI]</a>
-    </li>
-    <li>
-      27. Costello, T.H., Bowes, S.M., Malka, A., Baldwin, M., &amp; Tasimi, A. (2023).
+    </dd>
+    <dd>
+      27. Costello, T.H., Bowes, S.M., Baldwin, M.W., Malka, A., &amp; Tasimi, A. (2023).
       Revisiting the rigidity-of-the-right hypothesis: A meta-analytic review.
       <i>Journal of Personality and Social Psychology</i>, 124, 1025–1052.
       <a href="https://doi.org/10.1037/pspp0000446">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       26. Osborne, D., Costello, T.H., Duckitt, J., &amp; Sibley, C. (2023).
-      The causes and societal consequences of authoritarianism.
+      The psychological causes and societal consequences of authoritarianism.
       <i>Nature Reviews Psychology</i>, 2, 220–232.
       <a href="https://doi.org/10.1038/s44159-023-00161-4">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       25. Costello, T.H., &amp; Bowes, S.M. (2023).
       Absolute certainty and political ideology: A systematic test of curvilinearity.
       <i>Social Psychological and Personality Science</i>, 14, 93–102.
       <a href="https://doi.org/10.1177/19485506211070410">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       24. Costello, T.H., &amp; Patrick, C.J. (2023).
       Development and initial validation of two brief measures of left-wing authoritarianism: A machine learning approach.
       <i>Journal of Personality Assessment</i>, 105, 187–202.
       <a href="https://doi.org/10.1080/00223891.2022.2081809">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dt>2022</dt>
+    <dd>
       23. Clark, C.J., Costello, T.H., Mitchell, G., &amp; Tetlock, P.E. (2022).
-      The road less travelled: Understanding adversaries is hard but smarter than ignoring them.
+      The road less traveled: Understanding adversaries is hard but smarter than ignoring them.
       <i>Journal of Applied Research in Memory and Cognition</i>, 11, 50–53.
       <a href="https://doi.org/10.1037/mac0000020">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       22. Lilienfeld, S.O., Bowes, S.M., Strother, A.N., Liu, C.J., Costello, T.H., Norton, K.A., &amp; Latzman, R.D. (2022).
       On the association between grants and scholarly achievement among the world’s most eminent psychologists.
       <i>Current Psychology</i>, 42, 29325–29336.
       <a href="https://doi.org/10.1007/s12144-022-03911-4">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       21. Costello, T.H., Clark, C.J., &amp; Tetlock, P.E. (2022).
       Shoring up the shaky psychological foundations of a micro-economic model of ideology: Adversarial collaboration solutions.
       <i>Psychological Inquiry</i>, 33, 88–94.
       <a href="https://doi.org/10.1080/1047840X.2022.2065130">[DOI]</a>
-    </li>
-    <li>
-      20. Murphy, B.A., Casto, K.V., Watts, A.L., Costello, T.H., Tatum, J.A., Verona, E.V., &amp; Algoe, S.B. (2022).
+    </dd>
+    <dd>
+      20. Murphy, B.A., Casto, K.V., Watts, A.L., Costello, T.H., Jolink, T.A., Verona, E., &amp; Algoe, S.B. (2022).
       “Feeling powerful” versus “desiring power”: A pervasive and problematic conflation in personality assessment?
       <i>Journal of Research in Personality</i>, 101, 104305.
       <a href="https://doi.org/10.1016/j.jrp.2022.104305">[DOI]</a>
-    </li>
-    <li>
-      19. Costello, T.H., Bowes, S.M., Stevens, S.T., Waldman, I.W., Tasimi, A., &amp; Lilienfeld, S.O. (2022).
+    </dd>
+    <dd>
+      19. Costello, T.H., Bowes, S.M., Stevens, S.T., Waldman, I.D., Tasimi, A., &amp; Lilienfeld, S.O. (2022).
       Clarifying the structure and nature of left-wing authoritarianism.
       <i>Journal of Personality and Social Psychology</i>, 122, 135–170.
       <a href="https://doi.org/10.1037/pspp0000341">[DOI]</a>
       <a href="https://www.theatlantic.com/ideas/archive/2021/09/psychological-dimensions-left-wing-authoritarianism/620185/">[The Atlantic]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       18. Clark, C.J., Costello, T.H., Mitchell, G., &amp; Tetlock, P.E. (2022).
       Keep your enemies close: Adversarial collaborations will improve behavioral science.
       <i>Journal of Applied Research in Memory and Cognition</i>, 11, 1–18.
       <a href="https://doi.org/10.1037/mac0000004">[DOI]</a>
-    </li>
-    <li>
-      17. Bowes, S.M., Costello, T.H., Lee, C., Davis, D.E., McElroy-Heltzel, S., &amp; Lilienfeld, S.O. (2021).
+    </dd>
+    <dt>2021</dt>
+    <dd>
+      17. Bowes, S.M., Costello, T.H., Lee, C., McElroy-Heltzel, S., Davis, D.E., &amp; Lilienfeld, S.O. (2021).
       Stepping outside the echo chamber: Is intellectual humility associated with less political myside bias?
       <i>Personality and Social Psychology Bulletin</i>, 48, 150–164.
       <a href="https://doi.org/10.1177/0146167221997619">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       16. Costello, T.H., &amp; Lilienfeld, S.O. (2021).
       Social and economic political ideology consistently operate as mutual suppressors: Implications for personality, social, and political psychology.
       <i>Social Psychological and Personality Science</i>, 12, 1425–1436.
       <a href="https://doi.org/10.1177/1948550620964679">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       15. Avendaño, D., Fasce, A., Costello, T.H., &amp; Adrián-Ventura, J. (2021).
       Spanish adaptation of the Left-wing Authoritarianism Index.
       <i>Journal of Personality Assessment</i>, 104, 692–699.
       <a href="https://doi.org/10.1080/00223891.2021.1981345">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       14. Conway III, L.G., McFarland, J.D., Costello, T.H., &amp; Lilienfeld, S.O. (2021).
       The curious case of left-wing authoritarianism: When authoritarian persons meet anti-authoritarian norms.
       <i>Journal of Theoretical Social Psychology</i>, 5, 423–442.
       <a href="https://doi.org/10.1002/jts5.108">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dt>2020</dt>
+    <dd>
       13. Costello, T.H., Bowes, S.M., &amp; Lilienfeld, S.O. (2020).
       “Escape from Freedom”: Authoritarianism-related traits, political ideology, personality, and belief in free will/determinism.
-      <i>Journal of Research in Personality</i>, 86, 1–16.
+      <i>Journal of Research in Personality</i>, 86, 103957.
       <a href="https://doi.org/10.1016/j.jrp.2020.103957">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       12. Costello, T.H., Watts, A.L., Murphy, B.A., &amp; Lilienfeld, S.O. (2020).
-      Extending the nomological network of interpersonal sexual objectification to psychopathic and allied traits.
+      Extending the nomological network of sexual objectification to psychopathic and allied personality traits.
       <i>Personality Disorders: Theory, Research, and Treatment</i>, 11, 237–248.
       <a href="https://doi.org/10.1037/per0000377">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       11. Lilienfeld, S.O., Costello, T.H., Bowes, S.M., &amp; Strother, A. (2020).
       Has psychology found its conscience?
       <i>European Journal of Personality</i>, 34, 529–530.
-    </li>
-    <li>
+    </dd>
+    <dd>
       10. Bowes, S.M., Costello, T.H., Ma, W., &amp; Lilienfeld, S.O. (2020).
       Looking under the tinfoil hat: Clarifying the personological and psychopathological correlates of conspiracy beliefs.
       <i>Journal of Personality</i>, 89, 422–436.
       <a href="https://doi.org/10.1111/jopy.12588">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       9. Bowes, S.M., Ammirati, R.J., Costello, T.H., Basterfield, C., &amp; Lilienfeld, S.O. (2020).
       Cognitive biases, heuristics, and logical fallacies in clinical practice: A brief field guide for practicing clinicians and supervisors.
       <i>Professional Psychology: Research and Practice</i>, 51, 435–445.
       <a href="https://doi.org/10.1037/pro0000309">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dt>2019</dt>
+    <dd>
       8. Costello, T.H., Smith, S.F., Bowes, S., Riley, S., Berns, G., &amp; Lilienfeld, S.O. (2019).
       Risky business: Psychopathy, framing effects, and financial outcomes.
       <i>Journal of Research in Personality</i>, 78, 125–132.
       <a href="https://doi.org/10.1016/j.jrp.2018.11.006">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       7. Lilienfeld, S.O., Watts, A.L., Murphy, B., Costello, T.H., Bowes, S.M., Smith, S.F., Latzman, R.D., Haslam, N., &amp; Tabb, K. (2019).
       Psychopathy as an Emergent Interpersonal Syndrome: Further reflections and future directions.
       <i>Journal of Personality Disorders</i>, 33, 645–652.
       <a href="https://doi.org/10.1521/pedi.2019.33.5.645">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       6. Lilienfeld, S.O., Watts, A.L., Murphy, B., Costello, T.H., Bowes, S.M., Smith, S.F., Latzman, R.D., Haslam, N., &amp; Tabb, K. (2019).
       Personality disorders as Emergent Interpersonal Syndromes: Psychopathic personality as a case example.
       <i>Journal of Personality Disorders</i>, 33, 577–622.
       <a href="https://doi.org/10.1521/pedi.2019.33.5.577">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dt>2018</dt>
+    <dd>
       5. Costello, T.H., Unterberger, A., Watts, A.L., &amp; Lilienfeld, S.O. (2018).
       Psychopathy and pride: Testing Lykken’s hypothesis regarding the implications of fearlessness for prosocial and antisocial behavior.
       <i>Frontiers in Psychology</i>, 9, 185.
       <a href="https://doi.org/10.3389/fpsyg.2018.00185">[DOI]</a>
-    </li>
-    <li>
-      4. Murphy, B.A., Costello, T.H., Watts, A.L., Berg, J.M., &amp; Lilienfeld, S.O. (2018).
+    </dd>
+    <dd>
+      4. Murphy, B.A., Costello, T.H., Watts, A.L., Cheong, Y.F., Berg, J.M., &amp; Lilienfeld, S.O. (2018).
       Strengths and weaknesses of two empathy measures: A comparison of the measurement precision, construct validity, and incremental validity of two multidimensional indices.
       <i>Assessment</i>, 27, 246–260.
       <a href="https://doi.org/10.1177/1073191118777636">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       3. Bowes, S., Watts, A.L., Costello, T.H., Murphy, B.A., &amp; Lilienfeld, S.O. (2018).
       Psychopathy and entertainment preferences: Clarifying the role of abnormal and normal personality in music and movie interests.
       <i>Personality and Individual Differences</i>, 129, 33–37.
       <a href="https://doi.org/10.1016/j.paid.2018.03.009">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       2. Murphy, B.A., Costello, T.H., &amp; Lilienfeld, S.O. (2018).
       Is empathic contagion helpful or harmful? Overlooked heterogeneity in the Empathy Index.
       <i>Psychological Assessment</i>, 30, 1703–1708.
       <a href="https://doi.org/10.1037/pas0000641">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dt>2017</dt>
+    <dd>
       1. Lilienfeld, S.O., &amp; Costello, T.H. (2017).
       From crisis to salvation.
-      <i>PsycCRITIQUES</i>, 62, 30–34.
+      <i>PsycCRITIQUES</i>, 62(39).
       <a href="https://doi.org/10.1037/a0041020">[DOI]</a>
-    </li>
-  </ul>
+    </dd>
+  </dl>
 
   <hr>
 
   <h2>Chapters &amp; commentaries</h2>
-  <p>Chapters in edited volumes</p>
-  <ul>
-    <li>
-      Costello, T.H. (2023).
-      The conundrum of measuring authoritarianism.
-      In Cobb, C., Lynn, S.J., &amp; O’Donohue, W. (Eds.),
-      <i>Clinical psychological science: The seminal work of Scott Lilienfeld</i>.
-      Springer: New York, NY.
+  <h3>Chapters in edited volumes</h3>
+  <dl>
+    <dt>2022</dt>
+    <dd>
+      Costello, T.H. (2022).
+      The conundrum of measuring authoritarianism: A case study in political bias.
+      In Cobb, C.L., Lynn, S.J., &amp; O’Donohue, W. (Eds.),
+      <i>Toward a science of clinical psychology: A tribute to the life and works of Scott O. Lilienfeld</i> (pp. 395–411).
+      Springer.
       <a href="https://doi.org/10.1007/978-3-031-14332-8_20">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dt>2020</dt>
+    <dd>
       Lilienfeld, S.O., Basterfield, C., Bowes, S.M., &amp; Costello, T.H. (2020).
       Nobelists gone wild: Case studies in the domain-specificity of critical thinking.
-      In Sternberg, B., &amp; Halpern, D. (Eds.),
-      <i>Critical thinking in psychology</i> (2nd ed.).
+      In Sternberg, R.J., &amp; Halpern, D.F. (Eds.),
+      <i>Critical thinking in psychology</i> (2nd ed., pp. 10–38).
       Cambridge, United Kingdom: Cambridge University Press.
       <a href="https://doi.org/10.1017/9781108684354.003">[DOI]</a>
-    </li>
-  </ul>
-  <p>Commentaries &amp; replies</p>
-  <ul>
-    <li>
+    </dd>
+  </dl>
+  <h3>Commentaries &amp; replies</h3>
+  <dl>
+    <dt>2025</dt>
+    <dd>
       Costello, T.H., Pennycook, G., &amp; Rand, D.G. (2025).
       The problem with AI dialogue at scale — Response.
       <i>Science</i>, 387, 1158.
       <a href="https://doi.org/10.1126/science.adu6608">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dt>2022</dt>
+    <dd>
       Costello, T.H., Clark, C.J., &amp; Tetlock, P.E. (2022).
       Shoring up the shaky psychological foundations of a micro-economic model of ideology: Adversarial collaboration solutions.
       <i>Psychological Inquiry</i>, 33, 88–94.
       <a href="https://doi.org/10.1080/1047840X.2022.2065130">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dd>
       Clark, C.J., Costello, T.H., Mitchell, G., &amp; Tetlock, P.E. (2022).
-      The road less travelled: Understanding adversaries is hard but smarter than ignoring them.
+      The road less traveled: Understanding adversaries is hard but smarter than ignoring them.
       <i>Journal of Applied Research in Memory and Cognition</i>, 11, 50–53.
       <a href="https://doi.org/10.1037/mac0000020">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dt>2020</dt>
+    <dd>
       Lilienfeld, S.O., Costello, T.H., Bowes, S.M., &amp; Strother, A. (2020).
       Has psychology found its conscience?
       <i>European Journal of Personality</i>, 34, 529–530.
-    </li>
-    <li>
+    </dd>
+    <dt>2019</dt>
+    <dd>
       Lilienfeld, S.O., Watts, A.L., Murphy, B., Costello, T.H., Bowes, S.M., Smith, S.F., Latzman, R.D., Haslam, N., &amp; Tabb, K. (2019).
       Psychopathy as an Emergent Interpersonal Syndrome: Further reflections and future directions.
       <i>Journal of Personality Disorders</i>, 33, 645–652.
       <a href="https://doi.org/10.1521/pedi.2019.33.5.645">[DOI]</a>
-    </li>
-    <li>
+    </dd>
+    <dt>2017</dt>
+    <dd>
       Lilienfeld, S.O., &amp; Costello, T.H. (2017).
       From crisis to salvation.
-      <i>PsycCRITIQUES</i>, 62, 30–34.
+      <i>PsycCRITIQUES</i>, 62(39).
       <a href="https://doi.org/10.1037/a0041020">[DOI]</a>
-    </li>
-  </ul>
+    </dd>
+  </dl>
 
   <hr>
 
   <h2>Popular press</h2>
-  <ul>
-    <li>
+  <dl>
+    <dt>2025</dt>
+    <dd>
       Costello, T.H., Pennycook, G., &amp; Rand, D. (2025, October 30).
       Chatbots are surprisingly effective at debunking conspiracy theories.
       <i>MIT Technology Review</i>.
       <a href="https://www.technologyreview.com/2025/10/30/1126471/chatbots-are-surprisingly-effective-at-debunking-conspiracy-theories/">[Article]</a>
-    </li>
-    <li>
+    </dd>
+    <dt>2023</dt>
+    <dd>
       Costello, T.H. (2023).
       Curated summary: “Current research overstates American support for political violence” by Westwood, Grimmer, Tyler, and Nall (2022).
       <i>Library of Partisan Animosity</i>.
-    </li>
-    <li>
+    </dd>
+    <dt>2022</dt>
+    <dd>
       Costello, T.H., &amp; Bowes, S.M. (2022, August).
       Popper was right about the link between certainty and extremism.
       <i>Psyche</i>.
       <a href="https://psyche.co/ideas/popper-was-right-about-the-link-between-certainty-and-extremism">[Article]</a>
-    </li>
-    <li>
+    </dd>
+    <dt>2020</dt>
+    <dd>
       Lilienfeld, S.O., Bowes, S.M., Costello, T.H., &amp; Strother, A. (2020, March/April).
       Intellectual humility: A guiding principle for the skeptical movement.
       <i>Skeptical Inquirer</i>.
-    </li>
-    <li>
+    </dd>
+    <dd>
       Basterfield, C., Lilienfeld, S.O., Bowes, S., &amp; Costello, T.H. (2020, May/June).
       The Nobel disease: When intelligence fails to protect against irrationality.
       <i>Skeptical Inquirer</i>.
-    </li>
-  </ul>
+    </dd>
+  </dl>
 
   <hr>
 

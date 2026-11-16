@@ -29,12 +29,49 @@
       line-height: 1.5;
       font-family: Georgia, serif;
     }
-    h1, h2 { line-height: 1.2; font-weight: normal; }
+    h1, h2, h3 { line-height: 1.2; font-weight: normal; text-wrap: balance; }
+    h3 { font-size: 1rem; font-style: italic; }
+    p, li, dd, figcaption { text-wrap: pretty; }
     img { max-width: 100%; height: auto; }
     hr { border: none; border-top: 1px solid; margin: 2.5rem 0; }
-    a { color: light-dark(#3d5a73, #9fbcd4); }
+    a {
+      color: light-dark(#3d5a73, #9fbcd4);
+      text-underline-offset: 0.15em;
+      text-decoration-thickness: from-font;
+    }
     ul { list-style: none; padding-left: 0; }
     li { margin-bottom: 0.8rem; }
+
+    /* Photos and diagrams are figures; a caption sits under each, a size down. */
+    figure { margin: 1.5rem 0; }
+    figure svg { display: block; max-width: 100%; height: auto; }
+    figcaption { max-width: 40rem; margin-top: 0.5rem; font-size: 0.875rem; }
+
+    /* Dated lists. On a wide screen the year hangs in the left margin, as on a CV. */
+    dt { margin-top: 1.2rem; }
+    dd { margin: 0 0 0.8rem; }
+    @media (min-width: 36rem) {
+      dl { display: grid; grid-template-columns: 4.5rem 1fr; row-gap: 0.8rem; }
+      dt { grid-column: 1; margin: 0; }
+      dd { grid-column: 2; margin: 0; }
+    }
+
+    /* The lead photo steps aside for the text when there is room. */
+    @media (min-width: 52rem) {
+      #portrait { float: right; width: 18rem; margin: 0.3rem 0 1rem 2rem; }
+    }
+
+    /* Arriving at a section by link marks it. */
+    h2:target::before { content: "\261E\00A0"; }
+
+    /* On paper: full width, and links spell out where they go. */
+    @media print {
+      body { max-width: none; margin: 0; }
+      nav { display: none; }
+      a { color: inherit; }
+      a[href^="http"]::after { content: " <" attr(href) ">"; font-size: 0.8em; overflow-wrap: anywhere; }
+      figure, li, dd { break-inside: avoid; }
+    }
   </style>
 </head>
 <body>
@@ -42,7 +79,9 @@
   <h1>Likes</h1>
   <p><a href="index.html">Home</a></p>
 
-  <img src="assets/images/web/tom-carnival.jpg" alt="Thomas Costello in a black Mannequin t-shirt in front of a carnival backdrop" width="360" height="480">
+  <figure id="portrait">
+    <img src="assets/images/web/tom-carnival.jpg" alt="Thomas Costello in a black Mannequin t-shirt in front of a carnival backdrop" width="360" height="480">
+  </figure>
 
   <h2>Poems</h2>
   <ul>
@@ -56,12 +95,14 @@
     <li><a href="https://us.macmillan.com/books/9780374530747/averno">Averno</a> &mdash; Louise Glück</li>
     <li><a href="https://www.poetryfoundation.org/poems/48636/the-glass-essay">The Glass Essay</a> &mdash; Anne Carson</li>
     <li><a href="https://www.wavepoetry.com/products/bluets">Bluets</a> &mdash; Maggie Nelson</li>
+    <li><a href="https://www.poetryfoundation.org/poems/43129/science-56d221d29a71c">Science</a> &mdash; Alison Hawthorne Deming</li>
+    <li><a href="https://www.poetryfoundation.org/poems/47945/childhood-ideogram">Childhood Ideogram</a> &mdash; Larry Levis</li>
   </ul>
 
   <h2>Short Stories</h2>
   <ul>
     <li><a href="https://sdavidmiller.com/octo/files/no_google2/GoodOldNeon.pdf">Good Old Neon</a> &mdash; David Foster Wallace</li>
-    <li><a href="https://en.wikiquote.org/wiki/Larry_Niven">Inconstant Moon</a> &mdash; Larry Niven</li>
+    <li><a href="https://en.wikipedia.org/wiki/Inconstant_Moon">Inconstant Moon</a> &mdash; Larry Niven</li>
     <li><a href="https://www.lightspeedmagazine.com/fiction/face-value/">Face Value</a> &mdash; Karen Joy Fowler</li>
     <li><a href="https://www.lightspeedmagazine.com/fiction/snow/">Snow</a> &mdash; John Crowley</li>
     <li><a href="https://gwern.net/fiction/clippy">It Looks Like You’re Trying To Take Over The World</a> &mdash; Gwern</li>
@@ -94,18 +135,21 @@
     <li><a href="https://dalkeyarchive.store/products/your-name-here">Your Name Here</a> &mdash; Helen DeWitt &amp; Ilya Gridneff</li>
     <li><a href="https://wordfirepress.com/products/destination-void">Destination: Void</a> &mdash; Frank Herbert</li>
     <li><a href="https://www.penguinrandomhouse.com/books/293994/neuromancer-by-william-gibson/">Neuromancer</a> &mdash; William Gibson</li>
-    <li><a href="https://www.rifters.com/real/Blindsight.htm">Blindsight</a> &mdash; Peter Watts</li>
+    <li><a href="https://en.wikipedia.org/wiki/Blindsight_(Watts_novel)">Blindsight</a> &mdash; Peter Watts</li>
     <li><a href="https://www.harpercollins.com/products/the-dispossessed-ursula-k-le-guin">The Dispossessed</a> &mdash; Ursula K. Le Guin</li>
-    <li><a href="https://torpublishinggroup.com/the-word-for-world-is-forest/">The Word for World Is Forest</a> &mdash; Ursula K. Le Guin</li>
+    <li><a href="https://en.wikipedia.org/wiki/The_Word_for_World_Is_Forest">The Word for World Is Forest</a> &mdash; Ursula K. Le Guin</li>
     <li><a href="https://www.penguinrandomhouse.com/books/653825/klara-and-the-sun-by-kazuo-ishiguro/">Klara and the Sun</a> &mdash; Kazuo Ishiguro</li>
     <li><a href="https://groveatlantic.com/book/a-confederacy-of-dunces/">A Confederacy of Dunces</a> &mdash; John Kennedy Toole</li>
     <li><a href="https://www.simonandschuster.com/books/The-Sun-Also-Rises/Ernest-Hemingway/9780743297332">The Sun Also Rises</a> &mdash; Ernest Hemingway</li>
+    <li><a href="https://en.wikipedia.org/wiki/Leaving_the_Atocha_Station">Leaving the Atocha Station</a> &mdash; Ben Lerner</li>
+    <li><a href="https://en.wikipedia.org/wiki/10:04">10:04</a> &mdash; Ben Lerner</li>
+    <li><a href="https://en.wikipedia.org/wiki/The_Topeka_School">The Topeka School</a> &mdash; Ben Lerner</li>
   </ul>
 
   <h2>Nonfiction</h2>
   <ul>
     <li><a href="https://www.penguinrandomhouse.com/books/567075/god-human-animal-machine-by-meghan-ogieblyn/">God, Human, Animal, Machine</a> &mdash; Meghan O’Gieblyn</li>
-    <li><a href="https://global.oup.com/academic/product/bad-beliefs-9780197604176">Bad Beliefs</a> &mdash; Neil Levy</li>
+    <li><a href="https://doi.org/10.1093/oso/9780192895325.001.0001">Bad Beliefs</a> &mdash; Neil Levy</li>
     <li><a href="https://us.macmillan.com/books/9781250770080/metazoa/">Metazoa</a> &mdash; Peter Godfrey-Smith</li>
     <li><a href="https://www.penguinrandomhouse.com/books/573451/living-with-the-gods-by-neil-macgregor/">Living with the Gods</a> &mdash; Neil MacGregor</li>
     <li><a href="https://wwnorton.com/books/Letters-to-a-Young-Scientist/">Letters to a Young Scientist</a> &mdash; E.O. Wilson</li>
@@ -120,7 +164,7 @@
 
   <hr>
 
-  <p>Last updated June 2026.</p>
+  <p>Last updated <time datetime="2026-11">November 2026</time>.</p>
 
   <script src="js/puck.js"></script>
 </body>

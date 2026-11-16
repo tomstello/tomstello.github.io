@@ -2,6 +2,8 @@
 
 A bare-bones version of thcostello.com, for evaluation against the editorial design. Status: **implemented 2026-06-12** (Option B; Puck kept; muted link color; single-column likes; copy carried over nearly whole, trimmed only for same-page repetition). The original mock-up is at `design/studs-mock.html`.
 
+> **November 2026 addendum.** The stylesheet printed below is the June original. The live one has grown; see "November 2026: apparatus, not polish" at the end of this file.
+
 ## Premise
 
 Polish used to be evidence of effort. Now an LLM produces considered typography, hairline rules, and a tasteful dark mode on request, so polish has stopped carrying information — and may carry the wrong information. The costly signal inverts: a site that looks typed rather than designed says *a person wrote this, and what they cared about was the content.* The reference class is the unstyled-on-purpose academic page (Dan Luu, Peter Norvig, half the senior faculty pages worth reading), not "brutalist web design," which is itself now a polished aesthetic. The defense against that irony is to be genuinely utilitarian rather than performatively plain: every rule in the stylesheet must earn its place as a legibility fix, never as a look.
@@ -120,3 +122,15 @@ Half a day: write the three pages (content is copy-paste from the current ones),
 3. Selected-work entries: bare one-liners (title — venue, year) or keep the current short descriptions? (Honors stay embedded in research.html prose either way — the one-liners stay unannotated so each honor appears once.)
 4. Default blue/purple links, or one step softer (a single muted link color — the only custom color on the site)?
 5. Does the likes page keep its two columns (a `columns: 2` one-liner) or run as one long list?
+
+## November 2026: apparatus, not polish
+
+Five months on, the page read as slightly abandoned (risk 1 above), and the content had outgrown the layout: 47 papers in one undifferentiated list, a home page nine screens long. The additions follow one rule: borrow from how papers and CVs are typeset, never from how websites are designed. Each one carries information, and each can be removed on its own without touching the others.
+
+1. **Figures.** Photos are `<figure>`s; captions are `<figcaption>`s a size down. The lab section has one diagram as inline SVG drawn in `currentColor` (so it follows dark mode): two schematic belief maps arriving at the same survey answer. It carries no caption, at Tom's request; its labels and the paragraph above it do the explaining. The coordinates are hand-placed; edit the markup in `index.html` directly.
+2. **The year rail.** Dated lists (teaching, media, every list on `research.html`) are `<dl>`s. On a wide screen the year sits in a 4.5rem left column, as on the CV; on a phone it stacks above its entries. Adding a paper is adding a `<dd>`, or a `<dt>` when the year is new.
+3. **The lead photo floats.** `<figure id="portrait">` moves to the right of the text at 52rem and up, so the bio starts at the top of the page instead of under a 480px photo.
+4. **A manicule on arrival.** `h2:target::before` puts a pointing hand in front of the section a link landed on (`index.html#lab`, the old stub URLs, the new "On this page" line in the header).
+5. **Typesetting no one will notice.** `text-wrap: pretty` and `balance`, underlines offset to clear descenders, and a print block that drops the measure, hides Puck, and writes each link's URL after it.
+
+Still true: no webfonts, no classes, no JavaScript except Puck, one HTTP request plus images, CSS inlined per page (about fifty declarations now, identical on index, research, likes, and future). Still excluded: nav bars, cards, color beyond the one link color, hover effects, scroll animation, a theme toggle.

@@ -29,12 +29,49 @@
       line-height: 1.5;
       font-family: Georgia, serif;
     }
-    h1, h2 { line-height: 1.2; font-weight: normal; }
+    h1, h2, h3 { line-height: 1.2; font-weight: normal; text-wrap: balance; }
+    h3 { font-size: 1rem; font-style: italic; }
+    p, li, dd, figcaption { text-wrap: pretty; }
     img { max-width: 100%; height: auto; }
     hr { border: none; border-top: 1px solid; margin: 2.5rem 0; }
-    a { color: light-dark(#3d5a73, #9fbcd4); }
+    a {
+      color: light-dark(#3d5a73, #9fbcd4);
+      text-underline-offset: 0.15em;
+      text-decoration-thickness: from-font;
+    }
     ul { list-style: none; padding-left: 0; }
     li { margin-bottom: 0.8rem; }
+
+    /* Photos and diagrams are figures; a caption sits under each, a size down. */
+    figure { margin: 1.5rem 0; }
+    figure svg { display: block; max-width: 100%; height: auto; }
+    figcaption { max-width: 40rem; margin-top: 0.5rem; font-size: 0.875rem; }
+
+    /* Dated lists. On a wide screen the year hangs in the left margin, as on a CV. */
+    dt { margin-top: 1.2rem; }
+    dd { margin: 0 0 0.8rem; }
+    @media (min-width: 36rem) {
+      dl { display: grid; grid-template-columns: 4.5rem 1fr; row-gap: 0.8rem; }
+      dt { grid-column: 1; margin: 0; }
+      dd { grid-column: 2; margin: 0; }
+    }
+
+    /* The lead photo steps aside for the text when there is room. */
+    @media (min-width: 52rem) {
+      #portrait { float: right; width: 18rem; margin: 0.3rem 0 1rem 2rem; }
+    }
+
+    /* Arriving at a section by link marks it. */
+    h2:target::before { content: "\261E\00A0"; }
+
+    /* On paper: full width, and links spell out where they go. */
+    @media print {
+      body { max-width: none; margin: 0; }
+      nav { display: none; }
+      a { color: inherit; }
+      a[href^="http"]::after { content: " <" attr(href) ">"; font-size: 0.8em; overflow-wrap: anywhere; }
+      figure, li, dd { break-inside: avoid; }
+    }
 
     /* Future page only */
     body { text-align: center; }

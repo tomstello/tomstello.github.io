@@ -29,35 +29,86 @@
       line-height: 1.5;
       font-family: Georgia, serif;
     }
-    h1, h2 { line-height: 1.2; font-weight: normal; }
+    h1, h2, h3 { line-height: 1.2; font-weight: normal; text-wrap: balance; }
+    h3 { font-size: 1rem; font-style: italic; }
+    p, li, dd, figcaption { text-wrap: pretty; }
     img { max-width: 100%; height: auto; }
     hr { border: none; border-top: 1px solid; margin: 2.5rem 0; }
-    a { color: light-dark(#3d5a73, #9fbcd4); }
+    a {
+      color: light-dark(#3d5a73, #9fbcd4);
+      text-underline-offset: 0.15em;
+      text-decoration-thickness: from-font;
+    }
     ul { list-style: none; padding-left: 0; }
     li { margin-bottom: 0.8rem; }
+
+    /* Photos and diagrams are figures; a caption sits under each, a size down. */
+    figure { margin: 1.5rem 0; }
+    figure svg { display: block; max-width: 100%; height: auto; }
+    figcaption { max-width: 40rem; margin-top: 0.5rem; font-size: 0.875rem; }
+
+    /* Dated lists. On a wide screen the year hangs in the left margin, as on a CV. */
+    dt { margin-top: 1.2rem; }
+    dd { margin: 0 0 0.8rem; }
+    @media (min-width: 36rem) {
+      dl { display: grid; grid-template-columns: 4.5rem 1fr; row-gap: 0.8rem; }
+      dt { grid-column: 1; margin: 0; }
+      dd { grid-column: 2; margin: 0; }
+    }
+
+    /* The lead photo steps aside for the text when there is room. */
+    @media (min-width: 52rem) {
+      #portrait { float: right; width: 18rem; margin: 0.3rem 0 1rem 2rem; }
+    }
+
+    /* Arriving at a section by link marks it. */
+    h2:target::before { content: "\261E\00A0"; }
+
+    /* On paper: full width, and links spell out where they go. */
+    @media print {
+      body { max-width: none; margin: 0; }
+      nav { display: none; }
+      a { color: inherit; }
+      a[href^="http"]::after { content: " <" attr(href) ">"; font-size: 0.8em; overflow-wrap: anywhere; }
+      figure, li, dd { break-inside: avoid; }
+    }
   </style>
 </head>
 <body>
 
-  <h1>Thomas H. Costello</h1>
-  <p>Assistant Professor, Department of Social and Decision Sciences, Carnegie Mellon University.</p>
-  <p>
-    <a href="mailto:thcostello1@gmail.com">Email</a> ·
-    <a href="https://scholar.google.com/citations?user=2oxoi9oAAAAJ&amp;hl=en">Google Scholar</a> ·
-    <a href="assets/docs/thomas-costello-cv.pdf">CV (pdf)</a> ·
-    <a href="research.html">Complete publications</a> ·
-    <a href="likes.html">Likes</a>
-  </p>
-
-  <img src="assets/images/web/tom-beach.jpg" alt="Thomas Costello on a beach, giving a thumbs up" width="360" height="480">
+  <header>
+    <h1>Thomas H. Costello</h1>
+    <p>Assistant Professor, Department of Social and Decision Sciences, Carnegie Mellon University.</p>
+    <p>
+      <a href="mailto:thcostello1@gmail.com">Email</a> ·
+      <a href="https://scholar.google.com/citations?user=2oxoi9oAAAAJ&amp;hl=en">Google Scholar</a> ·
+      <a href="assets/docs/thomas-costello-cv.pdf">CV (pdf)</a> ·
+      <a href="research.html">Complete publications</a> ·
+      <a href="likes.html">Likes</a>
+    </p>
+    <nav>
+      On this page:
+      <a href="#research">Research</a> ·
+      <a href="#selected">Selected work</a> ·
+      <a href="#lab">Viewpoints Lab</a> ·
+      <a href="#teaching">Teaching</a> ·
+      <a href="#media">Media</a> ·
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
   <hr>
+
+  <figure id="portrait">
+    <img src="assets/images/web/tom-beach.jpg" alt="Thomas Costello on a beach, giving a thumbs up" width="360" height="480">
+  </figure>
 
   <p>
     I am an Assistant Professor in Social and Decision Sciences at Carnegie Mellon
     University, with appointments as Affiliated Faculty at the Human-Computer
-    Interaction Institute and as a Research Affiliate at MIT&rsquo;s Sloan School of
-    Management. My research integrates psychology, political science, and
+    Interaction Institute, Core Faculty at the Institute for Complex Social Dynamics,
+    and Faculty Affiliate at the Center for Collaboration Science, and as a Research
+    Affiliate at MIT&rsquo;s Sloan School of Management. My research integrates psychology, political science, and
     human-computer interaction to examine where our viewpoints come from, how they
     differ from person to person, and why they change. I also study the sweeping
     impacts of artificial intelligence on individuals and society.
@@ -119,7 +170,7 @@
 
   <h2 id="selected">Selected work</h2>
   <p>
-    <a href="https://www.science.org/doi/10.1126/science.adq1814">Durably reducing conspiracy beliefs through dialogues with AI</a>
+    <a href="https://doi.org/10.1126/science.adq1814">Durably reducing conspiracy beliefs through dialogues with AI</a>
     &mdash; <i>Science</i>, 2024 (cover story).<br>
     Costello, Pennycook &amp; Rand. Participants described a conspiracy theory they
     believed and explained why they found it compelling; a frontier LLM then addressed
@@ -143,7 +194,7 @@
   <p>
     <a href="https://doi.org/10.1037/pspp0000446">Revisiting the rigidity-of-the-right hypothesis: A meta-analytic review</a>
     &mdash; <i>JPSP</i>, 2023.<br>
-    Costello, Bowes, Malka, Baldwin &amp; Tasimi. The field had long treated political
+    Costello, Bowes, Baldwin, Malka &amp; Tasimi. The field had long treated political
     conservatism, cognitive rigidity, and motivational needs for certainty and safety
     as a psychological syndrome. This meta-analysis finds that the relationship
     between ideology and cognitive rigidity is instead contextually contingent,
@@ -159,20 +210,20 @@
     treating ideology as a small set of latent dimensions.
   </p>
   <p>
-    <a href="https://www.nature.com/articles/s41591-025-03821-5">Large language models as disrupters of misinformation</a>
+    <a href="https://doi.org/10.1038/s41591-025-03821-5">Large language models as disrupters of misinformation</a>
     &mdash; <i>Nature Medicine</i>, 2025.<br>
     Costello. An essay on whether highly persuasive AI systems will harm or help the
     epistemic practices of humanity. Many warn, with reason, that AI may amplify
     misinformation or atrophy our critical faculties; I make the case for cautious
     optimism.
   </p>
-  <p>Several working papers extend the AI-persuasion program.</p>
+  <p>Several newer papers extend the AI-persuasion program.</p>
   <ul>
-    <li><a href="https://arxiv.org/abs/2601.05050">Large language models can effectively convince people to believe conspiracies</a></li>
-    <li><a href="https://osf.io/preprints/psyarxiv/h7n8u">Just the facts: How dialogues with AI reduce conspiracy beliefs</a></li>
-    <li><a href="https://osf.io/preprints/psyarxiv/jnm9r">Reducing belief in conspiracy theories as they unfold using large language models</a></li>
-    <li><a href="https://osf.io/preprints/osf/q7e6u">Deep canvassing using AI reduces prejudice toward undocumented immigrants</a></li>
-    <li><a href="https://osf.io/preprints/psyarxiv/gv52j">Personalized dialogues with AI effectively address parents&rsquo; concerns about HPV vaccination</a></li>
+    <li><a href="https://osf.io/preprints/psyarxiv/h7n8u">Just the facts: How dialogues with AI reduce conspiracy beliefs</a> &mdash; <i>Psychological Science</i>, in press</li>
+    <li><a href="https://osf.io/preprints/psyarxiv/jnm9r">Reducing belief in conspiracy theories as they unfold using large language models</a> &mdash; <i>PNAS</i>, in press</li>
+    <li><a href="https://arxiv.org/abs/2601.05050">Large language models can effectively convince people to believe conspiracies</a> &mdash; working paper</li>
+    <li><a href="https://osf.io/preprints/osf/q7e6u">Deep canvassing using AI reduces prejudice toward undocumented immigrants</a> &mdash; working paper</li>
+    <li><a href="https://osf.io/preprints/psyarxiv/gv52j">Personalized AI dialogues and parents&rsquo; HPV vaccine intent: A randomized trial</a> &mdash; working paper</li>
   </ul>
   <p>
     <a href="https://debunkbot.com">DebunkBot.com</a> &mdash; public tool.<br>
@@ -183,8 +234,10 @@
   </p>
   <p><a href="research.html">All publications and working papers</a></p>
 
-  <img src="assets/images/web/aaas-stage-2026.jpg" alt="Thomas Costello, Gordon Pennycook, and David Rand receiving the AAAS Newcomb Cleveland Prize on stage" width="504" height="378">
-  <p>With Gordon Pennycook and David Rand at the AAAS Newcomb Cleveland Prize ceremony, 2026.</p>
+  <figure>
+    <img src="assets/images/web/aaas-stage-2026.jpg" alt="Thomas Costello, Gordon Pennycook, and David Rand receiving the AAAS Newcomb Cleveland Prize on stage" width="504" height="378">
+    <figcaption>With Gordon Pennycook and David Rand at the AAAS Newcomb Cleveland Prize ceremony, 2026.</figcaption>
+  </figure>
 
   <hr>
 
@@ -200,6 +253,16 @@
     irrationality, conspiracism, or extremism may be ordinary reasoning running on
     different inputs.
   </p>
+  <figure>
+    <svg viewBox="0 0 500 270" width="500" height="270" role="img" aria-labelledby="fig1-title fig1-desc" fill="none" stroke="currentColor" stroke-width="1">
+      <title id="fig1-title">Two belief maps that end at the same stated position</title>
+      <desc id="fig1-desc">Person A holds two beliefs about what is and one about what ought to be, all of which support a single belief about how to get from one to the other. Person B holds a different set of beliefs that support two beliefs about how. Both maps end at the same point: the answer each person gives on a survey item.</desc>
+      <defs><marker id="fig1-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto"><path d="M1,1 L7,4 L1,7"/></marker></defs>
+      <g><path d="M171.2,34.2 L258.9,67.1" marker-end="url(#fig1-arrow)"/><path d="M172.0,72.0 L258.0,72.0" marker-end="url(#fig1-arrow)"/><path d="M171.2,109.8 L258.9,76.9" marker-end="url(#fig1-arrow)"/><path d="M281.9,78.8 L360.5,133.0" marker-end="url(#fig1-arrow)"/><path d="M108.0,168.0 L146.0,168.0" marker-end="url(#fig1-arrow)"/><path d="M171.8,170.2 L258.2,186.4" marker-end="url(#fig1-arrow)"/><path d="M171.8,207.8 L258.2,191.6" marker-end="url(#fig1-arrow)"/><path d="M171.6,213.1 L258.5,236.4" marker-end="url(#fig1-arrow)"/><path d="M171.9,250.7 L258.1,241.5" marker-end="url(#fig1-arrow)"/><path d="M282.8,183.8 L359.4,147.1" marker-end="url(#fig1-arrow)"/><path d="M280.5,231.6 L362.1,150.8" marker-end="url(#fig1-arrow)"/></g>
+      <g><circle cx="160" cy="30" r="7"/><circle cx="160" cy="72" r="7"/><rect x="153.5" y="107.5" width="13" height="13"/><path d="M272,63 L281,72 L272,81 L263,72 Z"/><circle cx="96" cy="168" r="7"/><circle cx="160" cy="168" r="7"/><rect x="153.5" y="203.5" width="13" height="13"/><rect x="153.5" y="245.5" width="13" height="13"/><path d="M272,180 L281,189 L272,198 L263,189 Z"/><path d="M272,231 L281,240 L272,249 L263,240 Z"/><circle cx="372" cy="141" r="6" fill="currentColor"/></g>
+      <g font-family="Georgia, serif" font-size="15" font-style="italic" fill="currentColor" stroke="none"><text x="0" y="77">Person A</text><text x="0" y="215">Person B</text><text x="388" y="146">the same answer</text></g>
+    </svg>
+  </figure>
   <p>
     The goal is a behavioral science of viewpoints: one able to measure the systems
     of reasons that lead people to hold specific views, test how those systems come
@@ -255,46 +318,83 @@
   </p>
 
   <p>
-    The lab is Thomas Costello (director) and Ph.D. students Kenneth Diao,
-    Duncan Wood, and Ali Levontin, all in Social and Decision Sciences.
+    The lab is Thomas Costello (director); Jackson Traeger, postdoctoral researcher;
+    and Ph.D. students Kenneth Diao, Duncan Wood, and Ali Levontin, all in Social and
+    Decision Sciences.
   </p>
   <p>
-    We are hiring a postdoctoral researcher &mdash;
-    <a href="mailto:thcostello1@gmail.com">email</a> a CV and a short note about what
-    you would want to study. Ph.D. students apply through the
+    Ph.D. students apply through the
     <a href="https://www.cmu.edu/dietrich/sds/graduate/index.html">CMU Social and
     Decision Sciences doctoral program</a>, naming me in their application;
     prospective students, and undergraduate or post-baccalaureate researchers, are
-    welcome to email beforehand.
+    welcome to <a href="mailto:thcostello1@gmail.com">email</a> beforehand.
   </p>
 
   <hr>
 
   <h2 id="teaching">Teaching</h2>
-  <p>
-    Thinking in Person vs. Thinking Online &mdash; Department of Social and Decision
-    Sciences, Carnegie Mellon University, Spring 2026.<br>
-    Psychology of Politics &mdash; Department of Psychology, American University, 2025.<br>
-    Research Methods &mdash; Department of Psychology, American University, 2024.
-  </p>
+  <dl>
+    <dt>2026</dt>
+    <dd>Thinking in Person vs. Thinking Online &mdash; Department of Social and Decision Sciences, Carnegie Mellon University (spring)</dd>
+    <dt>2025</dt>
+    <dd>Psychology of Politics &mdash; Department of Psychology, American University</dd>
+    <dt>2024</dt>
+    <dd>Research Methods &mdash; Department of Psychology, American University</dd>
+  </dl>
   <p>
     I serve on the editorial board of <i>Political Psychology</i> (2025&ndash;),
     with editors-in-chief Mark Brandt and Elizabeth Suhay.
   </p>
 
   <h2 id="media">Media</h2>
-  <ul>
-    <li>New York Times &mdash; <a href="https://www.nytimes.com/2024/09/12/health/chatbot-debunk-conspiracy-theories.html">Can a chatbot teach you to stop believing in conspiracies?</a> (2024)</li>
-    <li>The Economist &mdash; <a href="https://www.economist.com/graphic-detail/2024/09/26/want-to-win-an-argument-use-a-chatbot">Want to win an argument? Use a chatbot</a> (2024)</li>
-    <li>Financial Times &mdash; <a href="https://www.ft.com/content/909f33d1-0d33-440b-a935-cfa65d2fccd1">The promise of persuasive AI</a> (2024)</li>
-    <li>Washington Post &mdash; <a href="https://www.washingtonpost.com/opinions/2025/02/26/ai-research-conspiracy-theories">AI research on conspiracy theories</a> (2025)</li>
-    <li>The Atlantic &mdash; <a href="https://www.theatlantic.com/ideas/archive/2021/09/psychological-dimensions-left-wing-authoritarianism/620185/">on the left-wing authoritarianism research</a> (2021)</li>
-  </ul>
+  <h3>Print</h3>
+  <dl>
+    <dt>2025</dt>
+    <dd>Washington Post &mdash; <a href="https://www.washingtonpost.com/opinions/2025/02/26/ai-research-conspiracy-theories/">AI could combat conspiracy theories, according to new research</a></dd>
+    <dt>2024</dt>
+    <dd>New York Times &mdash; <a href="https://www.nytimes.com/2024/09/12/health/chatbot-debunk-conspiracy-theories.html">This chatbot pulls people away from conspiracy theories</a></dd>
+    <dd>Financial Times &mdash; <a href="https://www.ft.com/content/909f33d1-0d33-440b-a935-cfa65d2fccd1">Chats with AI bots found to damp conspiracy theory beliefs</a></dd>
+    <dd>The Economist &mdash; <a href="https://www.economist.com/graphic-detail/2024/09/26/want-to-win-an-argument-use-a-chatbot">Want to win an argument? Use a chatbot</a></dd>
+    <dd>The Guardian &mdash; <a href="https://www.theguardian.com/science/2024/sep/12/ai-can-change-belief-in-conspiracy-theories-study-finds">AI can change belief in conspiracy theories, study finds</a></dd>
+    <dd>Los Angeles Times &mdash; <a href="https://www.latimes.com/science/story/2024-09-12/ai-can-rescue-people-from-conspiracy-theory-rabbit-holes">Why AI is better than humans at talking people out of their conspiracy theory beliefs</a></dd>
+    <dd><i>Nature</i> &mdash; <a href="https://www.nature.com/articles/d41586-024-02966-6">This AI chatbot got conspiracy theorists to question their convictions</a></dd>
+    <dd><i>Science</i> &mdash; <a href="https://www.science.org/content/article/ai-chatbot-shows-promise-talking-people-out-conspiracy-theories">AI chatbot shows promise in talking people out of conspiracy theories</a></dd>
+    <dd>MIT Technology Review &mdash; <a href="https://www.technologyreview.com/2024/09/12/1103930/chatbots-can-persuade-people-to-stop-believing-in-conspiracy-theories/">Chatbots can persuade people to stop believing in conspiracy theories</a></dd>
+    <dd>Der Spiegel &mdash; <a href="https://www.spiegel.de/wissenschaft/mensch/ki-wie-chatgpt-verschwoerungstheoretiker-von-ihrem-glauben-abbrachte-a-efbc3541-98dd-4731-a836-8d5bfbbf92f9" lang="de">KI: Wie ChatGPT Verschwörungstheoretiker von ihrem Glauben abbrachte</a></dd>
+    <dd>
+      Also
+      <a href="https://arstechnica.com/science/2024/09/study-conversations-with-ai-chatbots-can-reduce-belief-in-conspiracy-theories/">Ars Technica</a>,
+      <a href="https://www.axios.com/2024/09/13/chatbot-gpt-4-misinformation-debunk-ai">Axios</a>,
+      Bloomberg Opinion (<a href="https://www.bloomberg.com/opinion/articles/2024-04-18/google-facebook-should-use-ai-to-combat-conspiracy-theories">April</a>,
+      <a href="https://www.bloomberg.com/opinion/articles/2024-09-14/ai-can-debunk-conspiracy-theories-better-than-humans-can">September</a>),
+      <a href="https://theconversation.com/can-ai-talk-us-out-of-conspiracy-theory-rabbit-holes-238580">The Conversation</a>,
+      <a href="https://www.dw.com/en/ai-can-debunk-conspiracy-theories-can-it-help-your-uncle/a-70200703">DW</a>,
+      <a href="https://www.forbes.com/sites/bernardmarr/2024/10/03/ai-and-conspiracy-theories-can-artificial-intelligence-help-change-minds/">Forbes</a>,
+      <a href="https://gizmodo.com/new-study-suggests-ai-could-convince-conspiracy-theorists-theyre-wrong-2000498663">Gizmodo</a>,
+      <a href="https://thehill.com/opinion/4887632-debunkbot-ai-conspiracy-theories/">The Hill</a>,
+      <a href="https://spectrum.ieee.org/ai-conspiracy-theories">IEEE Spectrum</a>,
+      <a href="https://mashable.com/article/ai-chatbot-for-conspiracy-theories">Mashable</a>,
+      <a href="https://www.newscientist.com/article/2426618-chatbots-can-persuade-conspiracy-theorists-their-view-might-be-wrong/">New Scientist</a>,
+      <a href="https://www.niemanlab.org/2024/09/an-ai-chatbot-helped-americans-who-believe-in-conspiracy-theories-exit-the-rabbit-hole/">Nieman Lab</a>,
+      <a href="https://www.popsci.com/technology/conspiracy-debunk-ai-bot/">Popular Science</a>,
+      <a href="https://www.sciencenews.org/article/ai-chatbot-conspiracy-theories">Science News</a>, and
+      <a href="https://www.semafor.com/article/09/12/2024/conversations-with-ai-chatbot-reduced-conspiracy-beliefs-study">Semafor</a>.
+    </dd>
+    <dt>2021</dt>
+    <dd>The Atlantic &mdash; <a href="https://www.theatlantic.com/ideas/archive/2021/09/psychological-dimensions-left-wing-authoritarianism/620185/">The experts somehow overlooked authoritarians on the left</a></dd>
+  </dl>
+  <h3>Broadcast and audio</h3>
+  <dl>
+    <dt>2025</dt>
+    <dd>CBS News &mdash; <a href="https://www.cbsnews.com/video/ai-chatbot-debunk-bot-challenges-conspiracy-theories-in-new-study/">AI chatbot &ldquo;Debunk-Bot&rdquo; challenges conspiracy theories in new study</a></dd>
+    <dt>2024</dt>
+    <dd>NBC Nightly News &mdash; <a href="https://www.youtube.com/watch?v=uIC2DbZWr0Y&amp;t=91s">There&rsquo;s a new war on social media conspiracy theories</a></dd>
+    <dd>BBC World News &mdash; <a href="https://www.youtube.com/watch?v=xHN6YTzhKNo&amp;t=1034s">interview</a></dd>
+    <dd>CNN, <i>Terms of Service with Clare Duffy</i> &mdash; <a href="https://www.cnn.com/audio/podcasts/terms-of-service-with-clare-duffy/episodes/9f3b82b4-96cf-11ef-aa1b-2f08b9fdf665">Debunking conspiracies this holiday season? Let AI help.</a></dd>
+    <dd>The Guardian (podcast) &mdash; <a href="https://www.theguardian.com/science/audio/2024/oct/08/could-ai-help-fight-conspiracy-theories-podcast">Could AI help fight conspiracy theories?</a></dd>
+    <dd>Interviews also aired on CBC/Radio-Canada and <i>Scientific American</i>&rsquo;s podcast.</dd>
+  </dl>
   <p>
-    On air, the work has appeared on
-    <a href="https://www.youtube.com/watch?v=uIC2DbZWr0Y">NBC Nightly News</a>,
-    BBC World News, and CNN&rsquo;s
-    <a href="https://www.cnn.com/audio/podcasts/terms-of-service-with-clare-duffy/episodes/9f3b82b4-96cf-11ef-aa1b-2f08b9fdf665"><i>Terms of Service</i></a> (2024).
     I have also written for general readers &mdash;
     <a href="https://www.technologyreview.com/2025/10/30/1126471/chatbots-are-surprisingly-effective-at-debunking-conspiracy-theories/">Chatbots are surprisingly effective at debunking conspiracy theories</a>
     (MIT Technology Review, 2025, with Gordon Pennycook and David Rand) and
@@ -310,7 +410,7 @@
     (&ldquo;Persuasion via generative AI,&rdquo; 2024).
   </p>
   <p>
-    Complete lists of coverage and talks appear in the
+    The complete list of talks appears in the
     <a href="assets/docs/thomas-costello-cv.pdf">CV</a>. For media inquiries,
     <a href="mailto:thcostello1@gmail.com">email</a> is the fastest route; a line
     about your outlet and deadline helps.
@@ -324,9 +424,9 @@
     wrong about something, I&rsquo;d <a href="#contact">like to hear why</a>.
     Some things I like are <a href="likes.html">here</a>.
   </p>
-  <p>
+  <figure>
     <img src="assets/images/web/baseball-childhood.jpg" alt="Thomas Costello as a child, playing baseball" width="450" height="278">
-  </p>
+  </figure>
 
   <h2 id="contact">Contact</h2>
   <p>
@@ -335,14 +435,14 @@
     Sciences, 5000 Forbes Avenue, Pittsburgh, PA 15213<br>
     <a href="https://www.cmu.edu/dietrich/sds/people/faculty/tom-costello.html">CMU faculty page</a> ·
     <a href="https://orcid.org/0000-0002-5188-3881">ORCID</a> ·
-    <a href="https://twitter.com/tomstello_">Twitter/X</a> ·
+    <a href="https://x.com/tomstello_">Twitter/X</a> ·
     <a href="https://bsky.app/profile/tomcostello.bsky.social">Bluesky</a> ·
     <a href="https://www.linkedin.com/in/tom-costello-ba41b6105/">LinkedIn</a>
   </p>
 
   <hr>
 
-  <p>Last updated June 2026. <a href="future.html">Future</a>.</p>
+  <p>Last updated <time datetime="2026-11">November 2026</time>. <a href="future.html">Future</a>.</p>
 
   <script src="js/puck.js"></script>
 </body>
