@@ -50,15 +50,20 @@ Check <https://openrouter.ai/models?q=anthropic> for current slugs before changi
 
 The persona prompt and facts come to roughly 5,400 tokens and are sent as a cacheable block, so
 within a conversation every turn after the first reads them at the cached rate. At Fable 5.2
-prices a first message costs about seven cents and each follow-up within five minutes about one
-cent; the Sonnet fallback is roughly a quarter of that. To make Puck cheaper, put the Sonnet slug
-first.
+prices a first message costs about seven cents and each follow-up within five minutes two or
+three cents (most of that is output, including the model's reasoning); the Sonnet fallback is
+roughly a quarter of that. To make Puck cheaper, put the Sonnet slug first.
+
+Both models always reason on OpenRouter ("Reasoning is mandatory for this endpoint" if you try to
+turn it off), and reasoning tokens count against `max_tokens`. The worker asks for low effort and
+leaves 1,600 tokens so the thinking can't crowd out the reply. If replies come back cut off, look
+for "Reply hit max_tokens" in `wrangler tail`.
 
 ## Limits
 
 30 messages per visitor per day and 1,000 per day overall, counted in the `PUCK_KV` namespace
-(`RATE_LIMIT` in `src/index.js`). Replies are capped at 600 tokens and the last ten turns of
-history are sent.
+(`RATE_LIMIT` in `src/index.js`). Each call is capped at 1,600 tokens (reasoning plus reply)
+and the last ten turns of history are sent.
 
 ## Local testing
 

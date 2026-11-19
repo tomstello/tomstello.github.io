@@ -369,11 +369,16 @@ export default {
         },
         // No temperature/top_p: the current Claude models don't accept
         // sampling parameters. The prompt carries the voice.
+        // Reasoning can't be switched off on OpenRouter for these models, and
+        // its tokens count against max_tokens. At 600 the thinking ate the
+        // budget and replies came back cut off or empty, so: low effort, and
+        // room for both. The prompt, not this cap, keeps replies short.
         body: JSON.stringify({
           model: MODELS[0],
           models: MODELS,
           messages: messages,
-          max_tokens: 600,
+          reasoning: { effort: 'low' },
+          max_tokens: 1600,
         }),
       });
 
@@ -392,6 +397,10 @@ export default {
       }
 
       const data = await openrouterResponse.json();
+      if (data.choices?.[0]?.finish_reason === 'length') {
+        console.warn('Reply hit max_tokens; reasoning tokens:',
+          data.usage?.completion_tokens_details?.reasoning_tokens);
+      }
       const content = data.choices?.[0]?.message?.content;
       const reply = (typeof content === 'string' && content.trim()) ? content : null;
 
